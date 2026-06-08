@@ -4,6 +4,7 @@ import Hero from "../components/site/Hero";
 import Marquee from "../components/site/Marquee";
 import Packages from "../components/site/Packages";
 import Coverage from "../components/site/Coverage";
+import Payment from "../components/site/Payment";
 import Features from "../components/site/Features";
 import About from "../components/site/About";
 import Testimonials from "../components/site/Testimonials";
@@ -27,6 +28,7 @@ export default function LandingPage() {
         <Testimonials />
         <FAQ />
         <Subscribe />
+        <Payment />
         <Contact />
       </main>
       <Footer />

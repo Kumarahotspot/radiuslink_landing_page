@@ -8,6 +8,7 @@ const navItems = (t) => [
   { id: "home", label: t.nav.home, href: "#home" },
   { id: "packages", label: t.nav.packages, href: "#packages" },
   { id: "coverage", label: t.nav.coverage, href: "#coverage" },
+  { id: "payment", label: t.nav.payment, href: "#payment" },
   { id: "about", label: t.nav.about, href: "#about" },
   { id: "contact", label: t.nav.contact, href: "#contact" }
 ];
@@ -33,12 +34,12 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 h-20 md:h-28 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 h-16 md:h-20 flex items-center justify-between">
         <a href="#home" data-testid="header-logo-link" className="flex items-center group">
           <img
             src={BRAND.logo}
             alt="Kumara Hotspot — High Speed Internet Unlimited"
-            className="h-16 md:h-20 lg:h-24 w-auto object-contain"
+            className="h-12 md:h-14 lg:h-16 w-auto object-contain"
           />
         </a>
 

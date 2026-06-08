@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-4">
-              <img src={BRAND.logo} alt="Kumara Hotspot" className="h-20 md:h-24 w-auto object-contain" />
+              <img src={BRAND.logo} alt="Kumara Hotspot" className="h-14 md:h-16 w-auto object-contain" />
             </div>
             <div className="mt-3 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">PT. Pusaka Kreasi Mandiri</div>
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-md">{t.footer.desc}</p>

@@ -9,6 +9,7 @@ export const translations = {
       home: "Beranda",
       packages: "Paket",
       coverage: "Cakupan",
+      payment: "Pembayaran",
       about: "Tentang",
       contact: "Kontak",
       subscribe: "Berlangganan"
@@ -82,6 +83,30 @@ export const translations = {
     testimonials: {
       eyebrow: "Cerita Pelanggan",
       title: "Dipercaya oleh ribuan rumah dan bisnis."
+    },
+    payment: {
+      eyebrow: "Metode Pembayaran",
+      title: "Bayar tagihan dengan cara paling nyaman.",
+      desc: "Pembayaran dapat dilakukan melalui berbagai kanal — virtual account bank, QRIS, gerai retail, hingga e-wallet favorit Anda.",
+      categories: [
+        {
+          name: "Virtual Account Bank",
+          items: ["Mandiri", "BRI", "BSI", "BNI", "BCA", "Permata Bank", "CIMB Niaga", "& bank lainnya"]
+        },
+        {
+          name: "QRIS",
+          items: ["Semua aplikasi pembayaran berlogo QRIS", "Scan & bayar instan"]
+        },
+        {
+          name: "Gerai Retail",
+          items: ["Alfamart", "Indomaret", "& jaringan minimarket lainnya"]
+        },
+        {
+          name: "E-Wallet",
+          items: ["OVO", "LinkAja", "GoPay", "DANA", "ShopeePay", "& e-wallet lainnya"]
+        }
+      ],
+      note: "Tagihan otomatis dikirim setiap awal bulan via email dan WhatsApp."
     },
     about: {
       eyebrow: "Tentang Kami",
@@ -172,6 +197,7 @@ export const translations = {
       home: "Home",
       packages: "Packages",
       coverage: "Coverage",
+      payment: "Payment",
       about: "About",
       contact: "Contact",
       subscribe: "Subscribe"
@@ -227,6 +253,30 @@ export const translations = {
     testimonials: {
       eyebrow: "Customer Stories",
       title: "Trusted by thousands of homes and businesses."
+    },
+    payment: {
+      eyebrow: "Payment Methods",
+      title: "Pay your bill the way you prefer.",
+      desc: "Settle your monthly invoice via multiple channels — bank virtual account, QRIS, retail outlets, and popular e-wallets.",
+      categories: [
+        {
+          name: "Bank Virtual Account",
+          items: ["Mandiri", "BRI", "BSI", "BNI", "BCA", "Permata Bank", "CIMB Niaga", "& other banks"]
+        },
+        {
+          name: "QRIS",
+          items: ["Any QRIS-enabled payment app", "Scan & pay instantly"]
+        },
+        {
+          name: "Retail Outlets",
+          items: ["Alfamart", "Indomaret", "& other minimarket chains"]
+        },
+        {
+          name: "E-Wallet",
+          items: ["OVO", "LinkAja", "GoPay", "DANA", "ShopeePay", "& other e-wallets"]
+        }
+      ],
+      note: "Invoices are sent automatically every beginning of month via email and WhatsApp."
     },
     about: {
       eyebrow: "About Us",
