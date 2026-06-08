@@ -12,7 +12,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.contact.eyebrow}</div>
-            <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">{t.contact.title}</h2>
+            <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.contact.title}</h2>
             <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
               <Button
                 data-testid="contact-whatsapp-cta"

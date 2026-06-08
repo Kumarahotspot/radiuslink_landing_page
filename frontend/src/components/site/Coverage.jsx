@@ -41,7 +41,7 @@ export default function Coverage() {
 
       <div className="max-w-4xl mx-auto px-5 md:px-8 lg:px-10 text-center">
         <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.coverage.eyebrow}</div>
-        <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">{t.coverage.title}</h2>
+        <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.coverage.title}</h2>
         <p className="mt-4 text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">{t.coverage.desc}</p>
 
         <form onSubmit={onCheck} data-testid="coverage-form" className="mt-10 max-w-2xl mx-auto">

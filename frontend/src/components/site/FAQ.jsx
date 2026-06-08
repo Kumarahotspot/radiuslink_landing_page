@@ -9,7 +9,7 @@ export default function FAQ() {
       <div className="max-w-4xl mx-auto px-5 md:px-8">
         <div className="text-center">
           <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.faq.eyebrow}</div>
-          <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">{t.faq.title}</h2>
+          <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.faq.title}</h2>
         </div>
         <Accordion type="single" collapsible className="mt-12 space-y-3" data-testid="faq-accordion">
           {t.faq.items.map((item, i) => (
