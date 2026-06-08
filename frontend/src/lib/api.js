@@ -10,11 +10,12 @@ export const api = axios.create({
 
 export const BRAND = {
   logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/jxj1q6vc_LOGO_KUMARA_TEXT_HITAM__1_-removebg-preview%20%282%29.png",
-  whatsapp: "6281234567890",
-  email: "halo@kumarahotspot.id",
-  phone: "+62 21 5000 9090",
-  address_id: "Jl. Cikini Raya No. 88, Menteng, Jakarta Pusat 10330",
-  address_en: "Jl. Cikini Raya No. 88, Menteng, Central Jakarta 10330"
+  whatsapp: "628888200888",
+  phone_display: "0888-8200-888",
+  email: "cs@kumarahotspot.com",
+  phone: "0888-8200-888",
+  address_id: "Telaga Golf Cluster Belanda Blok E10 No.61, Sawangan, Depok, Jawa Barat 16511",
+  address_en: "Telaga Golf Cluster Belanda Block E10 No.61, Sawangan, Depok, West Java 16511"
 };
 
 export const whatsappUrl = (msg = "Halo Kumara Hotspot, saya ingin berlangganan.") =>
