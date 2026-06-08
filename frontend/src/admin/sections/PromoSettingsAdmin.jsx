@@ -12,7 +12,7 @@ const empty = {
   tag_id: "", tag_en: "",
   text_id: "", text_en: "",
   cta_id: "", cta_en: "",
-  cta_message: ""
+  cta_message_id: "", cta_message_en: ""
 };
 
 export default function PromoSettingsAdmin() {
@@ -133,11 +133,17 @@ export default function PromoSettingsAdmin() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-overlay/10 bg-card/40 p-5">
-          <Label>Pesan WhatsApp saat user klik CTA</Label>
-          <Textarea data-testid="promo-wa-message" rows={2} value={form.cta_message} onChange={(e) => setForm({ ...form, cta_message: e.target.value })} placeholder="Halo Kumara, saya tertarik promo..." className="mt-1" />
-          <p className="text-xs text-muted-foreground mt-2">Pesan ini akan otomatis terisi saat user klik tombol promo di banner.</p>
+        <div className="grid md:grid-cols-2 gap-5">
+          <div className="rounded-2xl border border-overlay/10 bg-card/40 p-5">
+            <Label>Pesan WhatsApp 🇮🇩 (Indonesia)</Label>
+            <Textarea data-testid="promo-wa-message-id" rows={3} value={form.cta_message_id} onChange={(e) => setForm({ ...form, cta_message_id: e.target.value })} placeholder="Halo Kumara, saya tertarik promo..." className="mt-1" />
+          </div>
+          <div className="rounded-2xl border border-overlay/10 bg-card/40 p-5">
+            <Label>WhatsApp Message 🇬🇧 (English)</Label>
+            <Textarea data-testid="promo-wa-message-en" rows={3} value={form.cta_message_en} onChange={(e) => setForm({ ...form, cta_message_en: e.target.value })} placeholder="Hello Kumara, I'm interested in the promo..." className="mt-1" />
+          </div>
         </div>
+        <p className="text-xs text-muted-foreground -mt-2">Pesan ini akan otomatis terisi sesuai bahasa yang dipilih user saat klik tombol promo di banner.</p>
 
         <div className="flex justify-end">
           <Button

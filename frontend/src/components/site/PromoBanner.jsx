@@ -43,7 +43,11 @@ export default function PromoBanner() {
         </span>
         <span className="flex-1 truncate font-medium">{text}</span>
         <a
-          href={whatsappUrl(settings.cta_message || "Halo Kumara, saya tertarik promo.")}
+          href={whatsappUrl(
+            (lang === "en" ? settings.cta_message_en : settings.cta_message_id)
+            || settings.cta_message
+            || "Halo Kumara, saya tertarik promo."
+          )}
           target="_blank"
           rel="noopener noreferrer"
           data-testid="promo-cta"

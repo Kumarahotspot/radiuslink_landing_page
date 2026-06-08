@@ -132,7 +132,8 @@ class PromoSettings(BaseModel):
     text_en: str = "Sign up today — Free installation + 1 month free. Limited time!"
     cta_id: str = "Klaim Sekarang"
     cta_en: str = "Claim Now"
-    cta_message: str = "Halo Kumara, saya tertarik dengan promo pasang baru gratis 1 bulan."
+    cta_message_id: str = "Halo Kumara, saya tertarik dengan promo pasang baru gratis 1 bulan."
+    cta_message_en: str = "Hello Kumara, I'm interested in the free 1-month installation promo."
 
 
 class AdminLogin(BaseModel):
@@ -365,27 +366,31 @@ async def create_contact(payload: ContactCreate):
 
 @api_router.get("/settings/promo")
 async def get_promo_settings():
-    doc = await db.site_settings.find_one({"key": "promo"}, {"_id": 0, "key": 0})
-    if not doc:
-        doc = PromoSettings().model_dump()
-    return doc
+    doc = await db.site_settings.find_one({"key": "promo"}, {"_id": 0, "key": 0, "cta_message": 0})
+    defaults = PromoSettings().model_dump()
+    if doc:
+        defaults.update({k: v for k, v in doc.items() if v is not None})
+    return defaults
 
 
 @admin_router.get("/settings/promo")
 async def admin_get_promo_settings(_: dict = Depends(get_current_admin)):
-    doc = await db.site_settings.find_one({"key": "promo"}, {"_id": 0, "key": 0})
-    if not doc:
-        doc = PromoSettings().model_dump()
-        await db.site_settings.insert_one({"key": "promo", **doc})
-    return doc
+    doc = await db.site_settings.find_one({"key": "promo"}, {"_id": 0, "key": 0, "cta_message": 0})
+    defaults = PromoSettings().model_dump()
+    if doc:
+        defaults.update({k: v for k, v in doc.items() if v is not None})
+    else:
+        await db.site_settings.insert_one({"key": "promo", **defaults})
+    return defaults
 
 
 @admin_router.put("/settings/promo")
 async def admin_update_promo_settings(payload: PromoSettings, _: dict = Depends(get_current_admin)):
     update = payload.model_dump()
+    # Migrate: remove old single cta_message field if present
     await db.site_settings.update_one(
         {"key": "promo"},
-        {"$set": update},
+        {"$set": update, "$unset": {"cta_message": ""}},
         upsert=True
     )
     return update
