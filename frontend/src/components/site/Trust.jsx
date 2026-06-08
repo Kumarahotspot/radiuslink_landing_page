@@ -28,7 +28,7 @@ const BADGES = [
     name: "Internet Positif",
     logo: "/logos/internet-positif.png",
     site: "https://internetpositif.id",
-    dark_bg: true
+    dark_bg: false
   }
 ];
 
