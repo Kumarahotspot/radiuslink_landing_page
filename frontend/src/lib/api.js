@@ -9,7 +9,7 @@ export const api = axios.create({
 });
 
 export const BRAND = {
-  logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/jxj1q6vc_LOGO_KUMARA_TEXT_HITAM__1_-removebg-preview%20%282%29.png",
+  logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/0ag0tbhr_LOGO%20KUMARA%20TEXT%20PUTIH.png",
   whatsapp: "628888200888",
   phone_display: "0888-8200-888",
   email: "cs@kumarahotspot.com",
