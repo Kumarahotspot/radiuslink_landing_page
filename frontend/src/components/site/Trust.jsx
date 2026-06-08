@@ -1,8 +1,32 @@
 import React from "react";
-import { ShieldCheck, BadgeCheck, Network, Filter } from "lucide-react";
 import { useT } from "../../i18n";
 
-const ICONS = [ShieldCheck, BadgeCheck, Network, Filter];
+const BADGES = [
+  {
+    key: "apjii",
+    name: "APJII",
+    logo: "/logos/apjii.png",
+    site: "https://www.apjii.or.id"
+  },
+  {
+    key: "komdigi",
+    name: "Komdigi",
+    logo: "/logos/komdigi.png",
+    site: "https://www.komdigi.go.id"
+  },
+  {
+    key: "idnic",
+    name: "ID-NIC",
+    logo: "/logos/idnic.png",
+    site: "https://idnic.id"
+  },
+  {
+    key: "ipositif",
+    name: "Internet Positif",
+    logo: "/logos/internet-positif.svg",
+    site: "https://internetpositif.id"
+  }
+];
 
 export default function Trust() {
   const { t } = useT();
@@ -16,19 +40,27 @@ export default function Trust() {
           </div>
           <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-4">
             {t.trust.badges.map((b, i) => {
-              const Icon = ICONS[i];
+              const meta = BADGES[i];
               return (
-                <div
+                <a
                   key={i}
+                  href={meta?.site || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   data-testid={`trust-badge-${i}`}
-                  className="rounded-2xl border border-overlay/10 bg-card/40 p-4 hover:border-primary/30 transition-all"
+                  className="rounded-2xl border border-overlay/10 bg-card/60 p-5 hover:border-primary/30 hover:bg-card transition-all flex flex-col items-center text-center group"
                 >
-                  <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary grid place-items-center mb-3">
-                    <Icon className="h-4 w-4" strokeWidth={1.6} />
+                  <div className="h-16 w-full grid place-items-center bg-white rounded-xl px-3 py-2 ring-1 ring-overlay/10">
+                    <img
+                      src={meta?.logo}
+                      alt={meta?.name || b.name}
+                      className="max-h-12 max-w-full object-contain"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="text-sm font-bold tracking-tight">{b.name}</div>
+                  <div className="mt-3 text-sm font-bold tracking-tight">{b.name}</div>
                   <div className="mt-1 text-[11px] text-muted-foreground leading-snug">{b.desc}</div>
-                </div>
+                </a>
               );
             })}
           </div>
