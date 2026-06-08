@@ -1,28 +1,37 @@
 import React, { useState } from "react";
 import { Search, CheckCircle2, XCircle, MapPin, Clock } from "lucide-react";
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import { api } from "../../lib/api";
 import { useT } from "../../i18n";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
-// Approximate positions on a 100x60 coordinate space (W Indonesia → E)
+// World atlas TopoJSON (will filter to Indonesia only)
+const TOPO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+
+// Real geographic coordinates [lon, lat]
 const COVERED_AREAS = [
-  { name: "Medan", x: 14, y: 17 },
-  { name: "Jakarta", x: 36, y: 39 },
-  { name: "Bekasi", x: 38, y: 39 },
-  { name: "Tangerang", x: 35, y: 39 },
-  { name: "Bogor", x: 37, y: 41 },
-  { name: "Depok", x: 38, y: 40 },
-  { name: "Cianjur", x: 40, y: 41 },
-  { name: "Bandung", x: 41, y: 42 },
-  { name: "Semarang", x: 48, y: 41 },
-  { name: "Demak", x: 49, y: 40 },
-  { name: "Yogyakarta", x: 49, y: 44 },
-  { name: "Surabaya", x: 55, y: 42 },
-  { name: "Bondowoso", x: 57, y: 43 },
-  { name: "Denpasar", x: 61, y: 46 },
-  { name: "Makassar", x: 71, y: 39 }
+  { name: "Medan",       coords: [98.67, 3.59] },
+  { name: "Jakarta",     coords: [106.85, -6.21] },
+  { name: "Bekasi",      coords: [106.99, -6.24] },
+  { name: "Tangerang",   coords: [106.63, -6.18] },
+  { name: "Bogor",       coords: [106.79, -6.59] },
+  { name: "Depok",       coords: [106.81, -6.40] },
+  { name: "Cianjur",     coords: [107.14, -6.81] },
+  { name: "Bandung",     coords: [107.61, -6.92] },
+  { name: "Semarang",    coords: [110.42, -6.97] },
+  { name: "Demak",       coords: [110.64, -6.89] },
+  { name: "Yogyakarta",  coords: [110.36, -7.80] },
+  { name: "Surabaya",    coords: [112.75, -7.25] },
+  { name: "Bondowoso",   coords: [113.82, -7.91] },
+  { name: "Denpasar",    coords: [115.21, -8.65] },
+  { name: "Makassar",    coords: [119.41, -5.13] }
 ];
+
+const PROJECTION_CONFIG = {
+  center: [118, -2.5],
+  scale: 1100
+};
 
 export default function Coverage() {
   const { t, lang } = useT();
@@ -30,6 +39,7 @@ export default function Coverage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
+  const [hovered, setHovered] = useState(null);
 
   const onCheck = async (e) => {
     e?.preventDefault();
@@ -56,36 +66,70 @@ export default function Coverage() {
           <p className="mt-4 text-muted-foreground text-base md:text-lg">{t.coverage.desc}</p>
         </div>
 
-        {/* Map visualization */}
-        <div className="mt-12 relative rounded-3xl border border-overlay/10 bg-card/40 overflow-hidden" data-testid="coverage-map">
-          <div className="absolute inset-0 opacity-30">
-            <img
-              src="https://images.pexels.com/photos/18441167/pexels-photo-18441167.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=600&w=1600"
-              alt=""
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/30 to-background/80" />
+        {/* Indonesia Map */}
+        <div
+          className="mt-12 relative rounded-3xl border border-overlay/10 bg-card/40 overflow-hidden"
+          data-testid="coverage-map"
+        >
+          <div className="relative">
+            <ComposableMap
+              projection="geoMercator"
+              projectionConfig={PROJECTION_CONFIG}
+              width={1000}
+              height={420}
+              style={{ width: "100%", height: "auto", display: "block" }}
+            >
+              <Geographies geography={TOPO_URL}>
+                {({ geographies }) =>
+                  geographies
+                    .filter((d) => d.properties.name === "Indonesia")
+                    .map((geo) => (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        fill="hsl(var(--primary) / 0.08)"
+                        stroke="hsl(var(--primary) / 0.35)"
+                        strokeWidth={0.6}
+                        style={{
+                          default: { outline: "none" },
+                          hover: { outline: "none", fill: "hsl(var(--primary) / 0.15)" },
+                          pressed: { outline: "none" }
+                        }}
+                      />
+                    ))
+                }
+              </Geographies>
+
+              {COVERED_AREAS.map((area, i) => (
+                <Marker
+                  key={area.name}
+                  coordinates={area.coords}
+                  data-testid={`map-pin-${area.name.toLowerCase()}`}
+                  onMouseEnter={() => setHovered(area.name)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  <g style={{ cursor: "pointer" }}>
+                    {/* outer pulse */}
+                    <circle r="8" fill="hsl(var(--primary))" opacity="0.0">
+                      <animate attributeName="r" from="3" to="14" dur="2s" begin={`${i * 0.18}s`} repeatCount="indefinite" />
+                      <animate attributeName="opacity" from="0.5" to="0" dur="2s" begin={`${i * 0.18}s`} repeatCount="indefinite" />
+                    </circle>
+                    {/* dot */}
+                    <circle r="3.5" fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="1" />
+                    {hovered === area.name && (
+                      <g transform="translate(0, -10)">
+                        <rect x="-30" y="-16" width="60" height="16" rx="4" fill="hsl(var(--background))" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+                        <text textAnchor="middle" y="-4" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">
+                          {area.name}
+                        </text>
+                      </g>
+                    )}
+                  </g>
+                </Marker>
+              ))}
+            </ComposableMap>
           </div>
-          <svg viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet" className="relative w-full aspect-[100/35] md:aspect-[100/30]">
-            {/* Stylized landmass outline (very abstract Indonesian archipelago hint) */}
-            <g fill="hsl(var(--primary) / 0.07)" stroke="hsl(var(--primary) / 0.18)" strokeWidth="0.15">
-              <path d="M8 15 Q15 12 22 16 Q28 18 32 17 L35 19 Q40 18 44 17 L46 19 Q42 22 38 23 Q30 24 22 22 Q14 21 8 18 Z" />
-              <path d="M32 36 Q42 33 52 35 Q58 36 60 38 Q56 42 50 43 Q44 44 38 43 Q33 41 32 38 Z" />
-              <path d="M52 40 Q60 39 66 41 L67 43 Q62 45 56 44 Z" />
-              <path d="M67 36 Q73 35 78 37 L79 40 Q74 41 68 40 Z" />
-              <path d="M80 32 Q86 33 90 36 Q88 39 83 38 Z" />
-            </g>
-            {/* Animated pulse circles */}
-            {COVERED_AREAS.map((a, i) => (
-              <g key={i} data-testid={`map-pin-${a.name.toLowerCase()}`}>
-                <circle cx={a.x} cy={a.y} r="0.9" fill="hsl(var(--primary))" opacity="0.9" />
-                <circle cx={a.x} cy={a.y} r="0.9" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.2" opacity="0.6">
-                  <animate attributeName="r" from="0.9" to="3" dur="2s" begin={`${i * 0.15}s`} repeatCount="indefinite" />
-                  <animate attributeName="opacity" from="0.6" to="0" dur="2s" begin={`${i * 0.15}s`} repeatCount="indefinite" />
-                </circle>
-              </g>
-            ))}
-          </svg>
+
           <div className="relative px-5 md:px-7 py-4 border-t border-overlay/5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
