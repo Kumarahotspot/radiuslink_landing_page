@@ -34,7 +34,7 @@ export default function Contact() {
               <div
                 key={i}
                 data-testid={c.testid}
-                className="rounded-2xl border border-white/10 bg-card/40 p-6 hover:border-primary/30 transition-all"
+                className="rounded-2xl border border-overlay/10 bg-card/40 p-6 hover:border-primary/30 transition-all"
               >
                 <div className="h-10 w-10 rounded-xl bg-primary/15 text-primary grid place-items-center mb-4">
                   <c.icon className="h-4 w-4" strokeWidth={1.8} />

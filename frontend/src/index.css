@@ -4,7 +4,31 @@
 
 @layer base {
   :root {
-    /* Kumara Hotspot — Dark mode tokens */
+    /* Light mode (default) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 22 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 240 4% 40%;
+    --accent: 355 78% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 4% 88%;
+    --input: 240 4% 88%;
+    --ring: 22 100% 50%;
+    --radius: 1rem;
+    /* Overlay surface — flips between themes so subtle white/X classes work in both */
+    --overlay: 0 0% 0%;
+  }
+  .dark {
     --background: 0 0% 4%;
     --foreground: 0 0% 96%;
     --card: 0 0% 7%;
@@ -24,7 +48,7 @@
     --border: 240 4% 16%;
     --input: 240 4% 16%;
     --ring: 22 100% 50%;
-    --radius: 1rem;
+    --overlay: 0 0% 100%;
   }
 }
 
@@ -45,6 +69,7 @@
       radial-gradient(ellipse 1200px 600px at 80% -10%, rgba(255, 94, 0, 0.12), transparent 60%),
       radial-gradient(ellipse 900px 500px at -10% 10%, rgba(230, 57, 70, 0.07), transparent 60%);
     background-attachment: fixed;
+    transition: background-color 200ms ease, color 200ms ease;
   }
   h1, h2, h3, h4, h5 {
     font-family: "Outfit", system-ui, sans-serif;
@@ -101,7 +126,7 @@
   inset: 0;
   padding: 1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,94,0,0.7), rgba(230,57,70,0.3), rgba(255,255,255,0.05));
+  background: linear-gradient(135deg, rgba(255,94,0,0.7), rgba(230,57,70,0.3), hsl(var(--overlay) / 0.05));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;

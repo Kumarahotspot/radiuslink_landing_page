@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, Sun, Moon } from "lucide-react";
 import { useT } from "../../i18n";
+import { useTheme } from "../../theme";
 import { BRAND } from "../../lib/api";
 import { Button } from "../ui/button";
 
@@ -15,6 +16,7 @@ const navItems = (t) => [
 
 export default function Header() {
   const { lang, setLang, t } = useT();
+  const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -30,14 +32,14 @@ export default function Header() {
       data-testid="site-header"
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/70 backdrop-blur-xl border-b border-white/5"
+          ? "bg-background/70 backdrop-blur-xl border-b border-overlay/5"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 h-16 md:h-20 flex items-center justify-between">
         <a href="#home" data-testid="header-logo-link" className="flex items-center group">
           <img
-            src={BRAND.logo}
+            src={theme === "dark" ? BRAND.logo_dark : BRAND.logo_light}
             alt="Kumara Hotspot — High Speed Internet Unlimited"
             className="h-12 md:h-14 lg:h-16 w-auto object-contain"
           />
@@ -49,7 +51,7 @@ export default function Header() {
               key={item.id}
               href={item.href}
               data-testid={`nav-${item.id}`}
-              className="px-4 py-2 text-sm text-foreground/80 hover:text-foreground transition-colors rounded-full hover:bg-white/5"
+              className="px-4 py-2 text-sm text-foreground/80 hover:text-foreground transition-colors rounded-full hover:bg-overlay/5"
             >
               {item.label}
             </a>
@@ -57,7 +59,16 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden md:flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1">
+          <button
+            data-testid="theme-toggle"
+            onClick={toggle}
+            aria-label="Toggle theme"
+            className="h-9 w-9 grid place-items-center rounded-full border border-overlay/10 hover:bg-overlay/5 transition-colors"
+          >
+            {theme === "dark" ? <Sun className="h-4 w-4" strokeWidth={1.8} /> : <Moon className="h-4 w-4" strokeWidth={1.8} />}
+          </button>
+
+          <div className="hidden md:flex items-center gap-1 rounded-full border border-overlay/10 bg-overlay/5 p-1">
             <button
               data-testid="lang-id-btn"
               onClick={() => setLang("id")}
@@ -89,7 +100,7 @@ export default function Header() {
           <button
             data-testid="mobile-menu-toggle"
             onClick={() => setOpen((o) => !o)}
-            className="lg:hidden h-10 w-10 grid place-items-center rounded-full border border-white/10"
+            className="lg:hidden h-10 w-10 grid place-items-center rounded-full border border-overlay/10"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -98,7 +109,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div data-testid="mobile-menu" className="lg:hidden border-t border-white/5 bg-background/95 backdrop-blur-xl">
+        <div data-testid="mobile-menu" className="lg:hidden border-t border-overlay/5 bg-background/95 backdrop-blur-xl">
           <div className="px-5 py-4 flex flex-col gap-1">
             {navItems(t).map((item) => (
               <a
@@ -106,7 +117,7 @@ export default function Header() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 data-testid={`mobile-nav-${item.id}`}
-                className="px-3 py-3 text-sm rounded-lg hover:bg-white/5"
+                className="px-3 py-3 text-sm rounded-lg hover:bg-overlay/5"
               >
                 {item.label}
               </a>
@@ -115,7 +126,7 @@ export default function Header() {
               <button
                 onClick={() => setLang("id")}
                 data-testid="mobile-lang-id"
-                className={`flex-1 px-3 py-2 text-xs rounded-full border border-white/10 ${
+                className={`flex-1 px-3 py-2 text-xs rounded-full border border-overlay/10 ${
                   lang === "id" ? "bg-primary text-primary-foreground" : ""
                 }`}
               >
@@ -124,7 +135,7 @@ export default function Header() {
               <button
                 onClick={() => setLang("en")}
                 data-testid="mobile-lang-en"
-                className={`flex-1 px-3 py-2 text-xs rounded-full border border-white/10 ${
+                className={`flex-1 px-3 py-2 text-xs rounded-full border border-overlay/10 ${
                   lang === "en" ? "bg-primary text-primary-foreground" : ""
                 }`}
               >

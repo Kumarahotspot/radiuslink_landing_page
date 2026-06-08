@@ -23,7 +23,7 @@ export default function Payment() {
               <div
                 key={i}
                 data-testid={`payment-card-${i}`}
-                className="rounded-3xl border border-white/10 bg-card/40 p-7 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 hover:-translate-y-1"
+                className="rounded-3xl border border-overlay/10 bg-card/40 p-7 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="h-12 w-12 rounded-2xl bg-primary/10 text-primary grid place-items-center mb-5">
                   <Icon className="h-5 w-5" strokeWidth={1.6} />

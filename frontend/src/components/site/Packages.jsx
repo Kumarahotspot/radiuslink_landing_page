@@ -50,7 +50,7 @@ export default function Packages() {
 
         <div className="mt-8">
           <Tabs value={filter} onValueChange={setFilter}>
-            <TabsList data-testid="packages-filter-tabs" className="bg-white/[0.04] border border-white/10 rounded-full p-1 h-auto">
+            <TabsList data-testid="packages-filter-tabs" className="bg-overlay/[0.04] border border-overlay/10 rounded-full p-1 h-auto">
               <TabsTrigger value="all" data-testid="filter-all" className="rounded-full px-4 py-2 text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 {t.packages.filter_all}
               </TabsTrigger>
@@ -80,7 +80,7 @@ export default function Packages() {
                 className={`relative rounded-3xl p-6 md:p-7 flex flex-col border transition-all duration-300 hover:-translate-y-1 ${
                   p.popular
                     ? "border-primary/40 bg-gradient-to-b from-primary/[0.08] to-card/60 shadow-[0_0_60px_-20px] shadow-primary/30"
-                    : "border-white/10 bg-card/40 hover:border-white/20"
+                    : "border-overlay/10 bg-card/40 hover:border-overlay/20"
                 }`}
               >
                 {p.popular && (
@@ -113,7 +113,7 @@ export default function Packages() {
                   className={`mt-7 rounded-full ${
                     p.popular
                       ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                      : "bg-white/[0.06] hover:bg-white/[0.12] text-foreground border border-white/10"
+                      : "bg-overlay/[0.06] hover:bg-overlay/[0.12] text-foreground border border-overlay/10"
                   }`}
                 >
                   {t.packages.cta_subscribe}

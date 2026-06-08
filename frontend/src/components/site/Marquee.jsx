@@ -5,7 +5,7 @@ export default function Marquee() {
   const { t } = useT();
   const items = [...t.marquee, ...t.marquee];
   return (
-    <section data-testid="marquee-section" className="py-6 border-y border-white/5 bg-white/[0.015] overflow-hidden">
+    <section data-testid="marquee-section" className="py-6 border-y border-overlay/5 bg-overlay/[0.015] overflow-hidden">
       <div className="relative">
         <div className="flex gap-12 whitespace-nowrap animate-marquee will-change-transform">
           {items.map((label, i) => (

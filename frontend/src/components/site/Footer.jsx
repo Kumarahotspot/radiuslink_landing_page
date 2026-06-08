@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Mail, Instagram, Facebook, Twitter, Linkedin } from "lucide-react";
 import { useT } from "../../i18n";
+import { useTheme } from "../../theme";
 import { BRAND } from "../../lib/api";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 export default function Footer() {
   const { t } = useT();
+  const { theme } = useTheme();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
@@ -19,12 +21,12 @@ export default function Footer() {
   };
 
   return (
-    <footer data-testid="site-footer" className="border-t border-white/5 bg-black/40 backdrop-blur-xl">
+    <footer data-testid="site-footer" className="border-t border-overlay/5 bg-card/40 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-4">
-              <img src={BRAND.logo} alt="Kumara Hotspot" className="h-14 md:h-16 w-auto object-contain" />
+              <img src={theme === "dark" ? BRAND.logo_dark : BRAND.logo_light} alt="Kumara Hotspot" className="h-14 md:h-16 w-auto object-contain" />
             </div>
             <div className="mt-3 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">PT. Pusaka Kreasi Mandiri</div>
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-md">{t.footer.desc}</p>
@@ -40,7 +42,7 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t.footer.newsletter_placeholder}
-                  className="bg-background/60 border-white/10 h-11"
+                  className="bg-background/60 border-overlay/10 h-11"
                 />
                 <Button
                   data-testid="newsletter-submit"
@@ -63,7 +65,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between text-xs text-muted-foreground">
+        <div className="mt-14 pt-8 border-t border-overlay/5 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between text-xs text-muted-foreground">
           <div data-testid="footer-copyright">{t.footer.copyright}</div>
           <div className="flex items-center gap-3">
             {[Instagram, Facebook, Twitter, Linkedin, Mail].map((Icon, i) => (
@@ -72,7 +74,7 @@ export default function Footer() {
                 href="#"
                 data-testid={`footer-social-${i}`}
                 aria-label="social link"
-                className="h-9 w-9 grid place-items-center rounded-full border border-white/10 hover:border-primary/40 hover:text-primary transition-colors"
+                className="h-9 w-9 grid place-items-center rounded-full border border-overlay/10 hover:border-primary/40 hover:text-primary transition-colors"
               >
                 <Icon className="h-4 w-4" strokeWidth={1.6} />
               </a>

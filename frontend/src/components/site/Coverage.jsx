@@ -45,7 +45,7 @@ export default function Coverage() {
         <p className="mt-4 text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">{t.coverage.desc}</p>
 
         <form onSubmit={onCheck} data-testid="coverage-form" className="mt-10 max-w-2xl mx-auto">
-          <div className="relative rounded-2xl border border-white/10 bg-card/60 backdrop-blur-xl p-2 flex flex-col sm:flex-row gap-2 gradient-border">
+          <div className="relative rounded-2xl border border-overlay/10 bg-card/60 backdrop-blur-xl p-2 flex flex-col sm:flex-row gap-2 gradient-border">
             <div className="flex-1 flex items-center gap-2 px-3">
               <MapPin className="h-5 w-5 text-primary flex-shrink-0" strokeWidth={1.8} />
               <Input

@@ -49,7 +49,7 @@ export default function Subscribe() {
             <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.subscribe.title}</h2>
             <p className="mt-5 text-muted-foreground text-base md:text-lg leading-relaxed">{t.subscribe.desc}</p>
 
-            <div className="mt-8 rounded-2xl overflow-hidden border border-white/10">
+            <div className="mt-8 rounded-2xl overflow-hidden border border-overlay/10">
               <img
                 src="https://images.pexels.com/photos/4008780/pexels-photo-4008780.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=520&w=780"
                 alt="Happy family using the internet at home"
@@ -63,7 +63,7 @@ export default function Subscribe() {
             <form
               data-testid="subscribe-form"
               onSubmit={onSubmit}
-              className="rounded-3xl border border-white/10 bg-card/50 backdrop-blur-xl p-6 md:p-8 gradient-border relative"
+              className="rounded-3xl border border-overlay/10 bg-card/50 backdrop-blur-xl p-6 md:p-8 gradient-border relative"
             >
               {success && (
                 <div data-testid="subscribe-success" className="mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.08] p-4 flex items-start gap-3">
@@ -83,7 +83,7 @@ export default function Subscribe() {
                     required
                     value={form.name}
                     onChange={onChange("name")}
-                    className="mt-2 bg-background/60 border-white/10 focus-visible:ring-primary h-12"
+                    className="mt-2 bg-background/60 border-overlay/10 focus-visible:ring-primary h-12"
                   />
                 </div>
                 <div>
@@ -94,7 +94,7 @@ export default function Subscribe() {
                     type="tel"
                     value={form.phone}
                     onChange={onChange("phone")}
-                    className="mt-2 bg-background/60 border-white/10 focus-visible:ring-primary h-12"
+                    className="mt-2 bg-background/60 border-overlay/10 focus-visible:ring-primary h-12"
                     placeholder="+62 …"
                   />
                 </div>
@@ -106,7 +106,7 @@ export default function Subscribe() {
                     type="email"
                     value={form.email}
                     onChange={onChange("email")}
-                    className="mt-2 bg-background/60 border-white/10 focus-visible:ring-primary h-12"
+                    className="mt-2 bg-background/60 border-overlay/10 focus-visible:ring-primary h-12"
                   />
                 </div>
                 <div>
@@ -115,7 +115,7 @@ export default function Subscribe() {
                     data-testid="subscribe-input-city"
                     value={form.city}
                     onChange={onChange("city")}
-                    className="mt-2 bg-background/60 border-white/10 focus-visible:ring-primary h-12"
+                    className="mt-2 bg-background/60 border-overlay/10 focus-visible:ring-primary h-12"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -125,7 +125,7 @@ export default function Subscribe() {
                     required
                     value={form.address}
                     onChange={onChange("address")}
-                    className="mt-2 bg-background/60 border-white/10 focus-visible:ring-primary h-12"
+                    className="mt-2 bg-background/60 border-overlay/10 focus-visible:ring-primary h-12"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -135,7 +135,7 @@ export default function Subscribe() {
                     required
                     value={form.package_id}
                     onChange={onChange("package_id")}
-                    className="mt-2 w-full h-12 rounded-md border border-white/10 bg-background/60 px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    className="mt-2 w-full h-12 rounded-md border border-overlay/10 bg-background/60 px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     <option value="" disabled>{t.subscribe.select_placeholder}</option>
                     {packages.map((p) => (
@@ -152,7 +152,7 @@ export default function Subscribe() {
                     value={form.notes}
                     onChange={onChange("notes")}
                     rows={3}
-                    className="mt-2 bg-background/60 border-white/10 focus-visible:ring-primary"
+                    className="mt-2 bg-background/60 border-overlay/10 focus-visible:ring-primary"
                   />
                 </div>
               </div>

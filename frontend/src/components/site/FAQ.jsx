@@ -17,7 +17,7 @@ export default function FAQ() {
               key={i}
               value={`item-${i}`}
               data-testid={`faq-item-${i}`}
-              className="rounded-2xl border border-white/10 bg-card/40 px-5 data-[state=open]:border-primary/30"
+              className="rounded-2xl border border-overlay/10 bg-card/40 px-5 data-[state=open]:border-primary/30"
             >
               <AccordionTrigger className="text-left text-base md:text-lg font-semibold hover:no-underline py-5">
                 {item.q}

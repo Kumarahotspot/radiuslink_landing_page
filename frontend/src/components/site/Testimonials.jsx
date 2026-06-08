@@ -68,7 +68,7 @@ export default function Testimonials() {
             <div
               key={i}
               data-testid={`testimonial-card-${i}`}
-              className="relative rounded-3xl border border-white/10 bg-card/40 p-7 hover:border-white/20 transition-all duration-300"
+              className="relative rounded-3xl border border-overlay/10 bg-card/40 p-7 hover:border-overlay/20 transition-all duration-300"
             >
               <Quote className="absolute top-6 right-6 h-7 w-7 text-primary/40" />
               <div className="flex items-center gap-1">
@@ -77,7 +77,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="mt-5 text-foreground/85 leading-relaxed">{item.text}</p>
-              <div className="mt-6 flex items-center gap-3 pt-5 border-t border-white/5">
+              <div className="mt-6 flex items-center gap-3 pt-5 border-t border-overlay/5">
                 <img src={item.avatar} alt={item.name} className="h-11 w-11 rounded-full object-cover" />
                 <div>
                   <div className="text-sm font-semibold">{item.name}</div>
