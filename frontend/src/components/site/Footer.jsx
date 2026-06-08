@@ -23,15 +23,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-xl bg-black ring-1 ring-white/10 overflow-hidden grid place-items-center">
-                <img src={BRAND.logo} alt="Kumara Hotspot" className="h-full w-full object-contain" />
-              </div>
-              <div>
-                <div className="text-base font-bold">Kumara Hotspot</div>
-                <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">PT. Pusaka Kreasi Mandiri</div>
-              </div>
+            <div className="flex items-center gap-4">
+              <img src={BRAND.logo} alt="Kumara Hotspot" className="h-20 md:h-24 w-auto object-contain" />
             </div>
+            <div className="mt-3 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">PT. Pusaka Kreasi Mandiri</div>
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-md">{t.footer.desc}</p>
 
             <form onSubmit={onNewsletter} data-testid="newsletter-form" className="mt-7">

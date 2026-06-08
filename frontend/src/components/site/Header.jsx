@@ -33,15 +33,13 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 h-16 md:h-20 flex items-center justify-between">
-        <a href="#home" data-testid="header-logo-link" className="flex items-center gap-3 group">
-          <div className="h-10 w-10 md:h-12 md:w-12 rounded-xl bg-black ring-1 ring-white/10 grid place-items-center overflow-hidden">
-            <img src={BRAND.logo} alt="Kumara Hotspot logo" className="h-full w-full object-contain" />
-          </div>
-          <div className="leading-tight">
-            <div className="text-sm md:text-base font-bold tracking-tight">Kumara Hotspot</div>
-            <div className="text-[10px] md:text-xs uppercase tracking-[0.18em] text-muted-foreground">High Speed · Unlimited</div>
-          </div>
+      <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 h-20 md:h-28 flex items-center justify-between">
+        <a href="#home" data-testid="header-logo-link" className="flex items-center group">
+          <img
+            src={BRAND.logo}
+            alt="Kumara Hotspot — High Speed Internet Unlimited"
+            className="h-16 md:h-20 lg:h-24 w-auto object-contain"
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-1">

@@ -7,7 +7,7 @@ export default function Hero() {
   const { t } = useT();
 
   return (
-    <section id="home" data-testid="hero-section" className="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden grain">
+    <section id="home" data-testid="hero-section" className="relative pt-36 md:pt-44 pb-16 md:pb-24 overflow-hidden grain">
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
         <img
