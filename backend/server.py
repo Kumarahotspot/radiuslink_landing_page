@@ -79,91 +79,210 @@ class CoverageResult(BaseModel):
 # ---------------- Static data ----------------
 PACKAGES = [
     {
-        "id": "home-basic",
+        "id": "bronze",
         "category": "home",
-        "name": "Kumara Home Basic",
-        "speed_mbps": 30,
-        "price_idr": 199000,
+        "name": "Bronze",
+        "speed_mbps": 15,
+        "broadband_mbps": 30,
+        "price_idr": 150000,
         "popular": False,
         "features_id": [
-            "Unlimited kuota",
-            "FUP wajar",
-            "WiFi router gratis",
-            "Garansi 99,5% uptime",
+            "15 Mbps Dedicated",
+            "30 Mbps Broadband",
+            "Internet Resmi & Berijin",
+            "Unlimited tanpa batas",
             "Support 24/7"
         ],
         "features_en": [
-            "Unlimited quota",
-            "Fair usage policy",
-            "Free WiFi router",
-            "99.5% uptime guarantee",
+            "15 Mbps Dedicated",
+            "30 Mbps Broadband",
+            "Licensed & Legal ISP",
+            "Truly unlimited",
             "24/7 support"
         ]
     },
     {
-        "id": "home-pro",
+        "id": "silver",
         "category": "home",
-        "name": "Kumara Home Pro",
-        "speed_mbps": 100,
-        "price_idr": 349000,
+        "name": "Silver",
+        "speed_mbps": 18,
+        "broadband_mbps": 36,
+        "price_idr": 180000,
+        "popular": False,
+        "features_id": [
+            "18 Mbps Dedicated",
+            "36 Mbps Broadband",
+            "Internet Resmi & Berijin",
+            "Unlimited tanpa batas",
+            "Support 24/7"
+        ],
+        "features_en": [
+            "18 Mbps Dedicated",
+            "36 Mbps Broadband",
+            "Licensed & Legal ISP",
+            "Truly unlimited",
+            "24/7 support"
+        ]
+    },
+    {
+        "id": "gold",
+        "category": "home",
+        "name": "Gold",
+        "speed_mbps": 20,
+        "broadband_mbps": 40,
+        "price_idr": 200000,
         "popular": True,
         "features_id": [
-            "Unlimited tanpa FUP",
-            "Cocok untuk WFH & streaming 4K",
-            "WiFi 6 router gratis",
-            "Garansi 99,9% uptime",
-            "Priority support 24/7"
+            "20 Mbps Dedicated",
+            "40 Mbps Broadband",
+            "Internet Resmi & Berijin",
+            "Unlimited tanpa batas",
+            "Free WiFi router"
         ],
         "features_en": [
-            "True unlimited, no FUP",
-            "Perfect for WFH & 4K streaming",
-            "Free WiFi 6 router",
-            "99.9% uptime guarantee",
-            "Priority 24/7 support"
+            "20 Mbps Dedicated",
+            "40 Mbps Broadband",
+            "Licensed & Legal ISP",
+            "Truly unlimited",
+            "Free WiFi router"
         ]
     },
     {
-        "id": "business-pro",
+        "id": "new-gold-1",
+        "category": "premium",
+        "name": "New Gold 1",
+        "speed_mbps": 25,
+        "broadband_mbps": 50,
+        "price_idr": 250000,
+        "popular": False,
+        "features_id": [
+            "25 Mbps Dedicated",
+            "50 Mbps Broadband",
+            "Internet Resmi & Berijin",
+            "Unlimited tanpa batas",
+            "Priority support"
+        ],
+        "features_en": [
+            "25 Mbps Dedicated",
+            "50 Mbps Broadband",
+            "Licensed & Legal ISP",
+            "Truly unlimited",
+            "Priority support"
+        ]
+    },
+    {
+        "id": "new-gold-2",
+        "category": "premium",
+        "name": "New Gold 2",
+        "speed_mbps": 27,
+        "broadband_mbps": 54,
+        "price_idr": 270000,
+        "popular": False,
+        "features_id": [
+            "27 Mbps Dedicated",
+            "54 Mbps Broadband",
+            "Internet Resmi & Berijin",
+            "Unlimited tanpa batas",
+            "Priority support"
+        ],
+        "features_en": [
+            "27 Mbps Dedicated",
+            "54 Mbps Broadband",
+            "Licensed & Legal ISP",
+            "Truly unlimited",
+            "Priority support"
+        ]
+    },
+    {
+        "id": "platinum-1",
+        "category": "premium",
+        "name": "Platinum 1",
+        "speed_mbps": 30,
+        "broadband_mbps": 60,
+        "price_idr": 300000,
+        "popular": True,
+        "features_id": [
+            "30 Mbps Dedicated",
+            "60 Mbps Broadband",
+            "Internet Resmi & Berijin",
+            "Unlimited tanpa batas",
+            "WiFi 6 router gratis"
+        ],
+        "features_en": [
+            "30 Mbps Dedicated",
+            "60 Mbps Broadband",
+            "Licensed & Legal ISP",
+            "Truly unlimited",
+            "Free WiFi 6 router"
+        ]
+    },
+    {
+        "id": "platinum-2",
+        "category": "premium",
+        "name": "Platinum 2",
+        "speed_mbps": 35,
+        "broadband_mbps": 70,
+        "price_idr": 350000,
+        "popular": False,
+        "features_id": [
+            "35 Mbps Dedicated",
+            "70 Mbps Broadband",
+            "Internet Resmi & Berijin",
+            "Unlimited tanpa batas",
+            "WiFi 6 router gratis"
+        ],
+        "features_en": [
+            "35 Mbps Dedicated",
+            "70 Mbps Broadband",
+            "Licensed & Legal ISP",
+            "Truly unlimited",
+            "Free WiFi 6 router"
+        ]
+    },
+    {
+        "id": "platinum-3",
+        "category": "premium",
+        "name": "Platinum 3",
+        "speed_mbps": 40,
+        "broadband_mbps": 80,
+        "price_idr": 400000,
+        "popular": False,
+        "features_id": [
+            "40 Mbps Dedicated",
+            "80 Mbps Broadband",
+            "Internet Resmi & Berijin",
+            "Unlimited tanpa batas",
+            "WiFi 6 router gratis"
+        ],
+        "features_en": [
+            "40 Mbps Dedicated",
+            "80 Mbps Broadband",
+            "Licensed & Legal ISP",
+            "Truly unlimited",
+            "Free WiFi 6 router"
+        ]
+    },
+    {
+        "id": "business",
         "category": "business",
-        "name": "Kumara Business",
-        "speed_mbps": 300,
-        "price_idr": 899000,
+        "name": "Business",
+        "speed_mbps": 50,
+        "broadband_mbps": 100,
+        "price_idr": 500000,
         "popular": False,
         "features_id": [
-            "Symmetric upload & download",
+            "50 Mbps Dedicated",
+            "100 Mbps Broadband",
+            "Internet Resmi & Berijin",
             "Dedicated IP publik",
-            "SLA 99,95%",
-            "Onsite engineer support",
-            "Static routing & port forwarding"
+            "SLA 99,95% & onsite engineer"
         ],
         "features_en": [
-            "Symmetric upload & download",
+            "50 Mbps Dedicated",
+            "100 Mbps Broadband",
+            "Licensed & Legal ISP",
             "Public dedicated IP",
-            "99.95% SLA",
-            "Onsite engineer support",
-            "Static routing & port forwarding"
-        ]
-    },
-    {
-        "id": "dedicated-1g",
-        "category": "dedicated",
-        "name": "Kumara Dedicated 1G",
-        "speed_mbps": 1000,
-        "price_idr": 3500000,
-        "popular": False,
-        "features_id": [
-            "Full dedicated fiber 1 Gbps",
-            "Latency rendah <5ms",
-            "SLA 99,99%",
-            "Network engineer 24/7",
-            "Custom BGP & multi-IP block"
-        ],
-        "features_en": [
-            "Full dedicated 1 Gbps fiber",
-            "Low latency <5ms",
-            "99.99% SLA",
-            "24/7 network engineer",
-            "Custom BGP & multi-IP block"
+            "99.95% SLA & onsite engineer"
         ]
     }
 ]

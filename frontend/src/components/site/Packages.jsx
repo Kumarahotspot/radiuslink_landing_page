@@ -57,11 +57,11 @@ export default function Packages() {
               <TabsTrigger value="home" data-testid="filter-home" className="rounded-full px-4 py-2 text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 {t.packages.filter_home}
               </TabsTrigger>
+              <TabsTrigger value="premium" data-testid="filter-premium" className="rounded-full px-4 py-2 text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                {t.packages.filter_premium}
+              </TabsTrigger>
               <TabsTrigger value="business" data-testid="filter-business" className="rounded-full px-4 py-2 text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 {t.packages.filter_business}
-              </TabsTrigger>
-              <TabsTrigger value="dedicated" data-testid="filter-dedicated" className="rounded-full px-4 py-2 text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                {t.packages.filter_dedicated}
               </TabsTrigger>
             </TabsList>
           </Tabs>
