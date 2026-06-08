@@ -6,25 +6,29 @@ const BADGES = [
     key: "apjii",
     name: "APJII",
     logo: "/logos/apjii.png",
-    site: "https://www.apjii.or.id"
+    site: "https://www.apjii.or.id",
+    dark_bg: false
   },
   {
     key: "komdigi",
     name: "Komdigi",
     logo: "/logos/komdigi.png",
-    site: "https://www.komdigi.go.id"
+    site: "https://www.komdigi.go.id",
+    dark_bg: true
   },
   {
     key: "idnic",
     name: "ID-NIC",
     logo: "/logos/idnic.png",
-    site: "https://idnic.id"
+    site: "https://idnic.id",
+    dark_bg: false
   },
   {
     key: "ipositif",
     name: "Internet Positif",
     logo: "/logos/internet-positif.svg",
-    site: "https://internetpositif.id"
+    site: "https://internetpositif.id",
+    dark_bg: false
   }
 ];
 
@@ -50,7 +54,7 @@ export default function Trust() {
                   data-testid={`trust-badge-${i}`}
                   className="rounded-2xl border border-overlay/10 bg-card/60 p-5 hover:border-primary/30 hover:bg-card transition-all flex flex-col items-center text-center group"
                 >
-                  <div className="h-16 w-full grid place-items-center bg-white rounded-xl px-3 py-2 ring-1 ring-overlay/10">
+                  <div className={`h-16 w-full grid place-items-center rounded-xl px-3 py-2 ring-1 ring-overlay/10 ${meta?.dark_bg ? "bg-neutral-900" : "bg-white"}`}>
                     <img
                       src={meta?.logo}
                       alt={meta?.name || b.name}
