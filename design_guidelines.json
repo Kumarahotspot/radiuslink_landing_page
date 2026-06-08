@@ -1,0 +1,128 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 4: Swiss & High-Contrast",
+  "brand": {
+    "name": "Kumara Hotspot",
+    "parent_company": "PT. Pusaka Kreasi Mandiri",
+    "tagline": "High Speed Internet Unlimited",
+    "logo_url": "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/jxj1q6vc_LOGO_KUMARA_TEXT_HITAM__1_-removebg-preview%20%282%29.png"
+  },
+  "colors": {
+    "primary": "#FF5E00",
+    "primary_foreground": "#FFFFFF",
+    "secondary": "#1E1E1E",
+    "secondary_foreground": "#FFFFFF",
+    "background": "#0A0A0A",
+    "foreground": "#F5F5F5",
+    "card": "#121212",
+    "card_foreground": "#F5F5F5",
+    "accent": "#E63946",
+    "accent_foreground": "#FFFFFF",
+    "muted": "#1F1F1F",
+    "muted_foreground": "#A1A1AA",
+    "border": "#27272A"
+  },
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "IBM Plex Sans",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-black",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-bold",
+      "h3": "text-xl sm:text-2xl font-bold",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm uppercase tracking-[0.2em]"
+    }
+  },
+  "spacing_and_layout": {
+    "section_padding": "py-20 md:py-32",
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "grid_bento": "grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-8",
+    "card_padding": "p-8 md:p-12",
+    "border_radius": "rounded-2xl"
+  },
+  "motion_and_interaction": {
+    "hover_state": "hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300",
+    "button_active": "active:scale-95 transition-transform",
+    "scroll_reveal": "staggered fade-up for bento grid items"
+  },
+  "components": {
+    "header": {
+      "style": "sticky top-0 z-50 bg-background/70 backdrop-blur-xl border-b border-white/10",
+      "elements": ["Logo", "Navigation Links (Home, Packages, Coverage, About, Contact)", "Language Switcher (ID/EN)", "Primary CTA (Subscribe)"]
+    },
+    "hero": {
+      "layout": "asymmetric",
+      "style": "relative min-h-[90vh] flex items-center",
+      "background": "image with bg-black/50 overlay and subtle grain texture",
+      "content": "Headline, Tagline, Primary CTA, Secondary CTA (Check Coverage), Numeric proof (e.g., 'Up to 1 Gbps')"
+    },
+    "packages": {
+      "layout": "grid-cols-1 md:grid-cols-3 gap-8",
+      "style": "bento-style cards with gradient tracing beam on the 'Popular' or 'Business' tier",
+      "content": "Home, Business, Dedicated tiers showing Mbps, IDR price, and features list"
+    },
+    "coverage_checker": {
+      "layout": "centered container with max-w-2xl",
+      "style": "glassmorphism card with input field and search button",
+      "content": "Input address/region, Returns availability mock message"
+    },
+    "features": {
+      "layout": "bento grid mode A (Tetris Grid)",
+      "content": "24/7 Support, Fiber Optic, Unlimited Quota, Low Latency"
+    },
+    "testimonials": {
+      "layout": "carousel or wide scrolling marquee",
+      "style": "cards with avatar, rating, and review text"
+    },
+    "subscription_form": {
+      "layout": "two-column grid (form on left, contact info/map on right)",
+      "fields": ["Name", "Phone", "Email", "Address", "Package Selection"]
+    },
+    "footer": {
+      "style": "bg-black py-20 border-t border-white/10",
+      "content": "Brand info, quick links, social media, copyright"
+    }
+  },
+  "media": {
+    "hero_background": {
+      "url": "https://images.pexels.com/photos/10325707/pexels-photo-10325707.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Vibrant orange lines and dots form an abstract network on a dark background"
+    },
+    "fiber_optic_feature": {
+      "url": "https://images.pexels.com/photos/17194840/pexels-photo-17194840.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Close-up of glowing fiber optic lights"
+    },
+    "server_infrastructure": {
+      "url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjByb29tfGVufDB8fHx8MTc4MDg4MTc0MXww&ixlib=rb-4.1.0&q=85",
+      "description": "Modern server room cabling"
+    },
+    "happy_family_home_package": {
+      "url": "https://images.pexels.com/photos/4008780/pexels-photo-4008780.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Joyful family using internet at home"
+    },
+    "business_professional": {
+      "url": "https://images.pexels.com/photos/12396627/pexels-photo-12396627.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Professional smiling woman for business package or testimonials"
+    },
+    "city_coverage": {
+      "url": "https://images.pexels.com/photos/18441167/pexels-photo-18441167.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Aerial view of a vibrant city skyline at night for coverage area section"
+    },
+    "testimonial_avatar_1": {
+      "url": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3ODA4ODE3NDF8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Professional man portrait"
+    },
+    "testimonial_avatar_2": {
+      "url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3ODA4ODE3NDF8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Professional woman portrait"
+    }
+  },
+  "accessibility_and_testing": {
+    "contrast_ratio": "Ensure text meets APCA standards. Use Text Shadow over images.",
+    "testing_attributes": "All interactive elements MUST include data-testid attribute (e.g., data-testid='subscribe-cta-button')."
+  },
+  "icons": {
+    "library": "lucide-react",
+    "style": "Use technical and sharp icons, stroke-width 1.5"
+  }
+}
