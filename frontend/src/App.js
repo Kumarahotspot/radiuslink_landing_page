@@ -12,6 +12,7 @@ import PackagesAdmin from "./admin/sections/PackagesAdmin";
 import SubscriptionsAdmin from "./admin/sections/SubscriptionsAdmin";
 import ContactsAdmin from "./admin/sections/ContactsAdmin";
 import CoverageAdmin from "./admin/sections/CoverageAdmin";
+import PromoSettingsAdmin from "./admin/sections/PromoSettingsAdmin";
 import UsersAdmin from "./admin/sections/UsersAdmin";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                   <Route path="subscriptions" element={<SubscriptionsAdmin />} />
                   <Route path="contacts" element={<ContactsAdmin />} />
                   <Route path="coverage" element={<CoverageAdmin />} />
+                  <Route path="promo" element={<PromoSettingsAdmin />} />
                   <Route path="users" element={<UsersAdmin />} />
                 </Route>
                 <Route path="*" element={<Navigate to="/" replace />} />

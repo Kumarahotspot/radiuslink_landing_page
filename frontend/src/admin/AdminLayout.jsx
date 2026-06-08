@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, NavLink, Outlet, useNavigate } from "react-router-dom";
-import { Package, Users, MapPin, MessageSquare, UserCog, LogOut, Loader2, ExternalLink } from "lucide-react";
+import { Package, Users, MapPin, MessageSquare, UserCog, LogOut, Loader2, ExternalLink, Megaphone } from "lucide-react";
 import { useAdminAuth } from "./AuthContext";
 import { BRAND } from "../lib/api";
 
@@ -9,6 +9,7 @@ const NAV = [
   { to: "/admin/subscriptions", label: "Pendaftaran", icon: Users, testid: "nav-subscriptions" },
   { to: "/admin/contacts", label: "Pesan Kontak", icon: MessageSquare, testid: "nav-contacts" },
   { to: "/admin/coverage", label: "Coverage Area", icon: MapPin, testid: "nav-coverage" },
+  { to: "/admin/promo", label: "Banner Promo", icon: Megaphone, testid: "nav-promo" },
   { to: "/admin/users", label: "Admin Users", icon: UserCog, testid: "nav-users", superOnly: true }
 ];
 

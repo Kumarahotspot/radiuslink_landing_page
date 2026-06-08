@@ -124,6 +124,17 @@ class CoverageAreaCreate(CoverageAreaBase):
     pass
 
 
+class PromoSettings(BaseModel):
+    active: bool = True
+    tag_id: str = "Promo Spesial"
+    tag_en: str = "Special Offer"
+    text_id: str = "Pasang baru hari ini — Gratis biaya instalasi + 1 bulan gratis. Berlaku terbatas!"
+    text_en: str = "Sign up today — Free installation + 1 month free. Limited time!"
+    cta_id: str = "Klaim Sekarang"
+    cta_en: str = "Claim Now"
+    cta_message: str = "Halo Kumara, saya tertarik dengan promo pasang baru gratis 1 bulan."
+
+
 class AdminLogin(BaseModel):
     email: EmailStr
     password: str
@@ -285,6 +296,11 @@ async def startup_event():
             "created_at": now
         } for a in DEFAULT_AREAS])
 
+    # Seed site settings (promo) if absent
+    if await db.site_settings.find_one({"key": "promo"}) is None:
+        defaults = PromoSettings().model_dump()
+        await db.site_settings.insert_one({"key": "promo", **defaults})
+
 
 # ---------------- Public Routes ----------------
 @api_router.get("/")
@@ -345,6 +361,34 @@ async def create_contact(payload: ContactCreate):
     msg = ContactMessage(**payload.model_dump())
     await db.contact_messages.insert_one(msg.model_dump())
     return msg
+
+
+@api_router.get("/settings/promo")
+async def get_promo_settings():
+    doc = await db.site_settings.find_one({"key": "promo"}, {"_id": 0, "key": 0})
+    if not doc:
+        doc = PromoSettings().model_dump()
+    return doc
+
+
+@admin_router.get("/settings/promo")
+async def admin_get_promo_settings(_: dict = Depends(get_current_admin)):
+    doc = await db.site_settings.find_one({"key": "promo"}, {"_id": 0, "key": 0})
+    if not doc:
+        doc = PromoSettings().model_dump()
+        await db.site_settings.insert_one({"key": "promo", **doc})
+    return doc
+
+
+@admin_router.put("/settings/promo")
+async def admin_update_promo_settings(payload: PromoSettings, _: dict = Depends(get_current_admin)):
+    update = payload.model_dump()
+    await db.site_settings.update_one(
+        {"key": "promo"},
+        {"$set": update},
+        upsert=True
+    )
+    return update
 
 
 # ---------------- Admin Auth ----------------
