@@ -291,7 +291,7 @@ PACKAGES = [
 SUPPORTED_AREAS = [
     "jakarta", "bandung", "surabaya", "bekasi", "tangerang",
     "bogor", "depok", "semarang", "yogyakarta", "denpasar",
-    "medan", "makassar"
+    "medan", "makassar", "cianjur", "demak", "bondowoso"
 ]
 
 
