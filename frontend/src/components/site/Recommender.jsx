@@ -55,7 +55,7 @@ export default function Recommender() {
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
               <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.recommender.eyebrow}</div>
-              <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.recommender.title}</h2>
+              <h2 className="mt-3 text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">{t.recommender.title}</h2>
               <p className="mt-3 text-muted-foreground">{t.recommender.desc}</p>
 
               <div className="mt-8 space-y-7">

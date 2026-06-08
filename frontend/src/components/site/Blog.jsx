@@ -16,7 +16,7 @@ export default function Blog() {
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div className="max-w-2xl">
             <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.blog.eyebrow}</div>
-            <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.blog.title}</h2>
+            <h2 className="mt-3 text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">{t.blog.title}</h2>
           </div>
         </div>
 

@@ -38,7 +38,7 @@ export default function About() {
 
           <div className="lg:col-span-7">
             <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.about.eyebrow}</div>
-            <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.about.title}</h2>
+            <h2 className="mt-3 text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">{t.about.title}</h2>
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">{t.about.p1}</p>
             <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">{t.about.p2}</p>
 

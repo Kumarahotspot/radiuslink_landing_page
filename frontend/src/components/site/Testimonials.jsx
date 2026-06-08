@@ -60,7 +60,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10">
         <div className="max-w-3xl">
           <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.testimonials.eyebrow}</div>
-          <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.testimonials.title}</h2>
+          <h2 className="mt-3 text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">{t.testimonials.title}</h2>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">

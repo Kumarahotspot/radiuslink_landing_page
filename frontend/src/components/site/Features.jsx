@@ -13,7 +13,7 @@ export default function Features() {
         <div className="grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-7">
             <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.features.eyebrow}</div>
-            <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight max-w-2xl">{t.features.title}</h2>
+            <h2 className="mt-3 text-xl md:text-2xl lg:text-3xl font-bold tracking-tight max-w-2xl">{t.features.title}</h2>
           </div>
           <div className="lg:col-span-5">
             <div className="rounded-2xl overflow-hidden border border-overlay/10">

@@ -46,7 +46,7 @@ export default function Subscribe() {
           {/* Left intro */}
           <div className="lg:col-span-5">
             <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.subscribe.eyebrow}</div>
-            <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.subscribe.title}</h2>
+            <h2 className="mt-3 text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">{t.subscribe.title}</h2>
             <p className="mt-5 text-muted-foreground text-base md:text-lg leading-relaxed">{t.subscribe.desc}</p>
 
             <div className="mt-8 rounded-2xl overflow-hidden border border-overlay/10">

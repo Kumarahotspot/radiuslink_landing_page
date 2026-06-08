@@ -44,7 +44,7 @@ export default function Packages() {
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10">
         <div className="max-w-3xl">
           <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">{t.packages.eyebrow}</div>
-          <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{t.packages.title}</h2>
+          <h2 className="mt-3 text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">{t.packages.title}</h2>
           <p className="mt-4 text-muted-foreground text-base md:text-lg">{t.packages.desc}</p>
         </div>
 
