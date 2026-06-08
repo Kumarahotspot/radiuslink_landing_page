@@ -30,10 +30,10 @@ export default function Header() {
   return (
     <header
       data-testid="site-header"
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      className={`transition-all duration-300 ${
         scrolled
-          ? "bg-background/70 backdrop-blur-xl border-b border-overlay/5"
-          : "bg-transparent"
+          ? "bg-background/80 backdrop-blur-xl border-b border-overlay/5"
+          : "bg-background/40 backdrop-blur-md"
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 h-16 md:h-20 flex items-center justify-between">

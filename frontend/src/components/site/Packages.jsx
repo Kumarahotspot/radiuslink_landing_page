@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Check, Sparkles } from "lucide-react";
-import { api } from "../../lib/api";
+import { Check, Sparkles, MessageCircle } from "lucide-react";
+import { api, whatsappUrl, formatIDR as _ } from "../../lib/api";
 import { useT, formatIDR } from "../../i18n";
 import { Button } from "../ui/button";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
@@ -107,17 +107,29 @@ export default function Packages() {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  data-testid={`package-subscribe-${p.id}`}
-                  onClick={() => selectPackage(p.id)}
-                  className={`mt-7 rounded-full ${
-                    p.popular
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                      : "bg-overlay/[0.06] hover:bg-overlay/[0.12] text-foreground border border-overlay/10"
-                  }`}
-                >
-                  {t.packages.cta_subscribe}
-                </Button>
+                <div className="mt-7 flex flex-col gap-2">
+                  <Button
+                    data-testid={`package-subscribe-${p.id}`}
+                    onClick={() => selectPackage(p.id)}
+                    className={`rounded-full ${
+                      p.popular
+                        ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                        : "bg-overlay/[0.06] hover:bg-overlay/[0.12] text-foreground border border-overlay/10"
+                    }`}
+                  >
+                    {t.packages.cta_subscribe}
+                  </Button>
+                  <a
+                    href={whatsappUrl(`Halo Kumara, saya ingin berlangganan paket ${p.name} (${p.speed_mbps} Mbps - ${formatIDR(p.price_idr)}/bulan). Mohon info lebih lanjut.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid={`package-whatsapp-${p.id}`}
+                    className="inline-flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-emerald-400 transition-colors"
+                  >
+                    <MessageCircle className="h-3.5 w-3.5" />
+                    Chat WhatsApp
+                  </a>
+                </div>
               </div>
             );
           })}

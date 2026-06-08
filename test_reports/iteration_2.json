@@ -1,0 +1,47 @@
+{
+  "summary": "Iteration 2 testing of Kumara Hotspot ISP landing site (10+ new features). All 14 backend pytest tests pass (root, 9-package catalog, coverage for 4 supported cities incl. Cianjur/Demak/Bondowoso, Papua unsupported, empty 400, subscription create/list with new IDs, legacy id rejected 400, missing field 422, contact create/list/invalid email). Frontend critical flows verified end-to-end: promo banner appears + dismisses + persists in sessionStorage, trust 4 badges render, all 9 package WhatsApp deep-links use wa.me/628888200888 with URL-encoded package name (Gold href contains 'Gold'), recommender slider + usage buttons + result + Mbps + Pick-CTA preselect (selected platinum-2 in subscribe-package-select) + WA CTA, comparison table 7 rows, About count-up animates to 8.500+/15+/2.400 km/9 thn (locale-formatted), Coverage SVG map has all 15 city pins (jakarta, bekasi, tangerang, bogor, depok, cianjur, bandung, semarang, demak, yogyakarta, surabaya, bondowoso, denpasar, medan, makassar), coverage form Cianjur=success+emerald / Papua=warn+amber, Blog 3 cards render, Footer status badge shows 'Semua sistem normal' (ID) / 'All systems operational' (EN), Floating WhatsApp present with correct number, sticky wrapper keeps both promo banner (top=0) and header (top=48) pinned at top while scrolling, theme toggle flips body bg between rgb(10,10,10) and rgb(255,255,255), language toggle updates promo (Special Offer), footer (All systems operational), comparison rows, and blog card content to English.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_kumara_api.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Hydration warning <span> inside <option> persists in Subscribe.jsx package select - caused by Emergent dev-overlay (x-ve-dynamic) wrapper injecting <span> into <option> children. Dev-only, won't appear in production build. Same comment carried over from iteration 1.",
+    "Promo banner i18n key uses Title-Case 'Promo Spesial' / 'Special Offer'; visual uppercase comes from CSS (tracking-wider class). The review request said 'PROMO SPESIAL tag' - matches via uppercase styling, not text content. Acceptable.",
+    "About count-up renders locale-formatted strings ('8.500+', '2.400 km') instead of raw '8500'/'2400'. This is intentional and reads better; verified the counter does animate from 0 upward via IntersectionObserver.",
+    "@app.on_event('shutdown') still deprecated; migrate to FastAPI lifespan context manager (carried from iter 1).",
+    "CORS allow_origins defaults to '*' via env; tighten for production (carried from iter 1)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_kumara_api.py (rewritten for iter 2 - 9 packages, new cities, parametrized coverage)"
+  ],
+  "success_rate": { "backend": "100% (14/14)", "frontend": "100%" },
+  "test_credentials": "N/A - no auth in this app",
+  "seed_data_creation": "Test-created TEST_ prefixed Subscription (package_id=platinum-1) and ContactMessage records via the public API; isolated by TEST_ prefix.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend regression tests at /app/backend/tests/test_kumara_api.py. Run: pytest /app/backend/tests/test_kumara_api.py -v --junitxml=/app/test_reports/pytest/pytest_results.xml. EXPECTED_PACKAGE_IDS = {bronze, silver, gold, new-gold-1, new-gold-2, platinum-1, platinum-2, platinum-3, business}. SUPPORTED_AREAS now has 15 cities (added cianjur, demak, bondowoso). Frontend uses localStorage keys 'kumara_lang' (default 'id'), 'kumara_theme', and sessionStorage 'kumara_promo_dismissed'. WhatsApp number is now real (628888200888). Blog cards link to '#' (intentional MOCKED). Newsletter is local-only (MOCKED). Trust badges display-only (MOCKED). Header is non-fixed; stickiness handled by wrapper in LandingPage that contains PromoBanner + Header.",
+  "verified_flows": [
+    "Backend: 14/14 pytest pass",
+    "Promo banner: renders, dismissable, sessionStorage 'kumara_promo_dismissed'=1, persists per session, EN/ID swap (Promo Spesial / Special Offer, Klaim Sekarang / Claim Now)",
+    "Trust: 4 badges with expected testids (APJII, Komdigi, ID-NIC, Internet Positif)",
+    "Packages: 9 cards each with package-whatsapp-<id> -> wa.me/628888200888?text=... including URL-encoded package name",
+    "Recommender: slider updates value, usage buttons toggle active, result+Mbps update, Pick-CTA scrolls and preselects in subscribe form, WA CTA contains recommended pkg name",
+    "Comparison: 7 rows (0..6), no row-7",
+    "About counters: animate to final values via IntersectionObserver",
+    "Coverage map: 15 SVG pins with map-pin-<city> testids",
+    "Coverage form: Cianjur -> success/emerald; Papua -> warn/amber",
+    "Blog: 3 cards (blog-card-0..2)",
+    "Footer status: 'Semua sistem normal' (ID) / 'All systems operational' (EN)",
+    "Theme toggle: body bg flips between near-black and white",
+    "Language toggle: ID<->EN updates promo, footer status, comparison rows, blog cards",
+    "Sticky wrapper: at scrollY=2500, promo top=0px, header top=48px (both pinned)",
+    "Floating WhatsApp: present, href=wa.me/628888200888"
+  ]
+}

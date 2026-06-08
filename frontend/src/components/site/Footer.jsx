@@ -66,7 +66,16 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 pt-8 border-t border-overlay/5 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between text-xs text-muted-foreground">
-          <div data-testid="footer-copyright">{t.footer.copyright}</div>
+          <div className="flex items-center gap-4 flex-wrap">
+            <span data-testid="footer-copyright">{t.footer.copyright}</span>
+            <span data-testid="footer-status" className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/[0.08] text-emerald-400">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+              {t.status.label} · {t.status.operational}
+            </span>
+          </div>
           <div className="flex items-center gap-3">
             {[Instagram, Facebook, Twitter, Linkedin, Mail].map((Icon, i) => (
               <a

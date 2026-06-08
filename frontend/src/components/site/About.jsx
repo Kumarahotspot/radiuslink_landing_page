@@ -1,5 +1,13 @@
 import React from "react";
 import { useT } from "../../i18n";
+import CountUp from "./CountUp";
+
+const STAT_DATA = [
+  { end: 8500, suffix: "+", labelKey: 0 },
+  { end: 15, suffix: "+", labelKey: 1 },
+  { end: 2400, suffix: " km", labelKey: 2 },
+  { end: 9, suffix: " thn", labelKey: 3 }
+];
 
 export default function About() {
   const { t } = useT();
@@ -41,7 +49,9 @@ export default function About() {
                   data-testid={`about-stat-${i}`}
                   className="rounded-2xl border border-overlay/10 bg-gradient-to-b from-overlay/[0.03] to-transparent p-5"
                 >
-                  <div className="text-3xl md:text-4xl font-black tracking-tight">{s.value}</div>
+                  <div className="text-3xl md:text-4xl font-black tracking-tight">
+                    <CountUp end={STAT_DATA[i].end} suffix={STAT_DATA[i].suffix} />
+                  </div>
                   <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">{s.label}</div>
                 </div>
               ))}

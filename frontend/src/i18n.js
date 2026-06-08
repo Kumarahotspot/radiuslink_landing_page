@@ -25,9 +25,76 @@ export const translations = {
       stat_speed: "Hingga 1 Gbps",
       stat_uptime: "99,99% Uptime",
       stat_support: "Support 24/7",
-      stat_cities: "12+ Kota"
+      stat_cities: "15+ Kota"
     },
     marquee: ["Fiber to the Home", "Unlimited Tanpa FUP", "Dedicated IP", "Symmetric Bandwidth", "Low Latency Gaming", "Enterprise SLA"],
+    promo: {
+      tag: "Promo Spesial",
+      text: "Pasang baru hari ini — Gratis biaya instalasi + 1 bulan gratis. Berlaku terbatas!",
+      cta: "Klaim Sekarang"
+    },
+    trust: {
+      eyebrow: "Terdaftar & Resmi",
+      title: "Operator internet legal dan tersertifikasi.",
+      badges: [
+        { name: "APJII", desc: "Anggota Asosiasi Penyelenggara Jasa Internet Indonesia" },
+        { name: "Komdigi", desc: "Berijin dari Kementerian Komunikasi & Digital RI" },
+        { name: "ID-NIC", desc: "Anggota Indonesia Network Information Centre" },
+        { name: "Internet Positif", desc: "Dukungan penyaringan konten sesuai regulasi" }
+      ]
+    },
+    recommender: {
+      eyebrow: "Cari Paket Tepat",
+      title: "Rekomendasi paket dalam 5 detik.",
+      desc: "Geser slider sesuai kebutuhan Anda — kami sarankan paket yang paling cocok.",
+      devices_label: "Jumlah perangkat",
+      usage_label: "Aktivitas utama",
+      usage_options: ["Browsing & Sosmed", "Streaming HD", "Streaming 4K & Gaming", "WFH & Bisnis"],
+      result_label: "Rekomendasi untuk Anda",
+      cta: "Pilih Paket Ini"
+    },
+    compare: {
+      eyebrow: "Bandingkan",
+      title: "Kenapa Kumara, bukan yang lain?",
+      headers: ["Fitur", "Kumara Hotspot", "ISP Umum"],
+      rows: [
+        ["Backbone fiber optik 100%", "✓ Ya", "✗ Sebagian wireless"],
+        ["Unlimited tanpa FUP", "✓ Ya (paket Pro+)", "✗ FUP ketat"],
+        ["Symmetric upload & download", "✓ Ya", "✗ Hanya download"],
+        ["Latency ke IIX", "<5 ms", "10–30 ms"],
+        ["Support 24/7 onsite", "✓ Ya", "△ Call center saja"],
+        ["Dedicated IP publik", "✓ Tersedia", "✗ Tidak tersedia"],
+        ["SLA enterprise", "✓ Hingga 99,99%", "✗ Tanpa SLA"]
+      ]
+    },
+    blog: {
+      eyebrow: "Berita & Edukasi",
+      title: "Tips, promo, dan kabar dari Kumara.",
+      read_more: "Baca selengkapnya",
+      posts: [
+        {
+          tag: "Tips",
+          title: "5 Cara Mempercepat WiFi Rumah Anda",
+          excerpt: "Posisi router, channel WiFi, dan beberapa trik sederhana yang bisa meningkatkan koneksi hingga 40%."
+        },
+        {
+          tag: "Promo",
+          title: "Spesial Akhir Tahun: Gratis 1 Bulan Berlangganan",
+          excerpt: "Pasang baru sebelum akhir bulan dan dapatkan gratis langganan satu bulan penuh untuk semua paket."
+        },
+        {
+          tag: "Ekspansi",
+          title: "Kumara Hotspot Hadir di Cianjur & Demak",
+          excerpt: "Kami terus memperluas jaringan fiber ke daerah baru. Cek apakah area Anda sudah tercover."
+        }
+      ]
+    },
+    status: {
+      label: "Status Jaringan",
+      operational: "Semua sistem normal",
+      degraded: "Performa menurun",
+      outage: "Gangguan"
+    },
     packages: {
       eyebrow: "Paket Berlangganan",
       title: "Pilih paket yang sesuai dengan kebutuhan Anda",
@@ -213,9 +280,76 @@ export const translations = {
       stat_speed: "Up to 1 Gbps",
       stat_uptime: "99.99% Uptime",
       stat_support: "24/7 Support",
-      stat_cities: "12+ Cities"
+      stat_cities: "15+ Cities"
     },
     marquee: ["Fiber to the Home", "Unlimited, no FUP", "Dedicated IP", "Symmetric Bandwidth", "Low Latency Gaming", "Enterprise SLA"],
+    promo: {
+      tag: "Special Offer",
+      text: "Sign up today — Free installation + 1 month free. Limited time!",
+      cta: "Claim Now"
+    },
+    trust: {
+      eyebrow: "Registered & Licensed",
+      title: "A legal and certified internet operator.",
+      badges: [
+        { name: "APJII", desc: "Member of the Indonesian Internet Service Providers Association" },
+        { name: "Komdigi", desc: "Licensed by the Ministry of Communications & Digital Affairs" },
+        { name: "ID-NIC", desc: "Member of Indonesia Network Information Centre" },
+        { name: "Internet Positif", desc: "Compliant with regulated content filtering" }
+      ]
+    },
+    recommender: {
+      eyebrow: "Find Your Plan",
+      title: "Get a recommendation in 5 seconds.",
+      desc: "Slide to match your needs — we suggest the perfect plan.",
+      devices_label: "Number of devices",
+      usage_label: "Primary activity",
+      usage_options: ["Browsing & social", "HD streaming", "4K streaming & gaming", "Work-from-home & business"],
+      result_label: "Recommended for you",
+      cta: "Pick This Plan"
+    },
+    compare: {
+      eyebrow: "Compare",
+      title: "Why Kumara, not the rest?",
+      headers: ["Feature", "Kumara Hotspot", "Typical ISP"],
+      rows: [
+        ["100% fiber optic backbone", "✓ Yes", "✗ Partly wireless"],
+        ["True unlimited, no FUP", "✓ Yes (Pro+)", "✗ Strict FUP"],
+        ["Symmetric upload & download", "✓ Yes", "✗ Download only"],
+        ["Latency to IIX", "<5 ms", "10–30 ms"],
+        ["24/7 onsite support", "✓ Yes", "△ Call center only"],
+        ["Public dedicated IP", "✓ Available", "✗ Not available"],
+        ["Enterprise SLA", "✓ Up to 99.99%", "✗ No SLA"]
+      ]
+    },
+    blog: {
+      eyebrow: "News & Tips",
+      title: "Tips, promos, and updates from Kumara.",
+      read_more: "Read more",
+      posts: [
+        {
+          tag: "Tips",
+          title: "5 Ways to Speed Up Your Home WiFi",
+          excerpt: "Router placement, WiFi channel, and simple tricks that can boost your connection by up to 40%."
+        },
+        {
+          tag: "Promo",
+          title: "Year-End Special: 1 Month Free Subscription",
+          excerpt: "Sign up before end of month and get a full month of free service on any plan."
+        },
+        {
+          tag: "Expansion",
+          title: "Kumara Hotspot Arrives in Cianjur & Demak",
+          excerpt: "We continue to expand our fiber network. Check if your area is now covered."
+        }
+      ]
+    },
+    status: {
+      label: "Network Status",
+      operational: "All systems operational",
+      degraded: "Degraded performance",
+      outage: "Outage"
+    },
     packages: {
       eyebrow: "Subscription Plans",
       title: "Pick a plan that matches your needs",
