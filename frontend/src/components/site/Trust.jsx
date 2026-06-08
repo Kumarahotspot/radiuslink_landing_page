@@ -14,7 +14,7 @@ const BADGES = [
     name: "Komdigi",
     logo: "/logos/komdigi.png",
     site: "https://www.komdigi.go.id",
-    dark_bg: true
+    dark_bg: false
   },
   {
     key: "idnic",
