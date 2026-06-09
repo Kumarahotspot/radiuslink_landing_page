@@ -26,7 +26,7 @@ export default function Hero() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
               {t.hero.eyebrow}
             </div>
-            <h1 data-testid="hero-title" className="mt-6 text-2xl sm:text-3xl lg:text-4xl font-black leading-[1.1] tracking-tight">
+            <h1 data-testid="hero-title" className="mt-6 text-xl sm:text-2xl lg:text-3xl font-black leading-[1.1] tracking-tight">
               <span className="block">{t.hero.title_1}</span>
               <span className="block">
                 <span className="bg-gradient-to-br from-[#FF8A3D] via-[#FF5E00] to-[#E63946] bg-clip-text text-transparent">
