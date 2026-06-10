@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { CheckCircle2, ArrowRight } from "lucide-react";
-import { whatsappUrl } from "../../lib/api";
+import { api, whatsappUrl } from "../../lib/api";
 import { STATIC_PACKAGES } from "../../lib/staticData";
 import { useT, formatIDR } from "../../i18n";
 import { Button } from "../ui/button";
@@ -14,35 +14,55 @@ const initial = { name: "", phone: "", email: "", address: "", city: "", package
 export default function Subscribe() {
   const { t } = useT();
   const [form, setForm] = useState(initial);
-  const packages = STATIC_PACKAGES;
+  const [packages, setPackages] = useState(STATIC_PACKAGES);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  useEffect(() => {
+    let mounted = true;
+    api.get("/packages", { timeout: 5000 })
+      .then((res) => {
+        const list = res.data?.packages || [];
+        if (mounted && list.length) setPackages(list);
+      })
+      .catch(() => { /* keep static fallback */ });
+    return () => { mounted = false; };
+  }, []);
+
   const onChange = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const openWhatsappLead = () => {
+    const pkg = packages.find((p) => p.id === form.package_id);
+    const pkgLabel = pkg ? `${pkg.name} (${pkg.speed_mbps} Mbps - ${formatIDR(pkg.price_idr)}/bulan)` : form.package_id;
+    const msg = [
+      "Halo Kumara Hotspot, saya ingin berlangganan:",
+      `• Nama: ${form.name}`,
+      `• HP: ${form.phone}`,
+      `• Email: ${form.email}`,
+      `• Kota: ${form.city || "-"}`,
+      `• Alamat: ${form.address}`,
+      `• Paket: ${pkgLabel}`,
+      form.notes ? `• Catatan: ${form.notes}` : null,
+    ].filter(Boolean).join("\n");
+    window.open(whatsappUrl(msg), "_blank", "noopener");
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.phone || !form.email || !form.address || !form.package_id) return;
     setLoading(true);
     try {
-      const pkg = packages.find((p) => p.id === form.package_id);
-      const pkgLabel = pkg ? `${pkg.name} (${pkg.speed_mbps} Mbps - ${formatIDR(pkg.price_idr)}/bulan)` : form.package_id;
-      const msg = [
-        "Halo Kumara Hotspot, saya ingin berlangganan:",
-        `• Nama: ${form.name}`,
-        `• HP: ${form.phone}`,
-        `• Email: ${form.email}`,
-        `• Kota: ${form.city || "-"}`,
-        `• Alamat: ${form.address}`,
-        `• Paket: ${pkgLabel}`,
-        form.notes ? `• Catatan: ${form.notes}` : null,
-      ].filter(Boolean).join("\n");
-      window.open(whatsappUrl(msg), "_blank", "noopener");
+      await api.post("/subscriptions", form, { timeout: 8000 });
+      openWhatsappLead();
       setSuccess(true);
       setForm(initial);
       toast.success(t.subscribe.success_title, { description: t.subscribe.success_desc });
     } catch (err) {
-      toast.error(t.subscribe.error, { description: "" });
+      // Backend down -> fallback to WhatsApp lead
+      openWhatsappLead();
+      setSuccess(true);
+      setForm(initial);
+      toast.success(t.subscribe.success_title, { description: t.subscribe.success_desc });
     } finally {
       setLoading(false);
     }

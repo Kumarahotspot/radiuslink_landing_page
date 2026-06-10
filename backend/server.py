@@ -243,6 +243,9 @@ DEFAULT_PACKAGES = [
     {"id": "platinum-3", "category": "premium", "name": "Platinum 3", "speed_mbps": 40, "broadband_mbps": 80, "price_idr": 400000, "popular": False,
      "features_id": ["40 Mbps Dedicated", "80 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "WiFi 6 router gratis"],
      "features_en": ["40 Mbps Dedicated", "80 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi 6 router"]},
+    {"id": "edukasi-100", "category": "premium", "name": "EDUKASI 100", "speed_mbps": 10, "broadband_mbps": 20, "price_idr": 100000, "popular": True,
+     "features_id": ["10 Mbps Dedicated", "20 Mbps Broadband", "Khusus institusi pendidikan", "Unlimited tanpa batas", "Free WiFi router"],
+     "features_en": ["10 Mbps Dedicated", "20 Mbps Broadband", "For education institutions", "Truly unlimited", "Free WiFi router"]},
     {"id": "business", "category": "business", "name": "Business", "speed_mbps": 50, "broadband_mbps": 100, "price_idr": 500000, "popular": False,
      "features_id": ["50 Mbps Dedicated", "100 Mbps Broadband", "Internet Resmi & Berijin", "Dedicated IP publik", "SLA 99,95% & onsite engineer"],
      "features_en": ["50 Mbps Dedicated", "100 Mbps Broadband", "Licensed & Legal ISP", "Public dedicated IP", "99.95% SLA & onsite engineer"]},
@@ -285,6 +288,19 @@ async def startup_event():
     if await db.packages.count_documents({}) == 0:
         now = datetime.now(timezone.utc).isoformat()
         await db.packages.insert_many([{**p, "created_at": now, "updated_at": now} for p in DEFAULT_PACKAGES])
+
+    # Idempotent upsert for EDUKASI 100 — sync canonical specs on existing DBs
+    edukasi = next((p for p in DEFAULT_PACKAGES if p["id"] == "edukasi-100"), None)
+    if edukasi is not None:
+        now = datetime.now(timezone.utc).isoformat()
+        await db.packages.update_one(
+            {"id": "edukasi-100"},
+            {
+                "$set": {**edukasi, "updated_at": now},
+                "$setOnInsert": {"created_at": now},
+            },
+            upsert=True,
+        )
 
     # Seed coverage areas if empty
     if await db.coverage_areas.count_documents({}) == 0:

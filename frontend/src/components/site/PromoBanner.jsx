@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { X, Sparkles } from "lucide-react";
 import { useT } from "../../i18n";
-import { whatsappUrl } from "../../lib/api";
+import { api, whatsappUrl } from "../../lib/api";
 import { STATIC_PROMO } from "../../lib/staticData";
 
 export default function PromoBanner() {
   const { lang } = useT();
-  const settings = STATIC_PROMO;
+  const [settings, setSettings] = useState(STATIC_PROMO);
   const initialDismissed = (() => {
     try {
       return !!sessionStorage.getItem("kumara_promo_dismissed");
@@ -14,7 +14,20 @@ export default function PromoBanner() {
       return false;
     }
   })();
-  const [visible, setVisible] = useState(settings.active && !initialDismissed);
+  const [visible, setVisible] = useState(STATIC_PROMO.active && !initialDismissed);
+
+  useEffect(() => {
+    let mounted = true;
+    api.get("/settings/promo", { timeout: 5000 })
+      .then((r) => {
+        const data = r.data;
+        if (!mounted || !data) return;
+        setSettings({ ...STATIC_PROMO, ...data });
+        setVisible(!!data.active && !initialDismissed);
+      })
+      .catch(() => { /* keep static fallback */ });
+    return () => { mounted = false; };
+  }, [initialDismissed]);
 
   const dismiss = () => {
     setVisible(false);
@@ -28,7 +41,7 @@ export default function PromoBanner() {
   const tag = lang === "en" ? settings.tag_en : settings.tag_id;
   const text = lang === "en" ? settings.text_en : settings.text_id;
   const cta = lang === "en" ? settings.cta_en : settings.cta_id;
-  const ctaMessage = lang === "en" ? settings.cta_message_en : settings.cta_message_id;
+  const ctaMessage = (lang === "en" ? settings.cta_message_en : settings.cta_message_id) || settings.cta_message || "Halo Kumara, saya tertarik promo.";
 
   return (
     <div data-testid="promo-banner" className="relative z-[60] bg-gradient-to-r from-primary via-[#ff7a2a] to-accent text-primary-foreground">

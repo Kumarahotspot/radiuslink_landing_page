@@ -1,23 +1,36 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Check, Sparkles, MessageCircle } from "lucide-react";
-import { whatsappUrl } from "../../lib/api";
+import { api, whatsappUrl } from "../../lib/api";
 import { STATIC_PACKAGES } from "../../lib/staticData";
 import { useT, formatIDR } from "../../i18n";
 import { Button } from "../ui/button";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 
 const CAT_ORDER = { home: 0, premium: 1, business: 2 };
-const SORTED_PACKAGES = [...STATIC_PACKAGES].sort(
-  (a, b) => (CAT_ORDER[a.category] ?? 99) - (CAT_ORDER[b.category] ?? 99) || a.speed_mbps - b.speed_mbps
-);
+const sortPackages = (list) =>
+  [...list].sort(
+    (a, b) => (CAT_ORDER[a.category] ?? 99) - (CAT_ORDER[b.category] ?? 99) || a.speed_mbps - b.speed_mbps
+  );
 
 export default function Packages() {
   const { t, lang } = useT();
+  const [packages, setPackages] = useState(sortPackages(STATIC_PACKAGES));
   const [filter, setFilter] = useState("all");
 
+  useEffect(() => {
+    let mounted = true;
+    api.get("/packages", { timeout: 5000 })
+      .then((res) => {
+        const list = res.data?.packages || [];
+        if (mounted && list.length) setPackages(sortPackages(list));
+      })
+      .catch(() => { /* keep static fallback */ });
+    return () => { mounted = false; };
+  }, []);
+
   const filtered = useMemo(
-    () => (filter === "all" ? SORTED_PACKAGES : SORTED_PACKAGES.filter((p) => p.category === filter)),
-    [filter]
+    () => (filter === "all" ? packages : packages.filter((p) => p.category === filter)),
+    [packages, filter]
   );
 
   const selectPackage = (pkgId) => {
