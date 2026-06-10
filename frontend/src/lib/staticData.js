@@ -94,12 +94,12 @@ export const STATIC_PACKAGES = [
     id: "edukasi-100",
     category: "premium",
     name: "EDUKASI 100",
-    speed_mbps: 100,
-    broadband_mbps: 200,
+    speed_mbps: 10,
+    broadband_mbps: 20,
     price_idr: 100000,
     popular: true,
-    features_id: ["100 Mbps Dedicated", "200 Mbps Broadband", "Khusus institusi pendidikan", "Unlimited tanpa batas", "Free WiFi router"],
-    features_en: ["100 Mbps Dedicated", "200 Mbps Broadband", "For education institutions", "Truly unlimited", "Free WiFi router"]
+    features_id: ["10 Mbps Dedicated", "20 Mbps Broadband", "Khusus institusi pendidikan", "Unlimited tanpa batas", "Free WiFi router"],
+    features_en: ["10 Mbps Dedicated", "20 Mbps Broadband", "For education institutions", "Truly unlimited", "Free WiFi router"]
   },
   {
     id: "business",
