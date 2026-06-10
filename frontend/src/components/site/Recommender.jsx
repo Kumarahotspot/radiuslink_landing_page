@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Wifi, ArrowRight } from "lucide-react";
-import { api, whatsappUrl } from "../../lib/api";
+import { whatsappUrl } from "../../lib/api";
+import { STATIC_PACKAGES } from "../../lib/staticData";
 import { useT, formatIDR } from "../../i18n";
 import { Button } from "../ui/button";
 import { Slider } from "../ui/slider";
@@ -9,11 +10,7 @@ export default function Recommender() {
   const { t } = useT();
   const [devices, setDevices] = useState([3]);
   const [usage, setUsage] = useState(1); // 0..3
-  const [packages, setPackages] = useState([]);
-
-  useEffect(() => {
-    api.get("/packages").then((r) => setPackages(r.data.packages || [])).catch(() => {});
-  }, []);
+  const packages = STATIC_PACKAGES;
 
   // Score each package and pick best fit based on devices + usage intensity
   const recommended = useMemo(() => {

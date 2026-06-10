@@ -46,3 +46,18 @@ User specs:
 - P2: Real speed test integration
 - P2: News/Blog CMS
 - P2: Google Maps integration for coverage area visualization
+
+## 2026-02 — Static Fallback Build (verifikasi aplikasi)
+- All public landing-page sections now consume STATIC data from `/app/frontend/src/lib/staticData.js` (no API calls):
+  - Packages, Recommender, Subscribe -> `STATIC_PACKAGES` (10 paket: Bronze, Silver, Gold, New Gold 1/2, Platinum 1/2/3, EDUKASI 100, Business)
+  - PromoBanner -> `STATIC_PROMO` (defaults)
+  - Coverage check -> client-side match against `STATIC_COVERED_SLUGS`
+  - Subscribe form: submit sekarang membuka WhatsApp deep-link (tidak hit backend)
+- Build output: `/app/frontend/build/` dan zip: `/app/kumara-hotspot-build.zip` (+ mirror di `/app/frontend/public/downloads/kumara-hotspot-build.zip`)
+- ⚠️ Catatan EDUKASI 100: spec di-hardcode dengan asumsi 100 Mbps / Rp 100.000 / kategori premium / khusus institusi pendidikan. Jika berbeda, beri tahu untuk update.
+- Admin Panel (`/admin`) tetap dinamis lewat backend — perubahan dari admin tidak akan terlihat di landing page sampai data statis dibuka kembali.
+
+## Next Action Items (Post-Verifikasi)
+- P1: Re-enable dynamic fetching di Packages / Recommender / Subscribe / PromoBanner / Coverage setelah backend VPS stabil. Tahapnya: kembalikan `api.get/post` calls + tetap pakai `STATIC_*` sebagai fallback `.catch(() => setX(STATIC_X))`.
+- P1: Pastikan EDUKASI 100 di DB sinkron dengan hardcode (atau update hardcode setelah dapat angka final).
+

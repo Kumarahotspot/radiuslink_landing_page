@@ -1,30 +1,23 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { Check, Sparkles, MessageCircle } from "lucide-react";
-import { api, whatsappUrl, formatIDR as _ } from "../../lib/api";
+import { whatsappUrl } from "../../lib/api";
+import { STATIC_PACKAGES } from "../../lib/staticData";
 import { useT, formatIDR } from "../../i18n";
 import { Button } from "../ui/button";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 
+const CAT_ORDER = { home: 0, premium: 1, business: 2 };
+const SORTED_PACKAGES = [...STATIC_PACKAGES].sort(
+  (a, b) => (CAT_ORDER[a.category] ?? 99) - (CAT_ORDER[b.category] ?? 99) || a.speed_mbps - b.speed_mbps
+);
+
 export default function Packages() {
   const { t, lang } = useT();
-  const [packages, setPackages] = useState([]);
   const [filter, setFilter] = useState("all");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let mounted = true;
-    api.get("/packages")
-      .then((res) => {
-        if (mounted) setPackages(res.data.packages || []);
-      })
-      .catch(() => {})
-      .finally(() => mounted && setLoading(false));
-    return () => { mounted = false; };
-  }, []);
 
   const filtered = useMemo(
-    () => (filter === "all" ? packages : packages.filter((p) => p.category === filter)),
-    [packages, filter]
+    () => (filter === "all" ? SORTED_PACKAGES : SORTED_PACKAGES.filter((p) => p.category === filter)),
+    [filter]
   );
 
   const selectPackage = (pkgId) => {
@@ -68,9 +61,6 @@ export default function Packages() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {loading && (
-            <div className="col-span-full text-muted-foreground text-sm">Loading packages...</div>
-          )}
           {filtered.map((p) => {
             const features = lang === "id" ? p.features_id : p.features_en;
             return (

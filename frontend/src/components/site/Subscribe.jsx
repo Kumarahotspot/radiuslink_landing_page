@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import { CheckCircle2, ArrowRight } from "lucide-react";
-import { api } from "../../lib/api";
-import { useT } from "../../i18n";
+import { whatsappUrl } from "../../lib/api";
+import { STATIC_PACKAGES } from "../../lib/staticData";
+import { useT, formatIDR } from "../../i18n";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
@@ -13,13 +14,9 @@ const initial = { name: "", phone: "", email: "", address: "", city: "", package
 export default function Subscribe() {
   const { t } = useT();
   const [form, setForm] = useState(initial);
-  const [packages, setPackages] = useState([]);
+  const packages = STATIC_PACKAGES;
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    api.get("/packages").then((res) => setPackages(res.data.packages || [])).catch(() => {});
-  }, []);
 
   const onChange = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
@@ -28,12 +25,24 @@ export default function Subscribe() {
     if (!form.name || !form.phone || !form.email || !form.address || !form.package_id) return;
     setLoading(true);
     try {
-      await api.post("/subscriptions", form);
+      const pkg = packages.find((p) => p.id === form.package_id);
+      const pkgLabel = pkg ? `${pkg.name} (${pkg.speed_mbps} Mbps - ${formatIDR(pkg.price_idr)}/bulan)` : form.package_id;
+      const msg = [
+        "Halo Kumara Hotspot, saya ingin berlangganan:",
+        `• Nama: ${form.name}`,
+        `• HP: ${form.phone}`,
+        `• Email: ${form.email}`,
+        `• Kota: ${form.city || "-"}`,
+        `• Alamat: ${form.address}`,
+        `• Paket: ${pkgLabel}`,
+        form.notes ? `• Catatan: ${form.notes}` : null,
+      ].filter(Boolean).join("\n");
+      window.open(whatsappUrl(msg), "_blank", "noopener");
       setSuccess(true);
       setForm(initial);
       toast.success(t.subscribe.success_title, { description: t.subscribe.success_desc });
     } catch (err) {
-      toast.error(t.subscribe.error, { description: err?.response?.data?.detail || "" });
+      toast.error(t.subscribe.error, { description: "" });
     } finally {
       setLoading(false);
     }

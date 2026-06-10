@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Search, CheckCircle2, XCircle, MapPin, Clock } from "lucide-react";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
-import { api } from "../../lib/api";
+import { STATIC_COVERED_SLUGS } from "../../lib/staticData";
 import { useT } from "../../i18n";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -48,10 +48,30 @@ export default function Coverage() {
     setError("");
     setResult(null);
     try {
-      const res = await api.post("/coverage/check", { location: location.trim() });
-      setResult(res.data);
+      const loc = location.trim();
+      const locLower = loc.toLowerCase();
+      const available = STATIC_COVERED_SLUGS.some((slug) => locLower.includes(slug));
+      // simulate tiny delay so UX feels intentional
+      await new Promise((r) => setTimeout(r, 250));
+      if (available) {
+        setResult({
+          location: loc,
+          available: true,
+          message_id: `Selamat! Area ${loc} sudah tercover layanan Kumara Hotspot.`,
+          message_en: `Great! ${loc} is already covered by Kumara Hotspot.`,
+          estimated_install_days: 3
+        });
+      } else {
+        setResult({
+          location: loc,
+          available: false,
+          message_id: `Maaf, area ${loc} belum tercover. Tim kami akan menghubungi Anda untuk opsi ekspansi.`,
+          message_en: `Sorry, ${loc} is not yet covered. Our team will reach out about expansion options.`,
+          estimated_install_days: null
+        });
+      }
     } catch (err) {
-      setError(err?.response?.data?.detail || "Error");
+      setError("Error");
     } finally {
       setLoading(false);
     }

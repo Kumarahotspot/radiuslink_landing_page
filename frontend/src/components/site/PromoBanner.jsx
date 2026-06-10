@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { X, Sparkles } from "lucide-react";
 import { useT } from "../../i18n";
-import { api, whatsappUrl } from "../../lib/api";
+import { whatsappUrl } from "../../lib/api";
+import { STATIC_PROMO } from "../../lib/staticData";
 
 export default function PromoBanner() {
   const { lang } = useT();
-  const [settings, setSettings] = useState(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    api.get("/settings/promo")
-      .then((r) => {
-        if (!r.data?.active) return;
-        try {
-          if (sessionStorage.getItem("kumara_promo_dismissed")) return;
-        } catch (_err) { /* ignore */ }
-        setSettings(r.data);
-        setVisible(true);
-      })
-      .catch(() => { /* ignore */ });
-  }, []);
+  const settings = STATIC_PROMO;
+  const initialDismissed = (() => {
+    try {
+      return !!sessionStorage.getItem("kumara_promo_dismissed");
+    } catch (_err) {
+      return false;
+    }
+  })();
+  const [visible, setVisible] = useState(settings.active && !initialDismissed);
 
   const dismiss = () => {
     setVisible(false);
@@ -28,11 +23,12 @@ export default function PromoBanner() {
     } catch (_err) { /* ignore */ }
   };
 
-  if (!visible || !settings) return null;
+  if (!visible) return null;
 
   const tag = lang === "en" ? settings.tag_en : settings.tag_id;
   const text = lang === "en" ? settings.text_en : settings.text_id;
   const cta = lang === "en" ? settings.cta_en : settings.cta_id;
+  const ctaMessage = lang === "en" ? settings.cta_message_en : settings.cta_message_id;
 
   return (
     <div data-testid="promo-banner" className="relative z-[60] bg-gradient-to-r from-primary via-[#ff7a2a] to-accent text-primary-foreground">
@@ -43,11 +39,7 @@ export default function PromoBanner() {
         </span>
         <span className="flex-1 truncate font-medium">{text}</span>
         <a
-          href={whatsappUrl(
-            (lang === "en" ? settings.cta_message_en : settings.cta_message_id)
-            || settings.cta_message
-            || "Halo Kumara, saya tertarik promo."
-          )}
+          href={whatsappUrl(ctaMessage)}
           target="_blank"
           rel="noopener noreferrer"
           data-testid="promo-cta"
