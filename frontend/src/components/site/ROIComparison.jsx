@@ -127,13 +127,13 @@ export default function ROIComparison() {
                 <li
                   key={item.key}
                   data-testid={`roi-input-row-${item.key}`}
-                  className="flex items-center justify-between gap-3 border-b border-overlay/5 pb-3"
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 border-b border-overlay/5 pb-3"
                 >
-                  <div className="flex items-center gap-2 text-sm text-foreground/80 flex-1 min-w-0">
-                    <X className="h-3.5 w-3.5 text-red-400/70 flex-shrink-0" strokeWidth={2.5} />
-                    <span className="truncate">{item.label}</span>
+                  <div className="flex items-start gap-2 text-sm text-foreground/80 flex-1 min-w-0">
+                    <X className="h-3.5 w-3.5 text-red-400/70 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                    <span className="leading-snug">{item.label}</span>
                   </div>
-                  <div className="flex items-center gap-1 flex-shrink-0">
+                  <div className="flex items-center gap-1 flex-shrink-0 self-end sm:self-auto">
                     <span className="text-xs text-muted-foreground">Rp</span>
                     <input
                       data-testid={`roi-input-${item.key}`}
@@ -141,7 +141,7 @@ export default function ROIComparison() {
                       inputMode="numeric"
                       value={(prices[item.key] || 0).toLocaleString("id-ID")}
                       onChange={(e) => setPrice(item.key, e.target.value)}
-                      className="w-24 md:w-28 bg-overlay/[0.04] border border-overlay/10 rounded-lg px-2 py-1.5 text-right text-sm font-mono font-semibold focus:outline-none focus:border-red-500/40 focus:bg-red-500/[0.05] transition-colors"
+                      className="w-28 sm:w-24 md:w-28 bg-overlay/[0.04] border border-overlay/10 rounded-lg px-2 py-1.5 text-right text-sm font-mono font-semibold focus:outline-none focus:border-red-500/40 focus:bg-red-500/[0.05] transition-colors"
                     />
                   </div>
                 </li>

@@ -92,32 +92,32 @@ export default function Hero() {
           </div>
 
           {/* Right: visual */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 mt-4 lg:mt-0">
             <div className="relative aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 glow-ring rounded-full" />
               <div className="absolute inset-6 rounded-full border border-overlay/10 bg-background/40 backdrop-blur-xl gradient-border">
                 <div className="absolute inset-0 grid place-items-center text-center px-6">
                   <div>
-                    <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Peak Download</div>
-                    <div className="mt-2 text-7xl md:text-8xl font-black bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-transparent">
-                      1<span className="text-primary">G</span>
+                    <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Users Managed</div>
+                    <div className="mt-2 text-6xl sm:text-7xl md:text-8xl font-black bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-transparent">
+                      10<span className="text-primary">K</span>+
                     </div>
-                    <div className="text-sm font-semibold tracking-tight text-foreground/80">Gigabit per Second</div>
+                    <div className="text-sm font-semibold tracking-tight text-foreground/80">Pelanggan Aktif</div>
                     <div className="mt-6 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-overlay/10 text-xs">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Live network · 99.99% up
+                      Live · 99.9% uptime
                     </div>
                   </div>
                 </div>
               </div>
               {/* Floating badges */}
               <div className="absolute -top-2 -left-2 md:top-0 md:-left-6 rounded-2xl border border-overlay/10 bg-card/80 backdrop-blur p-3 shadow-2xl animate-float-slow">
-                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Latency</div>
-                <div className="text-xl font-bold">3.2 ms</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Router</div>
+                <div className="text-xl font-bold">200+</div>
               </div>
               <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 rounded-2xl border border-overlay/10 bg-card/80 backdrop-blur p-3 shadow-2xl animate-float-slow" style={{ animationDelay: "1.5s" }}>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Jitter</div>
-                <div className="text-xl font-bold">0.4 ms</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">ISP Klien</div>
+                <div className="text-xl font-bold">50+</div>
               </div>
             </div>
           </div>

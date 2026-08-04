@@ -11,8 +11,8 @@ export default function Comparison() {
           <h2 className="mt-3 text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">{t.compare.title}</h2>
         </div>
 
-        <div className="mt-10 rounded-3xl border border-overlay/10 overflow-hidden">
-          <table data-testid="comparison-table" className="w-full text-sm">
+        <div className="mt-10 rounded-3xl border border-overlay/10 overflow-x-auto">
+          <table data-testid="comparison-table" className="w-full min-w-[560px] text-sm">
             <thead>
               <tr className="bg-overlay/[0.04]">
                 {t.compare.headers.map((h, i) => (
