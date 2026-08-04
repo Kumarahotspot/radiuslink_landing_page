@@ -9,7 +9,7 @@ const SLIDES = [
   {
     id: "login",
     group: "operasional",
-    src: "/screenshots/slide-login.png",
+    src: "/screenshots/slide-login.webp",
     icon: LogIn,
     title_id: "Portal Login White-label",
     title_en: "White-label Login Portal",
@@ -19,7 +19,7 @@ const SLIDES = [
   {
     id: "dashboard",
     group: "operasional",
-    src: "/screenshots/slide-dashboard.png",
+    src: "/screenshots/slide-dashboard.webp",
     icon: LayoutDashboard,
     title_id: "Dashboard Real-time",
     title_en: "Real-time Dashboard",
@@ -29,7 +29,7 @@ const SLIDES = [
   {
     id: "pppoe",
     group: "operasional",
-    src: "/screenshots/slide-pppoe.png",
+    src: "/screenshots/slide-pppoe.webp",
     icon: Users,
     title_id: "Manajemen PPPoE Pelanggan",
     title_en: "PPPoE Customer Management",
@@ -39,7 +39,7 @@ const SLIDES = [
   {
     id: "acs",
     group: "operasional",
-    src: "/screenshots/slide-acs.png",
+    src: "/screenshots/slide-acs.webp",
     icon: Radio,
     title_id: "ACS Monitoring (GenieACS TR-069)",
     title_en: "ACS Monitoring (GenieACS TR-069)",
@@ -49,7 +49,7 @@ const SLIDES = [
   {
     id: "voucher",
     group: "operasional",
-    src: "/screenshots/slide-voucher.png",
+    src: "/screenshots/slide-voucher.webp",
     icon: Ticket,
     title_id: "Voucher Hotspot Manager",
     title_en: "Hotspot Voucher Manager",
@@ -59,7 +59,7 @@ const SLIDES = [
   {
     id: "tiket",
     group: "operasional",
-    src: "/screenshots/slide-tiket.png",
+    src: "/screenshots/slide-tiket.webp",
     icon: LifeBuoy,
     title_id: "Kelola Tiket & Problem",
     title_en: "Ticket & Problem Management",
@@ -69,7 +69,7 @@ const SLIDES = [
   {
     id: "voucher-online",
     group: "keuangan",
-    src: "/screenshots/slide-voucher-online.png",
+    src: "/screenshots/slide-voucher-online.webp",
     icon: ShoppingCart,
     title_id: "Pembelian Voucher Online",
     title_en: "Online Voucher Purchase",
@@ -79,7 +79,7 @@ const SLIDES = [
   {
     id: "payment",
     group: "keuangan",
-    src: "/screenshots/slide-payment.png",
+    src: "/screenshots/slide-payment.webp",
     icon: Wallet,
     title_id: "Online Payment Report",
     title_en: "Online Payment Report",
@@ -89,7 +89,7 @@ const SLIDES = [
   {
     id: "bhpuso",
     group: "keuangan",
-    src: "/screenshots/slide-bhpuso.png",
+    src: "/screenshots/slide-bhpuso.webp",
     icon: FileBarChart,
     title_id: "Laporan BHP & USO",
     title_en: "BHP & USO Report",
@@ -99,7 +99,7 @@ const SLIDES = [
   {
     id: "akuntansi",
     group: "keuangan",
-    src: "/screenshots/slide-akuntansi.png",
+    src: "/screenshots/slide-akuntansi.webp",
     icon: Calculator,
     title_id: "Akuntansi Terpadu",
     title_en: "Integrated Accounting",
@@ -109,7 +109,7 @@ const SLIDES = [
   {
     id: "laporan",
     group: "keuangan",
-    src: "/screenshots/slide-laporan.png",
+    src: "/screenshots/slide-laporan.webp",
     icon: CalendarDays,
     title_id: "Laporan Aktivitas Bulanan",
     title_en: "Monthly Activity Report",
