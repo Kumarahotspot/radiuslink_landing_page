@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import {
   ChevronLeft, ChevronRight,
-  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator, CalendarDays, Radio
+  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator, CalendarDays, Radio, LifeBuoy
 } from "lucide-react";
 import { useT } from "../../i18n";
 
@@ -55,6 +55,16 @@ const SLIDES = [
     title_en: "Hotspot Voucher Manager",
     desc_id: "Generate & pantau stok voucher per paket. Notifikasi otomatis saat stok menipis.",
     desc_en: "Generate & monitor voucher stock per plan. Auto-alerts on low stock."
+  },
+  {
+    id: "tiket",
+    group: "operasional",
+    src: "/screenshots/slide-tiket.png",
+    icon: LifeBuoy,
+    title_id: "Kelola Tiket & Problem",
+    title_en: "Ticket & Problem Management",
+    desc_id: "Kelola tiket pemasangan & gangguan — status Open/In Progress/Completed, prioritas urgent, assign teknisi, filter per cabang.",
+    desc_en: "Manage installation & incident tickets — Open/In Progress/Completed statuses, urgent priorities, technician assignment, and branch filters."
   },
   {
     id: "payment",
