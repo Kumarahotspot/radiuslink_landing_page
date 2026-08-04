@@ -11,19 +11,19 @@
     --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
-    --primary: 22 100% 50%;
+    --primary: 200 100% 50%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 10%;
     --muted: 0 0% 96%;
     --muted-foreground: 240 4% 40%;
-    --accent: 355 78% 56%;
+    --accent: 220 90% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 240 4% 88%;
     --input: 240 4% 88%;
-    --ring: 22 100% 50%;
+    --ring: 200 100% 50%;
     --radius: 1rem;
     /* Overlay surface — flips between themes so subtle white/X classes work in both */
     --overlay: 0 0% 0%;
@@ -35,19 +35,19 @@
     --card-foreground: 0 0% 96%;
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 96%;
-    --primary: 22 100% 50%;
+    --primary: 200 100% 55%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 96%;
     --muted: 0 0% 12%;
     --muted-foreground: 240 5% 65%;
-    --accent: 355 78% 56%;
+    --accent: 220 90% 60%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 240 4% 16%;
     --input: 240 4% 16%;
-    --ring: 22 100% 50%;
+    --ring: 200 100% 55%;
     --overlay: 0 0% 100%;
   }
 }
@@ -66,8 +66,8 @@
     -webkit-font-smoothing: antialiased;
     background-color: hsl(var(--background));
     background-image:
-      radial-gradient(ellipse 1200px 600px at 80% -10%, rgba(255, 94, 0, 0.12), transparent 60%),
-      radial-gradient(ellipse 900px 500px at -10% 10%, rgba(230, 57, 70, 0.07), transparent 60%);
+      radial-gradient(ellipse 1200px 600px at 80% -10%, rgba(14, 165, 233, 0.14), transparent 60%),
+      radial-gradient(ellipse 900px 500px at -10% 10%, rgba(37, 99, 235, 0.08), transparent 60%);
     background-attachment: fixed;
     transition: background-color 200ms ease, color 200ms ease;
   }
@@ -94,7 +94,7 @@
 
 /* Conic glow used on the hero speed proof */
 .glow-ring {
-  background: conic-gradient(from 180deg at 50% 50%, rgba(255,94,0,0.0) 0deg, rgba(255,94,0,0.6) 90deg, rgba(230,57,70,0.4) 180deg, rgba(255,94,0,0.0) 360deg);
+  background: conic-gradient(from 180deg at 50% 50%, rgba(14,165,233,0.0) 0deg, rgba(14,165,233,0.6) 90deg, rgba(37,99,235,0.4) 180deg, rgba(14,165,233,0.0) 360deg);
   filter: blur(40px);
 }
 
@@ -126,7 +126,7 @@
   inset: 0;
   padding: 1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,94,0,0.7), rgba(230,57,70,0.3), hsl(var(--overlay) / 0.05));
+  background: linear-gradient(135deg, rgba(14,165,233,0.7), rgba(37,99,235,0.3), hsl(var(--overlay) / 0.05));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;

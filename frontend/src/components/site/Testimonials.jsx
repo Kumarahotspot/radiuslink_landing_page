@@ -5,47 +5,47 @@ import { useT } from "../../i18n";
 const TESTIMONIALS = {
   id: [
     {
-      name: "Rini Andriana",
-      role: "Pemilik Toko Online, Jakarta",
-      text: "Sejak pakai Kumara Home Pro, live streaming jualan saya lancar jaya tanpa putus. Support-nya juga responsif banget.",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=srgb&fm=jpg&w=200&h=200&q=80",
-      rating: 5
-    },
-    {
-      name: "Bayu Pratama",
-      role: "Software Engineer, Bandung",
-      text: "Latency rendah dan unlimited tanpa FUP — perfect untuk WFH dan video call sehari-hari. Sudah 2 tahun langganan, zero complain.",
+      name: "Ahmad Fauzi",
+      role: "Owner RTRWnet Warga.Net, Bekasi",
+      text: "Migrasi dari billing lama ke Radiuslink cuma 2 hari. Fitur voucher massal + reminder WhatsApp bikin operasional kami hemat 8 jam per minggu.",
       avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&w=200&h=200&q=80",
       rating: 5
     },
     {
-      name: "Maya Saraswati",
-      role: "Co-founder Coworking Space, Surabaya",
-      text: "Kami pakai paket Business untuk 60+ user. Stabil, symmetric, dan tim NOC-nya proaktif. Highly recommended.",
+      name: "Dewi Kartika",
+      role: "Founder JagaNet ISP, Semarang",
+      text: "TR-069/ACS-nya jadi game changer. Provisioning ONT sekarang dari kantor, tanpa datang ke rumah pelanggan. Teknisi kami bisa fokus ke perbaikan urgent.",
       avatar: "https://images.pexels.com/photos/12396627/pexels-photo-12396627.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=200&h=200",
+      rating: 5
+    },
+    {
+      name: "Rizky Pratama",
+      role: "Tech Lead, KotaKita Fiber, Surabaya",
+      text: "Kelola 15 router Mikrotik dari satu dashboard, RADIUS server built-in, integrasi QRIS. Semua ada di Radiuslink. Support engineer-nya juga responsif.",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=srgb&fm=jpg&w=200&h=200&q=80",
       rating: 5
     }
   ],
   en: [
     {
-      name: "Rini Andriana",
-      role: "Online Store Owner, Jakarta",
-      text: "Since switching to Kumara Home Pro, my live shopping streams run smoothly with zero drops. Support is incredibly responsive.",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=srgb&fm=jpg&w=200&h=200&q=80",
-      rating: 5
-    },
-    {
-      name: "Bayu Pratama",
-      role: "Software Engineer, Bandung",
-      text: "Low latency and true unlimited — perfect for WFH and daily video calls. Two years in, zero complaints.",
+      name: "Ahmad Fauzi",
+      role: "Owner Warga.Net Community ISP, Bekasi",
+      text: "Migration from our old billing to Radiuslink took just 2 days. The bulk voucher + WhatsApp reminder features save us 8 hours a week in operations.",
       avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&w=200&h=200&q=80",
       rating: 5
     },
     {
-      name: "Maya Saraswati",
-      role: "Coworking Co-founder, Surabaya",
-      text: "We use the Business plan for 60+ users. Stable, symmetric, and a proactive NOC team. Highly recommended.",
+      name: "Dewi Kartika",
+      role: "Founder JagaNet ISP, Semarang",
+      text: "The TR-069/ACS is a game changer. We now provision ONTs from the office, no more house visits. Our technicians can focus on urgent repairs.",
       avatar: "https://images.pexels.com/photos/12396627/pexels-photo-12396627.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=200&h=200",
+      rating: 5
+    },
+    {
+      name: "Rizky Pratama",
+      role: "Tech Lead, KotaKita Fiber, Surabaya",
+      text: "Manage 15 Mikrotik routers from one dashboard, built-in RADIUS server, QRIS integration — everything in Radiuslink. Their engineers are super responsive too.",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=srgb&fm=jpg&w=200&h=200&q=80",
       rating: 5
     }
   ]

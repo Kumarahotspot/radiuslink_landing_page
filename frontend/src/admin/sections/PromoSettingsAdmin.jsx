@@ -58,7 +58,7 @@ export default function PromoSettingsAdmin() {
           <Label className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2 block">Preview</Label>
           {form.active ? (
             <div className="rounded-2xl overflow-hidden border border-overlay/10">
-              <div className="bg-gradient-to-r from-primary via-[#ff7a2a] to-accent text-primary-foreground py-2.5 px-5 flex items-center gap-3 text-sm">
+              <div className="bg-gradient-to-r from-primary via-[#38BDF8] to-accent text-primary-foreground py-2.5 px-5 flex items-center gap-3 text-sm">
                 <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-black/20 font-bold uppercase tracking-wider text-[10px]">
                   <Sparkles className="h-3 w-3" />
                   {form.tag_id || "Promo Spesial"}
@@ -136,11 +136,11 @@ export default function PromoSettingsAdmin() {
         <div className="grid md:grid-cols-2 gap-5">
           <div className="rounded-2xl border border-overlay/10 bg-card/40 p-5">
             <Label>Pesan WhatsApp 🇮🇩 (Indonesia)</Label>
-            <Textarea data-testid="promo-wa-message-id" rows={3} value={form.cta_message_id} onChange={(e) => setForm({ ...form, cta_message_id: e.target.value })} placeholder="Halo Kumara, saya tertarik promo..." className="mt-1" />
+            <Textarea data-testid="promo-wa-message-id" rows={3} value={form.cta_message_id} onChange={(e) => setForm({ ...form, cta_message_id: e.target.value })} placeholder="Halo Radiuslink, saya tertarik promo..." className="mt-1" />
           </div>
           <div className="rounded-2xl border border-overlay/10 bg-card/40 p-5">
             <Label>WhatsApp Message 🇬🇧 (English)</Label>
-            <Textarea data-testid="promo-wa-message-en" rows={3} value={form.cta_message_en} onChange={(e) => setForm({ ...form, cta_message_en: e.target.value })} placeholder="Hello Kumara, I'm interested in the promo..." className="mt-1" />
+            <Textarea data-testid="promo-wa-message-en" rows={3} value={form.cta_message_en} onChange={(e) => setForm({ ...form, cta_message_en: e.target.value })} placeholder="Hello Radiuslink, I'm interested in the promo..." className="mt-1" />
           </div>
         </div>
         <p className="text-xs text-muted-foreground -mt-2">Pesan ini akan otomatis terisi sesuai bahasa yang dipilih user saat klik tombol promo di banner.</p>

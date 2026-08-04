@@ -1,36 +1,8 @@
 import React from "react";
+import { Router, Wifi, Shield, Cpu } from "lucide-react";
 import { useT } from "../../i18n";
 
-const BADGES = [
-  {
-    key: "apjii",
-    name: "APJII",
-    logo: "/logos/apjii.png",
-    site: "https://www.apjii.or.id",
-    dark_bg: false
-  },
-  {
-    key: "komdigi",
-    name: "Komdigi",
-    logo: "/logos/komdigi.png",
-    site: "https://www.komdigi.go.id",
-    dark_bg: false
-  },
-  {
-    key: "idnic",
-    name: "ID-NIC",
-    logo: "/logos/idnic.png",
-    site: "https://idnic.id",
-    dark_bg: false
-  },
-  {
-    key: "ipositif",
-    name: "Internet Positif",
-    logo: "/logos/internet-positif.png",
-    site: "https://internetpositif.id",
-    dark_bg: false
-  }
-];
+const BADGE_ICONS = [Router, Wifi, Shield, Cpu];
 
 export default function Trust() {
   const { t } = useT();
@@ -44,27 +16,19 @@ export default function Trust() {
           </div>
           <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-4">
             {t.trust.badges.map((b, i) => {
-              const meta = BADGES[i];
+              const Icon = BADGE_ICONS[i % BADGE_ICONS.length];
               return (
-                <a
+                <div
                   key={i}
-                  href={meta?.site || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   data-testid={`trust-badge-${i}`}
                   className="rounded-2xl border border-overlay/10 bg-card/60 p-5 hover:border-primary/30 hover:bg-card transition-all flex flex-col items-center text-center group"
                 >
-                  <div className={`h-16 w-full grid place-items-center rounded-xl px-3 py-2 ring-1 ring-overlay/10 ${meta?.dark_bg ? "bg-neutral-900" : "bg-white"}`}>
-                    <img
-                      src={meta?.logo}
-                      alt={meta?.name || b.name}
-                      className="max-h-12 max-w-full object-contain"
-                      loading="lazy"
-                    />
+                  <div className="h-14 w-14 rounded-2xl bg-primary/10 text-primary grid place-items-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Icon className="h-6 w-6" strokeWidth={1.6} />
                   </div>
                   <div className="mt-3 text-sm font-bold tracking-tight">{b.name}</div>
                   <div className="mt-1 text-[11px] text-muted-foreground leading-snug">{b.desc}</div>
-                </a>
+                </div>
               );
             })}
           </div>

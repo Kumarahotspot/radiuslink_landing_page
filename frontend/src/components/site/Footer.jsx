@@ -26,7 +26,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-4">
-              <img src={theme === "dark" ? BRAND.logo_dark : BRAND.logo_light} alt="Kumara Hotspot" className="h-14 md:h-16 w-auto object-contain" />
+              <img src={theme === "dark" ? BRAND.logo_dark : BRAND.logo_light} alt={t.brand} className="h-10 md:h-11 w-auto object-contain" />
             </div>
             <div className="mt-3 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">PT. Pusaka Kreasi Mandiri</div>
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-md">{t.footer.desc}</p>

@@ -135,7 +135,7 @@ export default function Recommender() {
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Button>
                     <a
-                      href={whatsappUrl(`Halo Kumara, saya tertarik paket ${recommended.name} (${recommended.speed_mbps} Mbps).`)}
+                      href={whatsappUrl(`Halo Radiuslink, saya tertarik paket ${recommended.name} untuk jaringan saya.`)}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-testid="recommender-wa-cta"

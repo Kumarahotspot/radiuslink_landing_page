@@ -40,8 +40,8 @@ export default function Header() {
         <a href="#home" data-testid="header-logo-link" className="flex items-center group">
           <img
             src={theme === "dark" ? BRAND.logo_dark : BRAND.logo_light}
-            alt="Kumara Hotspot — High Speed Internet Unlimited"
-            className="h-12 md:h-14 lg:h-16 w-auto object-contain"
+            alt={`${t.brand} — ${t.tagline}`}
+            className="h-9 md:h-10 lg:h-11 w-auto object-contain"
           />
         </a>
 

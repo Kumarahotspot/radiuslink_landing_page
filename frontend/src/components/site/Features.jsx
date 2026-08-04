@@ -1,8 +1,8 @@
 import React from "react";
-import { Cable, Infinity as InfinityIcon, Zap, Headphones, ShieldCheck, Globe2 } from "lucide-react";
+import { Server, Receipt, Ticket, Router, Activity, Wifi, Cpu, CreditCard, MessageCircle } from "lucide-react";
 import { useT } from "../../i18n";
 
-const ICONS = [Cable, InfinityIcon, Zap, Headphones, ShieldCheck, Globe2];
+const ICONS = [Server, Receipt, Ticket, Router, Activity, Wifi, Cpu, CreditCard, MessageCircle];
 
 export default function Features() {
   const { t } = useT();
@@ -18,8 +18,8 @@ export default function Features() {
           <div className="lg:col-span-5">
             <div className="rounded-2xl overflow-hidden border border-overlay/10">
               <img
-                src="https://images.pexels.com/photos/17194840/pexels-photo-17194840.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=420&w=700"
-                alt="Fiber optic lights"
+                src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=420&w=700"
+                alt="Server rack network operations"
                 className="w-full h-44 object-cover"
               />
             </div>

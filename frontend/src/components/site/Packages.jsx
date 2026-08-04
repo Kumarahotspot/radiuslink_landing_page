@@ -123,7 +123,7 @@ export default function Packages() {
                     {t.packages.cta_subscribe}
                   </Button>
                   <a
-                    href={whatsappUrl(`Halo Kumara, saya ingin berlangganan paket ${p.name} (${p.speed_mbps} Mbps - ${formatIDR(p.price_idr)}/bulan). Mohon info lebih lanjut.`)}
+                    href={whatsappUrl(`Halo Radiuslink, saya tertarik paket ${p.name} — mohon info demo & onboarding.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid={`package-whatsapp-${p.id}`}

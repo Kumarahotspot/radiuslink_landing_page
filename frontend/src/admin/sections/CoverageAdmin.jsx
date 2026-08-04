@@ -63,7 +63,7 @@ export default function CoverageAdmin() {
         <div>
           <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">Coverage</div>
           <h1 className="mt-2 text-2xl font-bold tracking-tight">Area Tercover</h1>
-          <p className="text-sm text-muted-foreground mt-1">Tambah/hapus kota yang dilayani Kumara Hotspot.</p>
+          <p className="text-sm text-muted-foreground mt-1">Tambah/hapus kota tempat Radiuslink punya klien atau engineer onsite.</p>
         </div>
         <Button data-testid="add-area-btn" onClick={() => setOpen(true)} className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">
           <Plus className="h-4 w-4 mr-1" />

@@ -9,7 +9,7 @@ export default function PromoBanner() {
   const [settings, setSettings] = useState(STATIC_PROMO);
   const initialDismissed = (() => {
     try {
-      return !!sessionStorage.getItem("kumara_promo_dismissed");
+      return !!sessionStorage.getItem("radiuslink_promo_dismissed");
     } catch (_err) {
       return false;
     }
@@ -32,7 +32,7 @@ export default function PromoBanner() {
   const dismiss = () => {
     setVisible(false);
     try {
-      sessionStorage.setItem("kumara_promo_dismissed", "1");
+      sessionStorage.setItem("radiuslink_promo_dismissed", "1");
     } catch (_err) { /* ignore */ }
   };
 
@@ -41,10 +41,10 @@ export default function PromoBanner() {
   const tag = lang === "en" ? settings.tag_en : settings.tag_id;
   const text = lang === "en" ? settings.text_en : settings.text_id;
   const cta = lang === "en" ? settings.cta_en : settings.cta_id;
-  const ctaMessage = (lang === "en" ? settings.cta_message_en : settings.cta_message_id) || settings.cta_message || "Halo Kumara, saya tertarik promo.";
+  const ctaMessage = (lang === "en" ? settings.cta_message_en : settings.cta_message_id) || settings.cta_message || "Halo Radiuslink, saya tertarik dengan promo.";
 
   return (
-    <div data-testid="promo-banner" className="relative z-[60] bg-gradient-to-r from-primary via-[#ff7a2a] to-accent text-primary-foreground">
+    <div data-testid="promo-banner" className="relative z-[60] bg-gradient-to-r from-primary via-[#38BDF8] to-accent text-primary-foreground">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10 py-2.5 flex items-center gap-3 text-xs md:text-sm">
         <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-black/20 font-bold uppercase tracking-wider text-[10px] flex-shrink-0">
           <Sparkles className="h-3 w-3" />

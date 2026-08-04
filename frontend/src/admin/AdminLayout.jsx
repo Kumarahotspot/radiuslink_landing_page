@@ -36,7 +36,7 @@ export default function AdminLayout() {
             <img src={BRAND.logo_dark} alt="" className="h-9 w-auto object-contain" />
             <div>
               <div className="text-sm font-bold tracking-tight uppercase">Admin</div>
-              <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Kumara Hotspot</div>
+              <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Radiuslink</div>
             </div>
           </button>
         </div>

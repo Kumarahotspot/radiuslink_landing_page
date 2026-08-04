@@ -34,9 +34,9 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-5">
       <div className="w-full max-w-md">
         <div className="flex flex-col items-center mb-8">
-          <img src={BRAND.logo_dark} alt="Kumara Hotspot" className="h-14 w-auto object-contain mb-3" />
+          <img src={BRAND.logo_dark} alt="Radiuslink" className="h-11 w-auto object-contain mb-3" />
           <h1 className="text-2xl font-bold tracking-tight">Admin Panel</h1>
-          <p className="text-sm text-muted-foreground mt-1">Kumara Hotspot Management</p>
+          <p className="text-sm text-muted-foreground mt-1">Radiuslink Management</p>
         </div>
 
         <form onSubmit={onSubmit} className="rounded-3xl border border-overlay/10 bg-card/50 backdrop-blur-xl p-7 gradient-border" data-testid="admin-login-form">
@@ -52,7 +52,7 @@ export default function AdminLogin() {
                   autoFocus
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@kumarahotspot.com"
+                  placeholder="admin@radiuslink.id"
                   className="pl-9 h-12 bg-background/60 border-overlay/10"
                 />
               </div>
@@ -87,7 +87,7 @@ export default function AdminLogin() {
         </form>
 
         <p className="mt-6 text-center text-xs text-muted-foreground">
-          Akses khusus admin Kumara Hotspot.
+          Akses khusus admin Radiuslink.
         </p>
       </div>
     </div>

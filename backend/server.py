@@ -22,7 +22,7 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-app = FastAPI(title="Kumara Hotspot API")
+app = FastAPI(title="Radiuslink API")
 api_router = APIRouter(prefix="/api")
 admin_router = APIRouter(prefix="/api/admin")
 
@@ -126,14 +126,14 @@ class CoverageAreaCreate(CoverageAreaBase):
 
 class PromoSettings(BaseModel):
     active: bool = True
-    tag_id: str = "Promo Spesial"
-    tag_en: str = "Special Offer"
-    text_id: str = "Pasang baru hari ini — Gratis biaya instalasi + 1 bulan gratis. Berlaku terbatas!"
-    text_en: str = "Sign up today — Free installation + 1 month free. Limited time!"
-    cta_id: str = "Klaim Sekarang"
-    cta_en: str = "Claim Now"
-    cta_message_id: str = "Halo Kumara, saya tertarik dengan promo pasang baru gratis 1 bulan."
-    cta_message_en: str = "Hello Kumara, I'm interested in the free 1-month installation promo."
+    tag_id: str = "Promo Peluncuran"
+    tag_en: str = "Launch Promo"
+    text_id: str = "Coba GRATIS 14 hari — semua fitur unlocked. Tanpa kartu kredit."
+    text_en: str = "Try FREE for 14 days — all features unlocked. No credit card required."
+    cta_id: str = "Coba Gratis"
+    cta_en: str = "Try Free"
+    cta_message_id: str = "Halo Radiuslink, saya mau coba trial gratis 14 hari untuk platform RADIUS Billing."
+    cta_message_en: str = "Hello Radiuslink, I'd like to start the 14-day free trial of the RADIUS Billing platform."
 
 
 class AdminLogin(BaseModel):
@@ -219,41 +219,21 @@ def slugify(text: str) -> str:
 
 # ---------------- Default seed data ----------------
 DEFAULT_PACKAGES = [
-    {"id": "bronze", "category": "home", "name": "Bronze", "speed_mbps": 15, "broadband_mbps": 30, "price_idr": 150000, "popular": False,
-     "features_id": ["15 Mbps Dedicated", "30 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Support 24/7"],
-     "features_en": ["15 Mbps Dedicated", "30 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "24/7 support"]},
-    {"id": "silver", "category": "home", "name": "Silver", "speed_mbps": 18, "broadband_mbps": 36, "price_idr": 180000, "popular": False,
-     "features_id": ["18 Mbps Dedicated", "36 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Support 24/7"],
-     "features_en": ["18 Mbps Dedicated", "36 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "24/7 support"]},
-    {"id": "gold", "category": "home", "name": "Gold", "speed_mbps": 20, "broadband_mbps": 40, "price_idr": 200000, "popular": True,
-     "features_id": ["20 Mbps Dedicated", "40 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Free WiFi router"],
-     "features_en": ["20 Mbps Dedicated", "40 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi router"]},
-    {"id": "new-gold-1", "category": "premium", "name": "New Gold 1", "speed_mbps": 25, "broadband_mbps": 50, "price_idr": 250000, "popular": False,
-     "features_id": ["25 Mbps Dedicated", "50 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Priority support"],
-     "features_en": ["25 Mbps Dedicated", "50 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Priority support"]},
-    {"id": "new-gold-2", "category": "premium", "name": "New Gold 2", "speed_mbps": 27, "broadband_mbps": 54, "price_idr": 270000, "popular": False,
-     "features_id": ["27 Mbps Dedicated", "54 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Priority support"],
-     "features_en": ["27 Mbps Dedicated", "54 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Priority support"]},
-    {"id": "platinum-1", "category": "premium", "name": "Platinum 1", "speed_mbps": 30, "broadband_mbps": 60, "price_idr": 300000, "popular": True,
-     "features_id": ["30 Mbps Dedicated", "60 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "WiFi 6 router gratis"],
-     "features_en": ["30 Mbps Dedicated", "60 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi 6 router"]},
-    {"id": "platinum-2", "category": "premium", "name": "Platinum 2", "speed_mbps": 35, "broadband_mbps": 70, "price_idr": 350000, "popular": False,
-     "features_id": ["35 Mbps Dedicated", "70 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "WiFi 6 router gratis"],
-     "features_en": ["35 Mbps Dedicated", "70 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi 6 router"]},
-    {"id": "platinum-3", "category": "premium", "name": "Platinum 3", "speed_mbps": 40, "broadband_mbps": 80, "price_idr": 400000, "popular": False,
-     "features_id": ["40 Mbps Dedicated", "80 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "WiFi 6 router gratis"],
-     "features_en": ["40 Mbps Dedicated", "80 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi 6 router"]},
-    {"id": "edukasi-100", "category": "premium", "name": "EDUKASI 100", "speed_mbps": 10, "broadband_mbps": 20, "price_idr": 100000, "popular": True,
-     "features_id": ["10 Mbps Dedicated", "20 Mbps Broadband", "Khusus institusi pendidikan", "Unlimited tanpa batas", "Free WiFi router"],
-     "features_en": ["10 Mbps Dedicated", "20 Mbps Broadband", "For education institutions", "Truly unlimited", "Free WiFi router"]},
-    {"id": "business", "category": "business", "name": "Business", "speed_mbps": 50, "broadband_mbps": 100, "price_idr": 500000, "popular": False,
-     "features_id": ["50 Mbps Dedicated", "100 Mbps Broadband", "Internet Resmi & Berijin", "Dedicated IP publik", "SLA 99,95% & onsite engineer"],
-     "features_en": ["50 Mbps Dedicated", "100 Mbps Broadband", "Licensed & Legal ISP", "Public dedicated IP", "99.95% SLA & onsite engineer"]},
+    {"id": "starter", "category": "home", "name": "Starter", "speed_mbps": 100, "broadband_mbps": 200, "price_idr": 99000, "popular": False,
+     "features_id": ["Hingga 100 user aktif", "1 router Mikrotik", "RADIUS Server + Hotspot", "Voucher generator dasar", "Dashboard real-time", "Support via WhatsApp"],
+     "features_en": ["Up to 100 active users", "1 Mikrotik router", "RADIUS Server + Hotspot", "Basic voucher generator", "Real-time dashboard", "WhatsApp support"]},
+    {"id": "pro", "category": "premium", "name": "Pro", "speed_mbps": 500, "broadband_mbps": 1000, "price_idr": 299000, "popular": True,
+     "features_id": ["Hingga 500 user aktif", "5 router Mikrotik", "PPPoE + Hotspot", "Billing otomatis + reminder WA", "Multi payment gateway (QRIS/VA)", "Voucher massal + branding", "Support 24/7"],
+     "features_en": ["Up to 500 active users", "5 Mikrotik routers", "PPPoE + Hotspot", "Auto billing + WA reminders", "Multi payment gateway (QRIS/VA)", "Bulk voucher + branding", "24/7 support"]},
+    {"id": "enterprise", "category": "business", "name": "Enterprise", "speed_mbps": 5000, "broadband_mbps": 10000, "price_idr": 999000, "popular": False,
+     "features_id": ["User & router unlimited", "TR-069 / ACS auto-provisioning", "WhatsApp Business Official API", "Dedicated engineer", "Custom integrasi & API", "SLA 99,9% + response <1 jam", "Migrasi data gratis"],
+     "features_en": ["Unlimited users & routers", "TR-069 / ACS auto-provisioning", "Official WhatsApp Business API", "Dedicated engineer", "Custom integrations & API", "99.9% SLA + <1h response", "Free data migration"]},
 ]
 
 DEFAULT_AREAS = ["jakarta", "bandung", "surabaya", "bekasi", "tangerang", "bogor", "depok",
                  "semarang", "yogyakarta", "denpasar", "medan", "makassar",
-                 "cianjur", "demak", "bondowoso"]
+                 "palembang", "pekanbaru", "banjarmasin", "balikpapan", "manado",
+                 "cianjur", "demak", "bondowoso", "malang", "solo"]
 
 
 # ---------------- Startup ----------------
@@ -289,14 +269,13 @@ async def startup_event():
         now = datetime.now(timezone.utc).isoformat()
         await db.packages.insert_many([{**p, "created_at": now, "updated_at": now} for p in DEFAULT_PACKAGES])
 
-    # Idempotent upsert for EDUKASI 100 — sync canonical specs on existing DBs
-    edukasi = next((p for p in DEFAULT_PACKAGES if p["id"] == "edukasi-100"), None)
-    if edukasi is not None:
-        now = datetime.now(timezone.utc).isoformat()
+    # Idempotent upsert — keep canonical spec of DEFAULT_PACKAGES synced on every restart
+    now = datetime.now(timezone.utc).isoformat()
+    for pkg in DEFAULT_PACKAGES:
         await db.packages.update_one(
-            {"id": "edukasi-100"},
+            {"id": pkg["id"]},
             {
-                "$set": {**edukasi, "updated_at": now},
+                "$set": {**pkg, "updated_at": now},
                 "$setOnInsert": {"created_at": now},
             },
             upsert=True,
@@ -345,15 +324,15 @@ async def check_coverage(query: CoverageQuery):
     if available:
         result = CoverageResult(
             location=loc, available=True,
-            message_id=f"Selamat! Area {loc} sudah tercover layanan Kumara Hotspot.",
-            message_en=f"Great! {loc} is already covered by Kumara Hotspot.",
+            message_id=f"Bagus! Radiuslink sudah punya klien/engineer di area {loc}. Kami siap onboarding secepatnya.",
+            message_en=f"Great! Radiuslink already has clients/engineers in {loc}. We can onboard you fast.",
             estimated_install_days=3
         )
     else:
         result = CoverageResult(
             location=loc, available=False,
-            message_id=f"Maaf, area {loc} belum tercover. Tim kami akan menghubungi Anda untuk opsi ekspansi.",
-            message_en=f"Sorry, {loc} is not yet covered. Our team will reach out about expansion options.",
+            message_id=f"Kami belum punya engineer onsite di {loc}, tapi Radiuslink tetap bisa dipakai remote. Tim kami akan follow up.",
+            message_en=f"We don't have on-site engineers in {loc} yet, but Radiuslink still works fully remote. Our team will follow up.",
             estimated_install_days=None
         )
     await db.coverage_checks.insert_one({

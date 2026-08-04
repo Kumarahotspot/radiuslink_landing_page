@@ -1,63 +1,60 @@
-# Kumara Hotspot — ISP Website PRD
+# Radiuslink — RADIUS Billing SaaS PRD
 
 ## Problem Statement
-"saya mau buat website utk isp dengan tampilam yg modern dan profesional"
+"saya mau buat website utk isp dengan tampilan yg modern dan profesional" (originally for Kumara, extended to Radiuslink SaaS product).
 
-User specs:
-- Brand: Kumara Hotspot (under PT. Pusaka Kreasi Mandiri)
-- Tagline: "High Speed Internet Unlimited"
-- Bilingual ID + EN with switcher
-- Logo provided
+User (PT. Pusaka Kreasi Mandiri) needs a marketing site for a NEW product:
+- **Radiuslink** = RADIUS Billing SaaS for Hotspot ISPs (Mikrotik/ChilliSpot/pfSense).
+- Same parent company as Kumara Hotspot but separate product & domain (radiuslink.id).
 
 ## Architecture
-- Frontend: React (CRA) + TailwindCSS + Shadcn UI + sonner toasts. Dark theme with orange (#FF5E00) brand. Outfit (headings) + IBM Plex Sans (body).
-- Backend: FastAPI + Motor (MongoDB). Routes under `/api`.
-- DB: MongoDB collections — `subscriptions`, `contact_messages`, `coverage_checks`.
+- Frontend: React (CRA) + TailwindCSS + Shadcn UI. Dark theme + BLUE accent (HSL 200 100% 50%). Outfit + IBM Plex Sans fonts.
+- Backend: FastAPI + Motor (MongoDB). Routes under `/api`, admin under `/api/admin`.
+- Deployment target: frontend on Hostinger (`radiuslink.id`), backend on VPS Proxmox (`api.radiuslink.id`).
 
-## Core Requirements (Static)
-- Single-page company-profile landing site
-- Sections: Header, Hero, Marquee, Packages, Coverage checker, Features, About, Testimonials, FAQ, Subscribe form, Contact, Footer, Floating WhatsApp
-- Bilingual content (ID/EN) with persisted preference (localStorage `kumara_lang`)
+## Site Structure (public landing)
+Header · PromoBanner · Hero · Marquee · Trust (integrations) · Packages (3 SaaS tiers) · Recommender · Coverage (client cities) · Features (9 cards) · Compare · About · Testimonials · Blog · FAQ · Subscribe · Payment · Contact · Footer
 
-## What's Been Implemented (2025-12)
-- Backend endpoints:
-  - GET /api/packages (4 plans: home-basic, home-pro, business-pro, dedicated-1g)
-  - POST /api/coverage/check (mock against 12 supported Indonesian cities)
-  - POST/GET /api/subscriptions
-  - POST/GET /api/contact
-- Frontend:
-  - Bilingual i18n provider (`/app/frontend/src/i18n.js`)
-  - All sections built and tested (100% backend + frontend per testing_agent_v3 iteration_1)
-  - WhatsApp deep-link CTAs (number is MOCKED placeholder 6281234567890)
-  - Newsletter form is LOCAL ONLY (MOCKED, no backend wiring)
-- Verified flows: language switch persists, packages filter+select, coverage check both branches, subscription POST, FAQ accordion, mobile menu.
+## Default Packages (SaaS tiers, seeded via server.py DEFAULT_PACKAGES)
+- **Starter** — Rp 99.000/mo · 100 users · 1 Mikrotik router · RADIUS+Hotspot · basic voucher · WA support
+- **Pro** — Rp 299.000/mo (Popular) · 500 users · 5 routers · PPPoE+Hotspot · Auto billing · Multi payment gateway · 24/7 support
+- **Enterprise** — Rp 999.000/mo · Unlimited · TR-069/ACS · WA Business Official API · Dedicated engineer · SLA 99.9%
 
-## Mocked / Placeholder Items
-- WhatsApp number `6281234567890` — update with real number when ready
-- Newsletter form has no backend (intentional, frontend-only)
-- Testimonials are static client-side content
-- Coverage check is keyword-based against `SUPPORTED_AREAS` list
+## Key Features Section (9)
+RADIUS Server · Billing Otomatis · Voucher Generator · Multi-Router Mikrotik · Dashboard Real-time · PPPoE+Hotspot · TR-069/ACS Support · Multi Payment Gateway · WA Bisnis Official
 
-## Backlog / Next Action Items
-- P1: Real WhatsApp number, contact info, office address
-- P1: Newsletter backend (e.g., Resend) + admin to view subscriptions
-- P2: Admin dashboard to manage leads (subscriptions / contact messages)
-- P2: Customer portal (billing, paket aktif, invoice)
-- P2: Real speed test integration
-- P2: News/Blog CMS
-- P2: Google Maps integration for coverage area visualization
+## Bilingual (ID/EN)
+- Toggle in header, persisted in `localStorage.radiuslink_lang`
+- All copy in `/app/frontend/src/i18n.js`
 
-## 2026-02 — Static Fallback Build (verifikasi aplikasi)
-- All public landing-page sections now consume STATIC data from `/app/frontend/src/lib/staticData.js` (no API calls):
-  - Packages, Recommender, Subscribe -> `STATIC_PACKAGES` (10 paket: Bronze, Silver, Gold, New Gold 1/2, Platinum 1/2/3, EDUKASI 100, Business)
-  - PromoBanner -> `STATIC_PROMO` (defaults)
-  - Coverage check -> client-side match against `STATIC_COVERED_SLUGS`
-  - Subscribe form: submit sekarang membuka WhatsApp deep-link (tidak hit backend)
-- Build output: `/app/frontend/build/` dan zip: `/app/kumara-hotspot-build.zip` (+ mirror di `/app/frontend/public/downloads/kumara-hotspot-build.zip`)
-- ⚠️ Catatan EDUKASI 100: spec di-hardcode dengan asumsi 100 Mbps / Rp 100.000 / kategori premium / khusus institusi pendidikan. Jika berbeda, beri tahu untuk update.
-- Admin Panel (`/admin`) tetap dinamis lewat backend — perubahan dari admin tidak akan terlihat di landing page sampai data statis dibuka kembali.
+## Static Fallback
+`/app/frontend/src/lib/staticData.js` mirrors seed packages + promo + coverage slugs. All public components try API first, fall back to static on failure/timeout (5s).
 
-## Next Action Items (Post-Verifikasi)
-- P1: Re-enable dynamic fetching di Packages / Recommender / Subscribe / PromoBanner / Coverage setelah backend VPS stabil. Tahapnya: kembalikan `api.get/post` calls + tetap pakai `STATIC_*` sebagai fallback `.catch(() => setX(STATIC_X))`.
-- P1: Pastikan EDUKASI 100 di DB sinkron dengan hardcode (atau update hardcode setelah dapat angka final).
+## 2026-02 — Radiuslink v1 built
+- Full transformation from Kumara codebase → Radiuslink SaaS product
+- Kumara source backed up at `/app/frontend/public/downloads/kumara-source-backup.zip` (for future Kumara maintenance)
+- Frontend build: `radiuslink-frontend.zip` — upload to Hostinger `public_html` of radiuslink.id
+- Backend patch: `radiuslink-backend.zip` — replace `server.py` on VPS + restart `radiuslink-backend` systemd service (or reuse existing kumara-backend service if same VPS is shared)
 
+## Deployment Plan
+### Frontend (Hostinger — radiuslink.id)
+1. Upload `radiuslink-frontend.zip` to `public_html/`
+2. Extract, delete zip
+3. Test: https://radiuslink.id
+
+### Backend (VPS Proxmox — api.radiuslink.id)
+1. Provision NEW MongoDB database name for Radiuslink (do NOT reuse Kumara's DB)
+2. Set env: `MONGO_URL`, `DB_NAME=radiuslink`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `JWT_SECRET`, `CORS_ORIGINS=https://radiuslink.id`
+3. Deploy `server.py` + requirements.txt + venv (mirror Kumara backend setup)
+4. systemd service listening on 127.0.0.1:8001 (or different port if same VPS)
+5. Nginx reverse proxy `api.radiuslink.id` → 127.0.0.1:8001 with SSL
+
+## Backlog / Next
+- P0 (waiting for user): actual pricing & feature list for the 3 tiers if different from placeholder
+- P0 (waiting for user): client ISP logos → replace generic Coverage grid with real logo grid
+- P1: Blog post real content
+- P1: Add TR-069/ACS demo video or screenshots
+- P2: Interactive product demo / sandbox account
+- P2: Customer portal (billing / invoice viewer for Radiuslink users)
+- P2: Google Analytics + Meta Pixel conversion tracking
+- P2: Endpoint `/api/health` + uptime monitor

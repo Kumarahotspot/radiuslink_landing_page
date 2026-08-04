@@ -29,7 +29,7 @@ export default function Hero() {
             <h1 data-testid="hero-title" className="mt-6 text-xl sm:text-2xl lg:text-3xl font-black leading-[1.1] tracking-tight">
               <span className="block">{t.hero.title_1}</span>
               <span className="block">
-                <span className="bg-gradient-to-br from-[#FF8A3D] via-[#FF5E00] to-[#E63946] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-br from-[#38BDF8] via-[#0EA5FF] to-[#2563EB] bg-clip-text text-transparent">
                   {t.hero.title_2}
                 </span>
               </span>

@@ -50,7 +50,7 @@ export default function AdminDashboard() {
       <div className="mb-8">
         <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">Dashboard</div>
         <h1 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">Selamat datang</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Ringkasan aktivitas Kumara Hotspot</p>
+        <p className="mt-1 text-sm text-muted-foreground">Ringkasan aktivitas Radiuslink</p>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

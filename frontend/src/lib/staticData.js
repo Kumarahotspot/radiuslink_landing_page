@@ -1,134 +1,103 @@
-// Static data fallback so the public site works without backend API calls.
-// Source: backend/server.py DEFAULT_PACKAGES + default PromoSettings.
+// Static fallback data. Frontend tries API first, falls back to this on failure.
 
 export const STATIC_PACKAGES = [
   {
-    id: "bronze",
+    id: "starter",
     category: "home",
-    name: "Bronze",
-    speed_mbps: 15,
-    broadband_mbps: 30,
-    price_idr: 150000,
+    name: "Starter",
+    speed_mbps: 100,
+    broadband_mbps: 200,
+    price_idr: 99000,
     popular: false,
-    features_id: ["15 Mbps Dedicated", "30 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Support 24/7"],
-    features_en: ["15 Mbps Dedicated", "30 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "24/7 support"]
+    features_id: [
+      "Hingga 100 user aktif",
+      "1 router Mikrotik",
+      "RADIUS Server + Hotspot",
+      "Voucher generator dasar",
+      "Dashboard real-time",
+      "Support via WhatsApp"
+    ],
+    features_en: [
+      "Up to 100 active users",
+      "1 Mikrotik router",
+      "RADIUS Server + Hotspot",
+      "Basic voucher generator",
+      "Real-time dashboard",
+      "WhatsApp support"
+    ]
   },
   {
-    id: "silver",
-    category: "home",
-    name: "Silver",
-    speed_mbps: 18,
-    broadband_mbps: 36,
-    price_idr: 180000,
-    popular: false,
-    features_id: ["18 Mbps Dedicated", "36 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Support 24/7"],
-    features_en: ["18 Mbps Dedicated", "36 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "24/7 support"]
-  },
-  {
-    id: "gold",
-    category: "home",
-    name: "Gold",
-    speed_mbps: 20,
-    broadband_mbps: 40,
-    price_idr: 200000,
+    id: "pro",
+    category: "premium",
+    name: "Pro",
+    speed_mbps: 500,
+    broadband_mbps: 1000,
+    price_idr: 299000,
     popular: true,
-    features_id: ["20 Mbps Dedicated", "40 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Free WiFi router"],
-    features_en: ["20 Mbps Dedicated", "40 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi router"]
+    features_id: [
+      "Hingga 500 user aktif",
+      "5 router Mikrotik",
+      "PPPoE + Hotspot",
+      "Billing otomatis + reminder WA",
+      "Multi payment gateway (QRIS/VA)",
+      "Voucher massal + branding",
+      "Support 24/7"
+    ],
+    features_en: [
+      "Up to 500 active users",
+      "5 Mikrotik routers",
+      "PPPoE + Hotspot",
+      "Auto billing + WA reminders",
+      "Multi payment gateway (QRIS/VA)",
+      "Bulk voucher + branding",
+      "24/7 support"
+    ]
   },
   {
-    id: "new-gold-1",
-    category: "premium",
-    name: "New Gold 1",
-    speed_mbps: 25,
-    broadband_mbps: 50,
-    price_idr: 250000,
-    popular: false,
-    features_id: ["25 Mbps Dedicated", "50 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Priority support"],
-    features_en: ["25 Mbps Dedicated", "50 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Priority support"]
-  },
-  {
-    id: "new-gold-2",
-    category: "premium",
-    name: "New Gold 2",
-    speed_mbps: 27,
-    broadband_mbps: 54,
-    price_idr: 270000,
-    popular: false,
-    features_id: ["27 Mbps Dedicated", "54 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "Priority support"],
-    features_en: ["27 Mbps Dedicated", "54 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Priority support"]
-  },
-  {
-    id: "platinum-1",
-    category: "premium",
-    name: "Platinum 1",
-    speed_mbps: 30,
-    broadband_mbps: 60,
-    price_idr: 300000,
-    popular: true,
-    features_id: ["30 Mbps Dedicated", "60 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "WiFi 6 router gratis"],
-    features_en: ["30 Mbps Dedicated", "60 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi 6 router"]
-  },
-  {
-    id: "platinum-2",
-    category: "premium",
-    name: "Platinum 2",
-    speed_mbps: 35,
-    broadband_mbps: 70,
-    price_idr: 350000,
-    popular: false,
-    features_id: ["35 Mbps Dedicated", "70 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "WiFi 6 router gratis"],
-    features_en: ["35 Mbps Dedicated", "70 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi 6 router"]
-  },
-  {
-    id: "platinum-3",
-    category: "premium",
-    name: "Platinum 3",
-    speed_mbps: 40,
-    broadband_mbps: 80,
-    price_idr: 400000,
-    popular: false,
-    features_id: ["40 Mbps Dedicated", "80 Mbps Broadband", "Internet Resmi & Berijin", "Unlimited tanpa batas", "WiFi 6 router gratis"],
-    features_en: ["40 Mbps Dedicated", "80 Mbps Broadband", "Licensed & Legal ISP", "Truly unlimited", "Free WiFi 6 router"]
-  },
-  {
-    id: "edukasi-100",
-    category: "premium",
-    name: "EDUKASI 100",
-    speed_mbps: 10,
-    broadband_mbps: 20,
-    price_idr: 100000,
-    popular: true,
-    features_id: ["10 Mbps Dedicated", "20 Mbps Broadband", "Khusus institusi pendidikan", "Unlimited tanpa batas", "Free WiFi router"],
-    features_en: ["10 Mbps Dedicated", "20 Mbps Broadband", "For education institutions", "Truly unlimited", "Free WiFi router"]
-  },
-  {
-    id: "business",
+    id: "enterprise",
     category: "business",
-    name: "Business",
-    speed_mbps: 50,
-    broadband_mbps: 100,
-    price_idr: 500000,
+    name: "Enterprise",
+    speed_mbps: 5000,
+    broadband_mbps: 10000,
+    price_idr: 999000,
     popular: false,
-    features_id: ["50 Mbps Dedicated", "100 Mbps Broadband", "Internet Resmi & Berijin", "Dedicated IP publik", "SLA 99,95% & onsite engineer"],
-    features_en: ["50 Mbps Dedicated", "100 Mbps Broadband", "Licensed & Legal ISP", "Public dedicated IP", "99.95% SLA & onsite engineer"]
+    features_id: [
+      "User & router unlimited",
+      "TR-069 / ACS auto-provisioning",
+      "WhatsApp Business Official API",
+      "Dedicated engineer",
+      "Custom integrasi & API",
+      "SLA 99,9% + response <1 jam",
+      "Migrasi data gratis"
+    ],
+    features_en: [
+      "Unlimited users & routers",
+      "TR-069 / ACS auto-provisioning",
+      "Official WhatsApp Business API",
+      "Dedicated engineer",
+      "Custom integrations & API",
+      "99.9% SLA + <1h response",
+      "Free data migration"
+    ]
   }
 ];
 
 export const STATIC_PROMO = {
   active: true,
-  tag_id: "Promo Spesial",
-  tag_en: "Special Offer",
-  text_id: "Pasang baru hari ini — Gratis biaya instalasi + 1 bulan gratis. Berlaku terbatas!",
-  text_en: "Sign up today — Free installation + 1 month free. Limited time!",
-  cta_id: "Klaim Sekarang",
-  cta_en: "Claim Now",
-  cta_message_id: "Halo Kumara, saya tertarik dengan promo pasang baru gratis 1 bulan.",
-  cta_message_en: "Hello Kumara, I'm interested in the free 1-month installation promo."
+  tag_id: "Promo Peluncuran",
+  tag_en: "Launch Promo",
+  text_id: "Coba GRATIS 14 hari — semua fitur unlocked. Tanpa kartu kredit.",
+  text_en: "Try FREE for 14 days — all features unlocked. No credit card required.",
+  cta_id: "Coba Gratis",
+  cta_en: "Try Free",
+  cta_message_id: "Halo Radiuslink, saya mau coba trial gratis 14 hari untuk platform RADIUS Billing.",
+  cta_message_en: "Hello Radiuslink, I'd like to start the 14-day free trial of the RADIUS Billing platform."
 };
 
-// Slugs of covered cities for client-side coverage check.
+// Cities where our on-site engineers/partners operate
 export const STATIC_COVERED_SLUGS = [
   "jakarta", "bandung", "surabaya", "bekasi", "tangerang", "bogor", "depok",
   "semarang", "yogyakarta", "denpasar", "medan", "makassar",
-  "cianjur", "demak", "bondowoso"
+  "palembang", "pekanbaru", "banjarmasin", "balikpapan", "manado",
+  "cianjur", "demak", "bondowoso", "malang", "solo"
 ];

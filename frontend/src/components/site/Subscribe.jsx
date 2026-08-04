@@ -35,12 +35,12 @@ export default function Subscribe() {
     const pkg = packages.find((p) => p.id === form.package_id);
     const pkgLabel = pkg ? `${pkg.name} (${pkg.speed_mbps} Mbps - ${formatIDR(pkg.price_idr)}/bulan)` : form.package_id;
     const msg = [
-      "Halo Kumara Hotspot, saya ingin berlangganan:",
+      "Halo Radiuslink, saya ingin mendaftar demo & onboarding:",
       `• Nama: ${form.name}`,
       `• HP: ${form.phone}`,
       `• Email: ${form.email}`,
-      `• Kota: ${form.city || "-"}`,
-      `• Alamat: ${form.address}`,
+      `• Kota Operasional: ${form.city || "-"}`,
+      `• ISP / Perusahaan: ${form.address}`,
       `• Paket: ${pkgLabel}`,
       form.notes ? `• Catatan: ${form.notes}` : null,
     ].filter(Boolean).join("\n");

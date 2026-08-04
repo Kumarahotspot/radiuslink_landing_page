@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api/admin`;
-const TOKEN_KEY = "kumara_admin_token";
+const TOKEN_KEY = "radiuslink_admin_token";
 
 export const adminApi = axios.create({
   baseURL: API,

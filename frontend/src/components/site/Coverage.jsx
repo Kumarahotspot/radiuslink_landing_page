@@ -61,15 +61,15 @@ export default function Coverage() {
           ? {
               location: loc,
               available: true,
-              message_id: `Selamat! Area ${loc} sudah tercover layanan Kumara Hotspot.`,
-              message_en: `Great! ${loc} is already covered by Kumara Hotspot.`,
+              message_id: `Bagus! Radiuslink sudah punya klien/engineer di area ${loc}. Kami siap onboarding secepatnya.`,
+              message_en: `Great! Radiuslink already has clients/engineers in ${loc}. We can onboard you fast.`,
               estimated_install_days: 3
             }
           : {
               location: loc,
               available: false,
-              message_id: `Maaf, area ${loc} belum tercover. Tim kami akan menghubungi Anda untuk opsi ekspansi.`,
-              message_en: `Sorry, ${loc} is not yet covered. Our team will reach out about expansion options.`,
+              message_id: `Kami belum punya engineer onsite di ${loc}, tapi Radiuslink tetap bisa dipakai remote. Tim kami akan follow up.`,
+              message_en: `We don't have on-site engineers in ${loc} yet, but Radiuslink still works fully remote. Our team will follow up.`,
               estimated_install_days: null
             }
       );
