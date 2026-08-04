@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import {
   ChevronLeft, ChevronRight,
   LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator, CalendarDays, Radio, LifeBuoy, ShoppingCart
@@ -129,21 +129,49 @@ export default function Slideshow() {
   const { lang, t } = useT();
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null);
 
   const next = useCallback(() => setIdx((i) => (i + 1) % SLIDES.length), []);
   const prev = useCallback(() => setIdx((i) => (i - 1 + SLIDES.length) % SLIDES.length), []);
 
+  // Section-in-viewport observer — only load images when section is nearby
   useEffect(() => {
-    if (paused) return;
+    if (!sectionRef.current || inView) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [inView]);
+
+  useEffect(() => {
+    if (paused || !inView) return;
     const id = setInterval(next, AUTO_INTERVAL_MS);
     return () => clearInterval(id);
-  }, [next, paused]);
+  }, [next, paused, inView]);
+
+  // Compute which slides should have their src set (active + immediate neighbours only)
+  const shouldRenderImg = (i) => {
+    if (!inView) return i === 0; // preload only first slide until section visible
+    const diff = Math.abs(i - idx);
+    const wrapDiff = Math.abs(diff - SLIDES.length);
+    return Math.min(diff, wrapDiff) <= 1;
+  };
 
   const active = SLIDES[idx];
   const ActiveIcon = active.icon;
 
   return (
-    <section id="preview" data-testid="slideshow-section" className="py-24 md:py-32 relative">
+    <section id="preview" ref={sectionRef} data-testid="slideshow-section" className="py-24 md:py-32 relative">
       <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10">
         <div className="text-center max-w-3xl mx-auto">
           <div className="text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
@@ -237,19 +265,24 @@ export default function Slideshow() {
                 </div>
               </div>
 
-              {/* Slides */}
+              {/* Slides — only render src for active + adjacent */}
               <div className="relative aspect-[16/9] overflow-hidden bg-neutral-950 rounded-b-2xl">
-                {SLIDES.map((s, i) => (
-                  <img
-                    key={s.id}
-                    src={s.src}
-                    alt={lang === "id" ? s.title_id : s.title_en}
-                    loading="lazy"
-                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-out ${
-                      i === idx ? "opacity-100" : "opacity-0"
-                    }`}
-                  />
-                ))}
+                {SLIDES.map((s, i) => {
+                  const shouldLoad = shouldRenderImg(i);
+                  return (
+                    <img
+                      key={s.id}
+                      src={shouldLoad ? s.src : undefined}
+                      alt={lang === "id" ? s.title_id : s.title_en}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority={i === idx ? "high" : "low"}
+                      className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-out ${
+                        i === idx ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  );
+                })}
               </div>
 
               {/* Nav arrows — always visible on touch, hover-only on desktop */}
