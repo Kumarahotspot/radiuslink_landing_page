@@ -4,6 +4,7 @@ import Header from "../components/site/Header";
 import Hero from "../components/site/Hero";
 import Marquee from "../components/site/Marquee";
 import Trust from "../components/site/Trust";
+import Slideshow from "../components/site/Slideshow";
 import Packages from "../components/site/Packages";
 import Recommender from "../components/site/Recommender";
 import Clients from "../components/site/Clients";
@@ -29,6 +30,7 @@ export default function LandingPage() {
       <main>
         <Hero />
         <Marquee />
+        <Slideshow />
         <Trust />
         <Packages />
         <Recommender />
