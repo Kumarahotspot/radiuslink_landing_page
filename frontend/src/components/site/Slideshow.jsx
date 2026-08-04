@@ -8,6 +8,7 @@ import { useT } from "../../i18n";
 const SLIDES = [
   {
     id: "login",
+    group: "operasional",
     src: "/screenshots/slide-login.png",
     icon: LogIn,
     title_id: "Portal Login White-label",
@@ -17,6 +18,7 @@ const SLIDES = [
   },
   {
     id: "dashboard",
+    group: "operasional",
     src: "/screenshots/slide-dashboard.png",
     icon: LayoutDashboard,
     title_id: "Dashboard Real-time",
@@ -26,6 +28,7 @@ const SLIDES = [
   },
   {
     id: "pppoe",
+    group: "operasional",
     src: "/screenshots/slide-pppoe.png",
     icon: Users,
     title_id: "Manajemen PPPoE Pelanggan",
@@ -35,6 +38,7 @@ const SLIDES = [
   },
   {
     id: "voucher",
+    group: "operasional",
     src: "/screenshots/slide-voucher.png",
     icon: Ticket,
     title_id: "Voucher Hotspot Manager",
@@ -44,6 +48,7 @@ const SLIDES = [
   },
   {
     id: "payment",
+    group: "keuangan",
     src: "/screenshots/slide-payment.png",
     icon: Wallet,
     title_id: "Online Payment Report",
@@ -53,6 +58,7 @@ const SLIDES = [
   },
   {
     id: "bhpuso",
+    group: "keuangan",
     src: "/screenshots/slide-bhpuso.png",
     icon: FileBarChart,
     title_id: "Laporan BHP & USO",
@@ -62,6 +68,7 @@ const SLIDES = [
   },
   {
     id: "akuntansi",
+    group: "keuangan",
     src: "/screenshots/slide-akuntansi.png",
     icon: Calculator,
     title_id: "Akuntansi Terpadu",
@@ -71,6 +78,7 @@ const SLIDES = [
   },
   {
     id: "laporan",
+    group: "keuangan",
     src: "/screenshots/slide-laporan.png",
     icon: CalendarDays,
     title_id: "Laporan Aktivitas Bulanan",
@@ -78,6 +86,11 @@ const SLIDES = [
     desc_id: "Ringkasan registrasi, telat bayar, berhenti, dan problem tiket per bulan — breakdown per cabang, pemilik, dan paket.",
     desc_en: "Monthly summary of new registrations, late payments, churn, and support tickets — with branch, owner, and plan breakdown."
   }
+];
+
+const GROUPS = [
+  { id: "operasional", label_id: "Operasional", label_en: "Operations" },
+  { id: "keuangan", label_id: "Keuangan", label_en: "Finance" }
 ];
 
 const AUTO_INTERVAL_MS = 6000;
@@ -138,26 +151,39 @@ export default function Slideshow() {
               {lang === "id" ? active.desc_id : active.desc_en}
             </p>
 
-            {/* Slide list nav */}
-            <div className="mt-6 space-y-2">
-              {SLIDES.map((s, i) => {
-                const Icon = s.icon;
+            {/* Slide list nav — grouped */}
+            <div className="mt-6 space-y-5">
+              {GROUPS.map((g) => {
+                const groupSlides = SLIDES.map((s, i) => ({ s, i })).filter(({ s }) => s.group === g.id);
+                if (!groupSlides.length) return null;
                 return (
-                  <button
-                    key={s.id}
-                    data-testid={`slide-nav-${s.id}`}
-                    onClick={() => setIdx(i)}
-                    className={`w-full text-left px-4 py-3 rounded-2xl border transition-all flex items-center gap-3 ${
-                      i === idx
-                        ? "border-primary/40 bg-primary/[0.08]"
-                        : "border-overlay/10 bg-overlay/[0.02] hover:bg-overlay/[0.05]"
-                    }`}
-                  >
-                    <Icon className={`h-4 w-4 ${i === idx ? "text-primary" : "text-muted-foreground"}`} strokeWidth={1.8} />
-                    <span className={`text-sm font-semibold ${i === idx ? "text-foreground" : "text-foreground/70"}`}>
-                      {lang === "id" ? s.title_id : s.title_en}
-                    </span>
-                  </button>
+                  <div key={g.id} data-testid={`slide-group-${g.id}`}>
+                    <div className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground font-bold mb-2 px-1">
+                      {lang === "id" ? g.label_id : g.label_en}
+                    </div>
+                    <div className="space-y-2">
+                      {groupSlides.map(({ s, i }) => {
+                        const Icon = s.icon;
+                        return (
+                          <button
+                            key={s.id}
+                            data-testid={`slide-nav-${s.id}`}
+                            onClick={() => setIdx(i)}
+                            className={`w-full text-left px-4 py-3 rounded-2xl border transition-all flex items-center gap-3 ${
+                              i === idx
+                                ? "border-primary/40 bg-primary/[0.08]"
+                                : "border-overlay/10 bg-overlay/[0.02] hover:bg-overlay/[0.05]"
+                            }`}
+                          >
+                            <Icon className={`h-4 w-4 ${i === idx ? "text-primary" : "text-muted-foreground"}`} strokeWidth={1.8} />
+                            <span className={`text-sm font-semibold ${i === idx ? "text-foreground" : "text-foreground/70"}`}>
+                              {lang === "id" ? s.title_id : s.title_en}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 );
               })}
             </div>
