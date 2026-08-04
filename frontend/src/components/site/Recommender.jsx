@@ -6,10 +6,24 @@ import { useT, formatIDR } from "../../i18n";
 import { Button } from "../ui/button";
 import { Slider } from "../ui/slider";
 
+// Router capacity per tier (matches feature copy in staticData / server.py)
+const ROUTER_CAPACITY = {
+  micro: 5,
+  basic: 12,
+  pro: 24,
+  advanced: 50,
+  ultimate: 125,
+  enterprise: 250,
+  custom: Infinity, // catches every request
+};
+
+// Sort tiers so we always evaluate smallest → largest
+const TIER_ORDER = ["micro", "basic", "pro", "advanced", "ultimate", "enterprise", "custom"];
+
 export default function Recommender() {
   const { t } = useT();
-  const [devices, setDevices] = useState([3]);
-  const [usage, setUsage] = useState(1); // 0..3
+  const [pppoe, setPppoe] = useState([500]);
+  const [routers, setRouters] = useState([10]);
   const [packages, setPackages] = useState(STATIC_PACKAGES);
 
   useEffect(() => {
@@ -23,29 +37,35 @@ export default function Recommender() {
     return () => { mounted = false; };
   }, []);
 
-  // Score each package and pick best fit based on devices + usage intensity
+  // Find smallest tier that fits BOTH pppoe and router demands
   const recommended = useMemo(() => {
     if (!packages.length) return null;
-    const d = devices[0];
-    // target Mbps heuristic: usage tier × 10 + devices × 4
-    const targetMbps = (usage + 1) * 10 + d * 4;
-    let best = null;
-    let bestScore = Infinity;
-    for (const p of packages) {
-      // prefer the smallest plan that meets or exceeds target
-      if (p.speed_mbps >= targetMbps) {
-        const score = p.speed_mbps - targetMbps;
-        if (score < bestScore) {
-          bestScore = score;
-          best = p;
-        }
-      }
+    const needPppoe = pppoe[0];
+    const needRouters = routers[0];
+    const orderedPkgs = TIER_ORDER
+      .map((id) => packages.find((p) => p.id === id))
+      .filter(Boolean);
+    for (const p of orderedPkgs) {
+      const maxPppoe = p.speed_mbps || 0; // speed_mbps holds Max PPPoE
+      const maxRouters = ROUTER_CAPACITY[p.id] ?? 0;
+      const pppoeOk = p.id === "custom" ? true : maxPppoe >= needPppoe;
+      const routerOk = p.id === "custom" ? true : maxRouters >= needRouters;
+      if (pppoeOk && routerOk) return p;
     }
-    return best || packages[packages.length - 1];
-  }, [packages, devices, usage]);
+    return orderedPkgs[orderedPkgs.length - 1] || packages[0];
+  }, [packages, pppoe, routers]);
+
+  const isContact = recommended && (!recommended.price_idr || recommended.price_idr === 0);
+  const contactMsg = recommended
+    ? `Halo Radiuslink, berdasarkan estimasi ${pppoe[0]} pelanggan PPPoE & ${routers[0]} router, saya butuh paket ${recommended.name}. Mohon info lebih lanjut.`
+    : "Halo Radiuslink, saya butuh rekomendasi paket.";
 
   const selectPackage = () => {
     if (!recommended) return;
+    if (isContact) {
+      window.open(whatsappUrl(contactMsg), "_blank", "noopener");
+      return;
+    }
     document.getElementById("subscribe")?.scrollIntoView({ behavior: "smooth" });
     setTimeout(() => {
       const select = document.querySelector('[data-testid="subscribe-package-select"]');
@@ -55,6 +75,12 @@ export default function Recommender() {
       }
     }, 600);
   };
+
+  const routerCapacityLabel = recommended
+    ? ROUTER_CAPACITY[recommended.id] === Infinity
+      ? "∞"
+      : ROUTER_CAPACITY[recommended.id]
+    : "-";
 
   return (
     <section data-testid="recommender-section" className="py-24 md:py-32 relative overflow-hidden">
@@ -69,36 +95,43 @@ export default function Recommender() {
               <div className="mt-8 space-y-7">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <label className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{t.recommender.devices_label}</label>
-                    <span data-testid="recommender-devices-value" className="text-sm font-bold text-primary">{devices[0]}</span>
+                    <label className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{t.recommender.pppoe_label}</label>
+                    <span data-testid="recommender-pppoe-value" className="text-sm font-bold text-primary">
+                      {pppoe[0].toLocaleString("id-ID")}
+                    </span>
                   </div>
                   <Slider
-                    data-testid="recommender-devices-slider"
-                    min={1}
-                    max={15}
-                    step={1}
-                    value={devices}
-                    onValueChange={setDevices}
+                    data-testid="recommender-pppoe-slider"
+                    min={50}
+                    max={15000}
+                    step={50}
+                    value={pppoe}
+                    onValueChange={setPppoe}
                   />
+                  <div className="mt-1 flex justify-between text-[10px] text-muted-foreground">
+                    <span>50</span>
+                    <span>15.000+</span>
+                  </div>
                 </div>
 
                 <div>
-                  <label className="text-xs uppercase tracking-[0.18em] text-muted-foreground block mb-3">{t.recommender.usage_label}</label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {t.recommender.usage_options.map((opt, i) => (
-                      <button
-                        key={i}
-                        data-testid={`recommender-usage-${i}`}
-                        onClick={() => setUsage(i)}
-                        className={`text-left text-sm px-4 py-3 rounded-2xl border transition-all ${
-                          usage === i
-                            ? "border-primary/40 bg-primary/[0.08] text-foreground"
-                            : "border-overlay/10 bg-overlay/[0.02] hover:bg-overlay/[0.05] text-foreground/80"
-                        }`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
+                  <div className="flex items-center justify-between mb-3">
+                    <label className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{t.recommender.router_label}</label>
+                    <span data-testid="recommender-router-value" className="text-sm font-bold text-primary">
+                      {routers[0]}
+                    </span>
+                  </div>
+                  <Slider
+                    data-testid="recommender-router-slider"
+                    min={1}
+                    max={300}
+                    step={1}
+                    value={routers}
+                    onValueChange={setRouters}
+                  />
+                  <div className="mt-1 flex justify-between text-[10px] text-muted-foreground">
+                    <span>1</span>
+                    <span>300+</span>
                   </div>
                 </div>
               </div>
@@ -116,14 +149,32 @@ export default function Recommender() {
                   </div>
                   <div className="mt-4">
                     <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{recommended.category}</div>
-                    <div className="text-xl font-bold mt-1">{recommended.name}</div>
+                    <div className="text-2xl font-bold mt-1">{recommended.name}</div>
                   </div>
-                  <div className="mt-5 flex items-baseline gap-2">
-                    <div data-testid="recommender-mbps" className="text-5xl font-black tracking-tight">{recommended.speed_mbps}</div>
-                    <div className="text-sm text-muted-foreground">Mbps</div>
+
+                  <div className="mt-5 grid grid-cols-2 gap-4">
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{t.recommender.stat_pppoe}</div>
+                      <div className="mt-1 text-2xl font-black tracking-tight">
+                        {recommended.id === "custom" ? "∞" : (recommended.speed_mbps || 0).toLocaleString("id-ID")}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{t.recommender.stat_routers}</div>
+                      <div className="mt-1 text-2xl font-black tracking-tight">{routerCapacityLabel}</div>
+                    </div>
                   </div>
-                  <div className="mt-1 text-2xl font-bold text-primary">{formatIDR(recommended.price_idr)}</div>
-                  <div className="text-xs text-muted-foreground">/ bulan</div>
+
+                  <div className="mt-5 pt-5 border-t border-overlay/5">
+                    {isContact ? (
+                      <div className="text-2xl font-black text-primary">{t.packages.contact_us}</div>
+                    ) : (
+                      <>
+                        <div className="text-3xl font-black text-primary">{formatIDR(recommended.price_idr)}</div>
+                        <div className="text-xs text-muted-foreground">/ bulan</div>
+                      </>
+                    )}
+                  </div>
 
                   <div className="mt-6 flex flex-col gap-2">
                     <Button
@@ -131,11 +182,11 @@ export default function Recommender() {
                       onClick={selectPackage}
                       className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full"
                     >
-                      {t.recommender.cta}
+                      {isContact ? t.packages.cta_contact : t.recommender.cta}
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </Button>
                     <a
-                      href={whatsappUrl(`Halo Radiuslink, saya tertarik paket ${recommended.name} untuk jaringan saya.`)}
+                      href={whatsappUrl(contactMsg)}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-testid="recommender-wa-cta"

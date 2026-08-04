@@ -46,10 +46,11 @@ export const translations = {
     recommender: {
       eyebrow: "Rekomendasi Paket",
       title: "Butuh paket yang mana? 5 detik saja.",
-      desc: "Geser slider sesuai ukuran jaringan Anda — kami sarankan paket paling cocok.",
-      devices_label: "Jumlah user aktif",
-      usage_label: "Tipe layanan",
-      usage_options: ["Hotspot voucher saja", "Hotspot + PPPoE dasar", "Multi-router + Billing", "Enterprise + TR-069"],
+      desc: "Geser slider sesuai skala jaringan Anda — kami sarankan paket paling pas.",
+      pppoe_label: "Jumlah Pelanggan PPPoE",
+      router_label: "Jumlah Router Mikrotik",
+      stat_pppoe: "Kapasitas PPPoE",
+      stat_routers: "Kapasitas Router",
       result_label: "Rekomendasi untuk Anda",
       cta: "Pilih Paket Ini"
     },
@@ -260,10 +261,11 @@ export const translations = {
     recommender: {
       eyebrow: "Plan Recommender",
       title: "Which plan fits? 5 seconds.",
-      desc: "Slide to match your network size — we suggest the best fit.",
-      devices_label: "Active users",
-      usage_label: "Service type",
-      usage_options: ["Hotspot vouchers only", "Hotspot + basic PPPoE", "Multi-router + Billing", "Enterprise + TR-069"],
+      desc: "Slide to match your network scale — we suggest the best fit.",
+      pppoe_label: "PPPoE Customers",
+      router_label: "Mikrotik Routers",
+      stat_pppoe: "PPPoE Capacity",
+      stat_routers: "Router Capacity",
       result_label: "Recommended for you",
       cta: "Pick This Plan"
     },
