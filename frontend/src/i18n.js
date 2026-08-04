@@ -86,14 +86,16 @@ export const translations = {
     packages: {
       eyebrow: "Paket Berlangganan",
       title: "Pilih paket sesuai skala jaringan Anda",
-      desc: "Semua paket sudah termasuk RADIUS server, dashboard real-time, dan support engineer. Upgrade & downgrade fleksibel bulanan.",
+      desc: "Semua paket sudah termasuk RADIUS server, GenieACS, dashboard real-time, dan support 24/7. Upgrade & downgrade fleksibel bulanan.",
       filter_all: "Semua",
-      filter_home: "Starter",
-      filter_premium: "Pro",
+      filter_home: "Individu",
+      filter_premium: "Bisnis",
       filter_business: "Enterprise",
       popular: "Paling Populer",
       per_month: "/ bulan",
-      cta_subscribe: "Berlangganan",
+      contact_us: "Hubungi Kami",
+      cta_subscribe: "Pilih Paket",
+      cta_contact: "Hubungi Kami",
       mbps: "User"
     },
     coverage: {
@@ -293,14 +295,16 @@ export const translations = {
     packages: {
       eyebrow: "Subscription Plans",
       title: "Pick a plan that fits your network scale",
-      desc: "All plans include the RADIUS server, real-time dashboard, and engineer support. Upgrade & downgrade any month.",
+      desc: "All plans include the RADIUS server, GenieACS, real-time dashboard, and 24/7 support. Upgrade & downgrade any month.",
       filter_all: "All",
-      filter_home: "Starter",
-      filter_premium: "Pro",
+      filter_home: "Individual",
+      filter_premium: "Business",
       filter_business: "Enterprise",
       popular: "Most Popular",
       per_month: "/ month",
-      cta_subscribe: "Subscribe",
+      contact_us: "Contact Us",
+      cta_subscribe: "Choose Plan",
+      cta_contact: "Contact Us",
       mbps: "Users"
     },
     coverage: {

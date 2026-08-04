@@ -75,7 +75,11 @@ export default function Packages() {
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {filtered.map((p) => {
-            const features = lang === "id" ? p.features_id : p.features_en;
+            const allFeatures = lang === "id" ? p.features_id : p.features_en;
+            const subtitle = allFeatures[0] || "";
+            const features = allFeatures.slice(1);
+            const isContact = !p.price_idr || p.price_idr === 0;
+            const contactMsg = `Halo Radiuslink, saya tertarik dengan paket ${p.name}. Mohon info detail & penawaran.`;
             return (
               <div
                 key={p.id}
@@ -94,13 +98,18 @@ export default function Packages() {
                 )}
                 <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">{p.category}</div>
                 <h3 className="mt-2 text-xl font-bold">{p.name}</h3>
-                <div className="mt-5 flex items-baseline gap-2">
-                  <div className="text-5xl font-black tracking-tight">{p.speed_mbps}</div>
-                  <div className="text-sm text-muted-foreground">{t.packages.mbps}</div>
-                </div>
-                <div className="mt-3">
-                  <div className="text-2xl font-bold text-primary">{formatIDR(p.price_idr)}</div>
-                  <div className="text-xs text-muted-foreground">{t.packages.per_month}</div>
+                {subtitle && (
+                  <p className="mt-2 text-xs text-muted-foreground leading-relaxed min-h-[36px]">{subtitle}</p>
+                )}
+                <div className="mt-5">
+                  {isContact ? (
+                    <div className="text-3xl font-black tracking-tight text-primary">{t.packages.contact_us}</div>
+                  ) : (
+                    <>
+                      <div className="text-3xl md:text-4xl font-black tracking-tight text-primary">{formatIDR(p.price_idr)}</div>
+                      <div className="text-xs text-muted-foreground mt-1">{t.packages.per_month}</div>
+                    </>
+                  )}
                 </div>
                 <ul className="mt-6 space-y-2.5 flex-1">
                   {features.map((f, i) => (
@@ -111,19 +120,31 @@ export default function Packages() {
                   ))}
                 </ul>
                 <div className="mt-7 flex flex-col gap-2">
-                  <Button
-                    data-testid={`package-subscribe-${p.id}`}
-                    onClick={() => selectPackage(p.id)}
-                    className={`rounded-full ${
-                      p.popular
-                        ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                        : "bg-overlay/[0.06] hover:bg-overlay/[0.12] text-foreground border border-overlay/10"
-                    }`}
-                  >
-                    {t.packages.cta_subscribe}
-                  </Button>
+                  {isContact ? (
+                    <a
+                      href={whatsappUrl(contactMsg)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-testid={`package-contact-${p.id}`}
+                      className="w-full inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary/90 h-10 text-sm font-semibold"
+                    >
+                      {t.packages.cta_contact}
+                    </a>
+                  ) : (
+                    <Button
+                      data-testid={`package-subscribe-${p.id}`}
+                      onClick={() => selectPackage(p.id)}
+                      className={`rounded-full ${
+                        p.popular
+                          ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                          : "bg-overlay/[0.06] hover:bg-overlay/[0.12] text-foreground border border-overlay/10"
+                      }`}
+                    >
+                      {t.packages.cta_subscribe}
+                    </Button>
+                  )}
                   <a
-                    href={whatsappUrl(`Halo Radiuslink, saya tertarik paket ${p.name} — mohon info demo & onboarding.`)}
+                    href={whatsappUrl(contactMsg)}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid={`package-whatsapp-${p.id}`}
