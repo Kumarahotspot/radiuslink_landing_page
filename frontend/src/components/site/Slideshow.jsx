@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import {
   ChevronLeft, ChevronRight,
-  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator, CalendarDays
+  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator, CalendarDays, Radio
 } from "lucide-react";
 import { useT } from "../../i18n";
 
@@ -35,6 +35,16 @@ const SLIDES = [
     title_en: "PPPoE Customer Management",
     desc_id: "Kelola ribuan pelanggan PPPoE — status koneksi live, jatuh tempo, ONT/ACS, dan router semua terpantau.",
     desc_en: "Manage thousands of PPPoE customers — live connection status, due dates, ONT/ACS, and router — all in view."
+  },
+  {
+    id: "acs",
+    group: "operasional",
+    src: "/screenshots/slide-acs.png",
+    icon: Radio,
+    title_id: "ACS Monitoring (GenieACS TR-069)",
+    title_en: "ACS Monitoring (GenieACS TR-069)",
+    desc_id: "Pantau ribuan ONT via TR-069/GenieACS — Optical RX, merk perangkat, top ONT model, dan status per pelanggan real-time.",
+    desc_en: "Monitor thousands of ONTs via TR-069/GenieACS — Optical RX, device brand, top ONT model, and per-customer status in real time."
   },
   {
     id: "voucher",
