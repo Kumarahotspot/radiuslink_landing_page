@@ -106,18 +106,23 @@ export const translations = {
       install_label: "Estimasi onboarding"
     },
     features: {
-      eyebrow: "Fitur Unggulan",
-      title: "Semua yang Anda butuhkan, dalam satu platform.",
+      eyebrow: "Mengapa Radiuslink",
+      title_prefix: "Mengapa Memilih",
+      title_brand: "Radiuslink",
+      desc: "Rasakan perbedaannya dengan fitur yang dirancang untuk meningkatkan layanan internet Anda.",
       list: [
-        { title: "RADIUS Server", desc: "Full RADIUS AAA — Authentication, Authorization, Accounting. Skalabel hingga puluhan ribu user." },
-        { title: "Billing Otomatis", desc: "Invoice otomatis, reminder WhatsApp, dan isolir otomatis kalau lewat jatuh tempo." },
-        { title: "Voucher Generator", desc: "Generate voucher hotspot massal dalam PDF/CSV — siap dicetak & dijual." },
-        { title: "Multi-Router Mikrotik", desc: "Kelola unlimited router Mikrotik dari satu dashboard, sinkron real-time via API." },
-        { title: "Dashboard Real-time", desc: "Monitoring bandwidth, user aktif, dan pendapatan langsung dari browser Anda." },
-        { title: "PPPoE + Hotspot", desc: "Layani dua model bisnis — PPPoE fiber home & voucher hotspot — dalam satu sistem." },
-        { title: "TR-069 / ACS Support", desc: "Auto-provisioning ONT dan CPE via TR-069. Reset & update firmware remote." },
-        { title: "Multi Payment Gateway", desc: "QRIS, Virtual Account bank, e-wallet (OVO/DANA/GoPay), dan gerai retail — lengkap." },
-        { title: "WA Bisnis Official", desc: "Kirim invoice, reminder, dan notifikasi via WhatsApp Business API resmi." }
+        { title: "Platform Unggulan", desc: "Platform manajemen komprehensif yang dirancang khusus untuk ISP modern." },
+        { title: "Pembatasan RADIUS", desc: "Kontrol pembatasan waktu sesi dan volume data tingkat lanjut." },
+        { title: "Integrasi GenieACS", desc: "Integrasi mulus dengan GenieACS untuk manajemen perangkat jarak jauh." },
+        { title: "Multi Koneksi / Hybrid", desc: "Koneksi dapat menggunakan API Mikrotik, RADIUS, atau kombinasi RADIUS & API." },
+        { title: "Kecepatan Sesuai Permintaan", desc: "Izinkan pelanggan meningkatkan kecepatan koneksi mereka secara sementara (speed boost)." },
+        { title: "Pemetaan Jaringan", desc: "Representasi visual cakupan jaringan dan lokasi klien Anda dalam satu peta." },
+        { title: "Faktur Otomatis", desc: "Buat dan kirim faktur secara otomatis ke pelanggan via email & WhatsApp." },
+        { title: "Gerbang Pembayaran", desc: "Dukungan terintegrasi untuk berbagai gerbang & metode pembayaran (QRIS, VA, e-wallet)." },
+        { title: "Aplikasi White Label", desc: "Aplikasi seluler bermerek khusus untuk pelanggan ISP Anda — bukan brand kami." },
+        { title: "Dukungan Multi-Wilayah", desc: "Kelola beberapa cabang atau wilayah operasional dari satu dasbor terpusat." },
+        { title: "Transparansi", desc: "Transparansi penuh dalam log, data penggunaan, dan aktivitas sistem — audit-ready." },
+        { title: "Migrasi Mudah", desc: "Alat migrasi untuk pindah dari platform billing lain dengan aman & minim downtime." }
       ]
     },
     testimonials: {
@@ -302,18 +307,23 @@ export const translations = {
       install_label: "Onboarding estimate"
     },
     features: {
-      eyebrow: "Key Features",
-      title: "Everything you need in one platform.",
+      eyebrow: "Why Radiuslink",
+      title_prefix: "Why Choose",
+      title_brand: "Radiuslink",
+      desc: "Feel the difference with features designed to elevate your internet service.",
       list: [
-        { title: "RADIUS Server", desc: "Full AAA — Authentication, Authorization, Accounting. Scales to tens of thousands of users." },
-        { title: "Auto Billing", desc: "Automated invoices, WhatsApp reminders, and auto-isolation on overdue." },
-        { title: "Voucher Generator", desc: "Bulk hotspot vouchers exported to PDF/CSV — ready to print & sell." },
-        { title: "Multi-Router Mikrotik", desc: "Manage unlimited Mikrotik routers from a single dashboard, real-time via API." },
-        { title: "Real-time Dashboard", desc: "Bandwidth, active users, and revenue monitoring — all in your browser." },
-        { title: "PPPoE + Hotspot", desc: "Run two business models — PPPoE fiber home & voucher hotspot — in one system." },
-        { title: "TR-069 / ACS Support", desc: "Auto-provision ONTs and CPEs via TR-069. Remote reset & firmware update." },
-        { title: "Multi Payment Gateway", desc: "QRIS, bank Virtual Accounts, e-wallets (OVO/DANA/GoPay), and retail outlets." },
-        { title: "Official WA Business", desc: "Send invoices, reminders, and notifications via official WhatsApp Business API." }
+        { title: "Premier Platform", desc: "A comprehensive management platform designed specifically for modern ISPs." },
+        { title: "RADIUS Rate Limiting", desc: "Advanced session-time and data-volume rate limiting control." },
+        { title: "GenieACS Integration", desc: "Seamless integration with GenieACS for remote device management." },
+        { title: "Multi Connection / Hybrid", desc: "Connect via Mikrotik API, RADIUS, or a combination of RADIUS & API." },
+        { title: "Speed on Demand", desc: "Let customers temporarily boost their connection speed on demand." },
+        { title: "Network Mapping", desc: "Visual representation of your network coverage and client locations on one map." },
+        { title: "Automatic Invoicing", desc: "Create and send invoices automatically to customers via email & WhatsApp." },
+        { title: "Payment Gateway", desc: "Integrated support for various payment gateways & methods (QRIS, VA, e-wallet)." },
+        { title: "White Label App", desc: "Branded mobile app just for your ISP customers — not our brand." },
+        { title: "Multi-Region Support", desc: "Manage multiple branches or operational regions from a single dashboard." },
+        { title: "Transparency", desc: "Full transparency in logs, usage data, and system activity — audit-ready." },
+        { title: "Easy Migration", desc: "Migration tools to move from other billing platforms safely with minimum downtime." }
       ]
     },
     testimonials: { eyebrow: "User Stories", title: "Trusted by operators from cities to remote villages." },
