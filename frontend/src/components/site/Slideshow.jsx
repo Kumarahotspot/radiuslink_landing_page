@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import {
   ChevronLeft, ChevronRight,
-  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator, CalendarDays, Radio, LifeBuoy
+  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator, CalendarDays, Radio, LifeBuoy, ShoppingCart
 } from "lucide-react";
 import { useT } from "../../i18n";
 
@@ -65,6 +65,16 @@ const SLIDES = [
     title_en: "Ticket & Problem Management",
     desc_id: "Kelola tiket pemasangan & gangguan — status Open/In Progress/Completed, prioritas urgent, assign teknisi, filter per cabang.",
     desc_en: "Manage installation & incident tickets — Open/In Progress/Completed statuses, urgent priorities, technician assignment, and branch filters."
+  },
+  {
+    id: "voucher-online",
+    group: "keuangan",
+    src: "/screenshots/slide-voucher-online.png",
+    icon: ShoppingCart,
+    title_id: "Pembelian Voucher Online",
+    title_en: "Online Voucher Purchase",
+    desc_id: "Portal self-service pelanggan — pilih cabang, pilih paket voucher, bayar via QRIS/e-wallet. Voucher otomatis dikirim ke WhatsApp.",
+    desc_en: "Customer self-service portal — pick branch, choose voucher plan, pay via QRIS/e-wallet. Voucher auto-delivered to WhatsApp."
   },
   {
     id: "payment",
