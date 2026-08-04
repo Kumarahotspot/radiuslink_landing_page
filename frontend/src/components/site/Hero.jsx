@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Zap, ShieldCheck, Headphones, MapPin } from "lucide-react";
+import { ArrowRight, Zap, ShieldCheck, Headphones, MapPin, BadgeCheck } from "lucide-react";
 import { useT } from "../../i18n";
 import { Button } from "../ui/button";
 
@@ -38,6 +38,17 @@ export default function Hero() {
             <p data-testid="hero-desc" className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
               {t.hero.desc}
             </p>
+
+            {/* Compliance badge — killer differentiator for Indonesian market */}
+            <div
+              data-testid="hero-compliance-badge"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
+            >
+              <BadgeCheck className="h-4 w-4 flex-shrink-0" strokeWidth={2.2} />
+              <span className="text-xs md:text-sm font-semibold tracking-tight">
+                {t.hero.compliance_badge}
+              </span>
+            </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button

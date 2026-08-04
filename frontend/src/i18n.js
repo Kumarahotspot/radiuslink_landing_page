@@ -16,6 +16,7 @@ export const translations = {
     },
     hero: {
       eyebrow: "Radiuslink · RADIUS Billing untuk Hotspot ISP",
+      compliance_badge: "Auto Hitung BHP & USO · Sesuai regulasi Komdigi",
       title_1: "RADIUS Billing",
       title_2: "untuk Hotspot ISP",
       title_3: "seluruh Indonesia.",
@@ -231,6 +232,7 @@ export const translations = {
     },
     hero: {
       eyebrow: "Radiuslink · RADIUS Billing for Hotspot ISPs",
+      compliance_badge: "Auto BHP & USO Reporting · Komdigi-compliant",
       title_1: "RADIUS Billing",
       title_2: "for Hotspot ISPs,",
       title_3: "made in Indonesia.",
