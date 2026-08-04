@@ -6,7 +6,7 @@ import Marquee from "../components/site/Marquee";
 import Trust from "../components/site/Trust";
 import Packages from "../components/site/Packages";
 import Recommender from "../components/site/Recommender";
-import Coverage from "../components/site/Coverage";
+import Clients from "../components/site/Clients";
 import Payment from "../components/site/Payment";
 import Features from "../components/site/Features";
 import Comparison from "../components/site/Comparison";
@@ -32,7 +32,7 @@ export default function LandingPage() {
         <Trust />
         <Packages />
         <Recommender />
-        <Coverage />
+        <Clients />
         <Features />
         <Comparison />
         <About />

@@ -101,3 +101,60 @@ export const STATIC_COVERED_SLUGS = [
   "palembang", "pekanbaru", "banjarmasin", "balikpapan", "manado",
   "cianjur", "demak", "bondowoso", "malang", "solo"
 ];
+
+
+// Featured ISP clients (public landing showcase)
+export const STATIC_CLIENTS = [
+  {
+    id: "jkb-telematika",
+    name: "JKB Telematika Indonesia",
+    logo: null, // placeholder — user will upload real logo later
+    accent: "#EA580C", // orange
+    online: true,
+    pppoe: 2000,
+    hotspot: 2500
+  },
+  {
+    id: "kumara-hotspot",
+    name: "Kumara Hotspot",
+    logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/0ag0tbhr_LOGO%20KUMARA%20TEXT%20PUTIH.png",
+    accent: "#FF5E00",
+    online: true,
+    pppoe: 5200,
+    hotspot: 6000
+  },
+  {
+    id: "borneo-network",
+    name: "Borneo Network",
+    logo: null,
+    accent: "#059669", // emerald
+    online: true,
+    pppoe: 3500,
+    hotspot: 2100
+  },
+  {
+    id: "java-internet",
+    name: "Java Internet",
+    logo: null,
+    accent: "#7C3AED", // violet
+    online: true,
+    pppoe: 1800,
+    hotspot: 1500
+  }
+];
+
+// Logos shown in the "Integrated with the best" strip
+export const STATIC_INTEGRATIONS = [
+  {
+    id: "jkb-telematika",
+    name: "JKB Telematika Indonesia",
+    logo: null,
+    accent: "#EA580C"
+  },
+  {
+    id: "kumara-hotspot",
+    name: "Kumara Hotspot",
+    logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/0ag0tbhr_LOGO%20KUMARA%20TEXT%20PUTIH.png",
+    accent: "#FF5E00"
+  }
+];
