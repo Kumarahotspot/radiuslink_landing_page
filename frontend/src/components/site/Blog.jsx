@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useT } from "../../i18n";
 
 const IMAGES = [
-  "https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=700&h=420",
-  "https://images.pexels.com/photos/8721318/pexels-photo-8721318.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=700&h=420",
-  "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=700&h=420"
+  "https://images.pexels.com/photos/2881224/pexels-photo-2881224.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=700&h=420",
+  "https://images.pexels.com/photos/6693661/pexels-photo-6693661.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=700&h=420",
+  "https://images.pexels.com/photos/17194840/pexels-photo-17194840.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=700&h=420"
 ];
 
 export default function Blog() {
