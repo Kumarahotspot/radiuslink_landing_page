@@ -6,18 +6,21 @@ import { STATIC_CLIENTS, STATIC_INTEGRATIONS } from "../../lib/staticData";
 const formatCount = (n) => new Intl.NumberFormat("id-ID").format(n);
 
 function ClientLogo({ client, size = "md" }) {
-  const cls = size === "lg" ? "h-14" : "h-12";
+  const boxH = size === "lg" ? "h-16" : "h-14";
+  const imgH = size === "lg" ? "max-h-12" : "max-h-10";
   if (client.logo) {
     return (
-      <img
-        src={client.logo}
-        alt={client.name}
-        className={`${cls} w-auto max-w-[180px] object-contain`}
-        loading="lazy"
-      />
+      <div className={`${boxH} w-full rounded-2xl bg-white/90 grid place-items-center px-3 py-2 ring-1 ring-overlay/10`}>
+        <img
+          src={client.logo}
+          alt={client.name}
+          className={`${imgH} max-w-full object-contain`}
+          loading="lazy"
+        />
+      </div>
     );
   }
-  // Fallback: colored badge with initials + globe icon
+  // Fallback: colored badge with globe icon + initials
   const initials = client.name
     .split(" ")
     .slice(0, 2)
@@ -25,18 +28,12 @@ function ClientLogo({ client, size = "md" }) {
     .join("")
     .toUpperCase();
   return (
-    <div className="flex items-center gap-3">
-      <div
-        className="h-12 w-12 rounded-2xl grid place-items-center text-white"
-        style={{ backgroundColor: `${client.accent}22`, color: client.accent }}
-      >
-        <Globe className="h-6 w-6" strokeWidth={1.8} />
-      </div>
-      <div
-        className="text-xs uppercase tracking-[0.22em] font-bold"
-        style={{ color: client.accent }}
-      >
-        {initials}
+    <div className={`${boxH} w-full rounded-2xl grid place-items-center px-3 py-2`} style={{ backgroundColor: `${client.accent}18` }}>
+      <div className="flex items-center gap-3">
+        <Globe className="h-6 w-6" style={{ color: client.accent }} strokeWidth={1.8} />
+        <div className="text-xs uppercase tracking-[0.22em] font-bold" style={{ color: client.accent }}>
+          {initials}
+        </div>
       </div>
     </div>
   );
@@ -118,19 +115,19 @@ export default function Clients() {
               <div
                 key={i.id}
                 data-testid={`integration-logo-${i.id}`}
-                className="rounded-2xl border border-overlay/10 bg-card/40 px-8 py-6 min-w-[220px] flex items-center justify-center hover:border-primary/30 hover:bg-card/60 transition-all"
+                className="rounded-2xl border border-overlay/10 bg-white/90 px-6 py-4 min-w-[200px] h-20 flex items-center justify-center hover:ring-2 hover:ring-primary/30 transition-all"
               >
                 {i.logo ? (
                   <img
                     src={i.logo}
                     alt={i.name}
-                    className="h-10 w-auto max-w-[180px] object-contain"
+                    className="max-h-12 max-w-full object-contain"
                     loading="lazy"
                   />
                 ) : (
                   <div className="flex items-center gap-3">
                     <Globe className="h-8 w-8" style={{ color: i.accent }} strokeWidth={1.6} />
-                    <span className="text-sm font-bold">{i.name}</span>
+                    <span className="text-sm font-bold text-neutral-800">{i.name}</span>
                   </div>
                 )}
               </div>

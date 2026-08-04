@@ -108,8 +108,8 @@ export const STATIC_CLIENTS = [
   {
     id: "jkb-telematika",
     name: "JKB Telematika Indonesia",
-    logo: null, // placeholder — user will upload real logo later
-    accent: "#EA580C", // orange
+    logo: "/logos/client-jkb.png",
+    accent: "#EA580C",
     online: true,
     pppoe: 2000,
     hotspot: 2500
@@ -117,26 +117,26 @@ export const STATIC_CLIENTS = [
   {
     id: "kumara-hotspot",
     name: "Kumara Hotspot",
-    logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/0ag0tbhr_LOGO%20KUMARA%20TEXT%20PUTIH.png",
+    logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/jxj1q6vc_LOGO_KUMARA_TEXT_HITAM__1_-removebg-preview%20%282%29.png",
     accent: "#FF5E00",
     online: true,
     pppoe: 5200,
     hotspot: 6000
   },
   {
-    id: "borneo-network",
-    name: "Borneo Network",
-    logo: null,
-    accent: "#059669", // emerald
+    id: "lintas-data-kita",
+    name: "PT. Lintas Data Kita",
+    logo: "/logos/client-lintasdata.webp",
+    accent: "#2563EB",
     online: true,
     pppoe: 3500,
     hotspot: 2100
   },
   {
-    id: "java-internet",
-    name: "Java Internet",
-    logo: null,
-    accent: "#7C3AED", // violet
+    id: "csgarnet",
+    name: "CSGARNET",
+    logo: "/logos/client-csgarnet.jpeg",
+    accent: "#7C3AED",
     online: true,
     pppoe: 1800,
     hotspot: 1500
@@ -148,13 +148,25 @@ export const STATIC_INTEGRATIONS = [
   {
     id: "jkb-telematika",
     name: "JKB Telematika Indonesia",
-    logo: null,
+    logo: "/logos/client-jkb.png",
     accent: "#EA580C"
   },
   {
     id: "kumara-hotspot",
     name: "Kumara Hotspot",
-    logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/0ag0tbhr_LOGO%20KUMARA%20TEXT%20PUTIH.png",
+    logo: "https://customer-assets.emergentagent.com/job_network-manager-19/artifacts/jxj1q6vc_LOGO_KUMARA_TEXT_HITAM__1_-removebg-preview%20%282%29.png",
     accent: "#FF5E00"
+  },
+  {
+    id: "lintas-data-kita",
+    name: "PT. Lintas Data Kita",
+    logo: "/logos/client-lintasdata.webp",
+    accent: "#2563EB"
+  },
+  {
+    id: "csgarnet",
+    name: "CSGARNET",
+    logo: "/logos/client-csgarnet.jpeg",
+    accent: "#7C3AED"
   }
 ];
