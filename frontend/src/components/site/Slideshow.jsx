@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, LayoutDashboard, LogIn, Ticket } from "lucide-react";
+import {
+  ChevronLeft, ChevronRight,
+  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator
+} from "lucide-react";
 import { useT } from "../../i18n";
 
 const SLIDES = [
@@ -22,6 +25,15 @@ const SLIDES = [
     desc_en: "Track daily revenue, online users, router status, and yearly trends on a single screen."
   },
   {
+    id: "pppoe",
+    src: "/screenshots/slide-pppoe.png",
+    icon: Users,
+    title_id: "Manajemen PPPoE Pelanggan",
+    title_en: "PPPoE Customer Management",
+    desc_id: "Kelola ribuan pelanggan PPPoE — status koneksi live, jatuh tempo, ONT/ACS, dan router semua terpantau.",
+    desc_en: "Manage thousands of PPPoE customers — live connection status, due dates, ONT/ACS, and router — all in view."
+  },
+  {
     id: "voucher",
     src: "/screenshots/slide-voucher.png",
     icon: Ticket,
@@ -29,6 +41,33 @@ const SLIDES = [
     title_en: "Hotspot Voucher Manager",
     desc_id: "Generate & pantau stok voucher per paket. Notifikasi otomatis saat stok menipis.",
     desc_en: "Generate & monitor voucher stock per plan. Auto-alerts on low stock."
+  },
+  {
+    id: "payment",
+    src: "/screenshots/slide-payment.png",
+    icon: Wallet,
+    title_id: "Online Payment Report",
+    title_en: "Online Payment Report",
+    desc_id: "Rekap transaksi QRIS, VA, e-wallet, & kartu kredit — auto-sync dari payment gateway setiap hari.",
+    desc_en: "QRIS, VA, e-wallet, and credit card transaction recap — auto-synced from your payment gateway daily."
+  },
+  {
+    id: "bhpuso",
+    src: "/screenshots/slide-bhpuso.png",
+    icon: FileBarChart,
+    title_id: "Laporan BHP & USO",
+    title_en: "BHP & USO Report",
+    desc_id: "Otomatis hitung Biaya Hak Penyelenggara (0,5%) & USO (1,25%) per cabang — siap dilampirkan ke Komdigi.",
+    desc_en: "Auto-calculate BHP (0.5%) & USO (1.25%) per branch — ready to submit to Indonesian regulator."
+  },
+  {
+    id: "akuntansi",
+    src: "/screenshots/slide-akuntansi.png",
+    icon: Calculator,
+    title_id: "Akuntansi Terpadu",
+    title_en: "Integrated Accounting",
+    desc_id: "Laba Rugi, Neraca, Buku Besar, Jurnal, Arus Kas — pembukuan lengkap tanpa aplikasi accounting terpisah.",
+    desc_en: "P&L, Balance Sheet, Ledger, Journal, Cash Flow — full bookkeeping without a separate accounting app."
   }
 ];
 
