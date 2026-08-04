@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import {
   ChevronLeft, ChevronRight,
-  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator
+  LayoutDashboard, LogIn, Ticket, Users, Wallet, FileBarChart, Calculator, CalendarDays
 } from "lucide-react";
 import { useT } from "../../i18n";
 
@@ -68,6 +68,15 @@ const SLIDES = [
     title_en: "Integrated Accounting",
     desc_id: "Laba Rugi, Neraca, Buku Besar, Jurnal, Arus Kas — pembukuan lengkap tanpa aplikasi accounting terpisah.",
     desc_en: "P&L, Balance Sheet, Ledger, Journal, Cash Flow — full bookkeeping without a separate accounting app."
+  },
+  {
+    id: "laporan",
+    src: "/screenshots/slide-laporan.png",
+    icon: CalendarDays,
+    title_id: "Laporan Aktivitas Bulanan",
+    title_en: "Monthly Activity Report",
+    desc_id: "Ringkasan registrasi, telat bayar, berhenti, dan problem tiket per bulan — breakdown per cabang, pemilik, dan paket.",
+    desc_en: "Monthly summary of new registrations, late payments, churn, and support tickets — with branch, owner, and plan breakdown."
   }
 ];
 
