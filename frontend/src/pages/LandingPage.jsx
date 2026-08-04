@@ -7,6 +7,7 @@ import Trust from "../components/site/Trust";
 import Slideshow from "../components/site/Slideshow";
 import Packages from "../components/site/Packages";
 import Recommender from "../components/site/Recommender";
+import ROIComparison from "../components/site/ROIComparison";
 import Clients from "../components/site/Clients";
 import Payment from "../components/site/Payment";
 import Features from "../components/site/Features";
@@ -33,6 +34,7 @@ export default function LandingPage() {
         <Slideshow />
         <Trust />
         <Packages />
+        <ROIComparison />
         <Recommender />
         <Clients />
         <Features />
