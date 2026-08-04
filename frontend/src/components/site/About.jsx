@@ -1,13 +1,5 @@
 import React from "react";
 import { useT } from "../../i18n";
-import CountUp from "./CountUp";
-
-const STAT_DATA = [
-  { end: 8500, suffix: "+", labelKey: 0 },
-  { end: 15, suffix: "+", labelKey: 1 },
-  { end: 2400, suffix: " km", labelKey: 2 },
-  { end: 9, suffix: " thn", labelKey: 3 }
-];
 
 export default function About() {
   const { t } = useT();
@@ -20,18 +12,18 @@ export default function About() {
             <div className="rounded-3xl overflow-hidden border border-overlay/10">
               <img
                 src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=srgb&fm=jpg&w=900&q=85"
-                alt="Modern server room"
+                alt="Modern data center"
                 className="w-full h-[420px] object-cover"
               />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-3">
               <div className="rounded-2xl border border-overlay/10 bg-card/40 p-5">
-                <div className="text-2xl font-black text-primary">2.400 km</div>
-                <div className="text-xs text-muted-foreground mt-1">Backbone fiber</div>
+                <div className="text-2xl font-black text-primary">{t.about.stats[0].value}</div>
+                <div className="text-xs text-muted-foreground mt-1">{t.about.stats[0].label}</div>
               </div>
               <div className="rounded-2xl border border-overlay/10 bg-card/40 p-5">
-                <div className="text-2xl font-black text-primary">12+</div>
-                <div className="text-xs text-muted-foreground mt-1">{t.about.stats[1].label}</div>
+                <div className="text-2xl font-black text-primary">{t.about.stats[3].value}</div>
+                <div className="text-xs text-muted-foreground mt-1">{t.about.stats[3].label}</div>
               </div>
             </div>
           </div>
@@ -49,8 +41,8 @@ export default function About() {
                   data-testid={`about-stat-${i}`}
                   className="rounded-2xl border border-overlay/10 bg-gradient-to-b from-overlay/[0.03] to-transparent p-5"
                 >
-                  <div className="text-3xl md:text-4xl font-black tracking-tight">
-                    <CountUp end={STAT_DATA[i].end} suffix={STAT_DATA[i].suffix} />
+                  <div className="text-3xl md:text-4xl font-black tracking-tight text-primary">
+                    {s.value}
                   </div>
                   <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">{s.label}</div>
                 </div>

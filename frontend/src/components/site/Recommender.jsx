@@ -171,7 +171,7 @@ export default function Recommender() {
                     ) : (
                       <>
                         <div className="text-3xl font-black text-primary">{formatIDR(recommended.price_idr)}</div>
-                        <div className="text-xs text-muted-foreground">/ bulan</div>
+                        <div className="text-xs text-muted-foreground">{t.packages.per_month}</div>
                       </>
                     )}
                   </div>
@@ -192,7 +192,7 @@ export default function Recommender() {
                       data-testid="recommender-wa-cta"
                       className="text-center text-xs text-muted-foreground hover:text-foreground transition-colors"
                     >
-                      atau chat via WhatsApp →
+                      {t.recommender.or_whatsapp}
                     </a>
                   </div>
                 </div>

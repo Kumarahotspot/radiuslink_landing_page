@@ -26,7 +26,13 @@ export const translations = {
       stat_speed: "10.000+ User",
       stat_uptime: "99,9% Uptime",
       stat_support: "Support 24/7",
-      stat_cities: "50+ ISP Klien"
+      stat_cities: "50+ ISP Klien",
+      visual_label: "User Terkelola",
+      visual_number: "10K+",
+      visual_caption: "Pelanggan Aktif",
+      visual_live: "Live · 99,9% uptime",
+      visual_badge_1: "Router",
+      visual_badge_2: "ISP Klien"
     },
     marquee: ["RADIUS Server", "Billing Otomatis", "Voucher Generator", "Multi-Router Mikrotik", "PPPoE + Hotspot", "TR069/ACS", "Payment Gateway", "WA Bisnis Official"],
     promo: {
@@ -53,7 +59,8 @@ export const translations = {
       stat_pppoe: "Kapasitas PPPoE",
       stat_routers: "Kapasitas Router",
       result_label: "Rekomendasi untuk Anda",
-      cta: "Pilih Paket Ini"
+      cta: "Pilih Paket Ini",
+      or_whatsapp: "atau chat via WhatsApp →"
     },
     compare: {
       eyebrow: "Bandingkan",
@@ -189,6 +196,8 @@ export const translations = {
       submitting: "Mengirim...",
       success_title: "Pendaftaran terkirim!",
       success_desc: "Tim Radiuslink akan menghubungi Anda segera untuk demo.",
+      fallback_title: "Terkirim via WhatsApp",
+      fallback_desc: "Server sedang sibuk — data pendaftaran Anda dikirim langsung via WhatsApp. Tim kami akan segera merespon.",
       error: "Gagal mengirim. Coba lagi.",
       select_placeholder: "— Pilih paket —"
     },
@@ -242,7 +251,13 @@ export const translations = {
       stat_speed: "10,000+ Users",
       stat_uptime: "99.9% Uptime",
       stat_support: "24/7 Support",
-      stat_cities: "50+ ISP Clients"
+      stat_cities: "50+ ISP Clients",
+      visual_label: "Users Managed",
+      visual_number: "10K+",
+      visual_caption: "Active Users",
+      visual_live: "Live · 99.9% uptime",
+      visual_badge_1: "Routers",
+      visual_badge_2: "ISP Clients"
     },
     marquee: ["RADIUS Server", "Auto Billing", "Voucher Generator", "Multi-Router Mikrotik", "PPPoE + Hotspot", "TR069/ACS", "Payment Gateway", "Official WA Business"],
     promo: {
@@ -269,7 +284,8 @@ export const translations = {
       stat_pppoe: "PPPoE Capacity",
       stat_routers: "Router Capacity",
       result_label: "Recommended for you",
-      cta: "Pick This Plan"
+      cta: "Pick This Plan",
+      or_whatsapp: "or chat via WhatsApp →"
     },
     compare: {
       eyebrow: "Compare",
@@ -397,6 +413,8 @@ export const translations = {
       submitting: "Submitting...",
       success_title: "Request submitted!",
       success_desc: "The Radiuslink team will reach out shortly for a demo.",
+      fallback_title: "Sent via WhatsApp",
+      fallback_desc: "Server is busy — your request was routed via WhatsApp. Our team will respond shortly.",
       error: "Submission failed. Please try again.",
       select_placeholder: "— Choose a plan —"
     },

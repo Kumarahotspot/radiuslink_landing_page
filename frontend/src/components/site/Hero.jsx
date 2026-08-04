@@ -98,25 +98,25 @@ export default function Hero() {
               <div className="absolute inset-6 rounded-full border border-overlay/10 bg-background/40 backdrop-blur-xl gradient-border">
                 <div className="absolute inset-0 grid place-items-center text-center px-6">
                   <div>
-                    <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Users Managed</div>
+                    <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{t.hero.visual_label}</div>
                     <div className="mt-2 text-6xl sm:text-7xl md:text-8xl font-black bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-transparent">
-                      10<span className="text-primary">K</span>+
+                      {t.hero.visual_number.replace("K+", "")}<span className="text-primary">K+</span>
                     </div>
-                    <div className="text-sm font-semibold tracking-tight text-foreground/80">Pelanggan Aktif</div>
+                    <div className="text-sm font-semibold tracking-tight text-foreground/80">{t.hero.visual_caption}</div>
                     <div className="mt-6 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-overlay/10 text-xs">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Live · 99.9% uptime
+                      {t.hero.visual_live}
                     </div>
                   </div>
                 </div>
               </div>
               {/* Floating badges */}
               <div className="absolute -top-2 -left-2 md:top-0 md:-left-6 rounded-2xl border border-overlay/10 bg-card/80 backdrop-blur p-3 shadow-2xl animate-float-slow">
-                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Router</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{t.hero.visual_badge_1}</div>
                 <div className="text-xl font-bold">200+</div>
               </div>
               <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 rounded-2xl border border-overlay/10 bg-card/80 backdrop-blur p-3 shadow-2xl animate-float-slow" style={{ animationDelay: "1.5s" }}>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">ISP Klien</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{t.hero.visual_badge_2}</div>
                 <div className="text-xl font-bold">50+</div>
               </div>
             </div>

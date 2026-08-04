@@ -47,6 +47,8 @@ export default function Subscribe() {
     window.open(whatsappUrl(msg), "_blank", "noopener");
   };
 
+  const [wasFallback, setWasFallback] = useState(false);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.phone || !form.email || !form.address || !form.package_id) return;
@@ -54,15 +56,17 @@ export default function Subscribe() {
     try {
       await api.post("/subscriptions", form, { timeout: 8000 });
       openWhatsappLead();
+      setWasFallback(false);
       setSuccess(true);
       setForm(initial);
       toast.success(t.subscribe.success_title, { description: t.subscribe.success_desc });
     } catch (err) {
-      // Backend down -> fallback to WhatsApp lead
+      // Backend unreachable -> fallback: still deliver lead via WhatsApp so user's request is not lost
       openWhatsappLead();
+      setWasFallback(true);
       setSuccess(true);
       setForm(initial);
-      toast.success(t.subscribe.success_title, { description: t.subscribe.success_desc });
+      toast.warning(t.subscribe.fallback_title, { description: t.subscribe.fallback_desc });
     } finally {
       setLoading(false);
     }
@@ -95,11 +99,15 @@ export default function Subscribe() {
               className="rounded-3xl border border-overlay/10 bg-card/50 backdrop-blur-xl p-6 md:p-8 gradient-border relative"
             >
               {success && (
-                <div data-testid="subscribe-success" className="mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.08] p-4 flex items-start gap-3">
-                  <CheckCircle2 className="h-6 w-6 text-emerald-400 flex-shrink-0" />
+                <div data-testid="subscribe-success" className={`mb-6 rounded-2xl border p-4 flex items-start gap-3 ${
+                  wasFallback
+                    ? "border-amber-500/30 bg-amber-500/[0.08]"
+                    : "border-emerald-500/30 bg-emerald-500/[0.08]"
+                }`}>
+                  <CheckCircle2 className={`h-6 w-6 flex-shrink-0 ${wasFallback ? "text-amber-400" : "text-emerald-400"}`} />
                   <div>
-                    <div className="font-semibold">{t.subscribe.success_title}</div>
-                    <div className="text-sm text-muted-foreground">{t.subscribe.success_desc}</div>
+                    <div className="font-semibold">{wasFallback ? t.subscribe.fallback_title : t.subscribe.success_title}</div>
+                    <div className="text-sm text-muted-foreground">{wasFallback ? t.subscribe.fallback_desc : t.subscribe.success_desc}</div>
                   </div>
                 </div>
               )}

@@ -1,0 +1,29 @@
+{
+  "summary": "Frontend-only re-test completed against the public preview. All four iteration_3 defects are resolved: About shows the correct Radiuslink SaaS stats, slideshow arrows are visible/tappable on mobile while retaining hover-only behavior from 768px, Hero/Recommender target strings switch correctly between ID and EN, and Subscribe now distinguishes successful persistence from WhatsApp fallback with emerald/success versus amber/warning states. No body-level horizontal overflow was found at 375, 390, 414, or 768px, and the requested mobile sections remain visually contained and professional at 390px.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "No blocking issue found in the reviewed fixes. The public preview still emits the previously documented development-overlay hydration warning caused by an injected span inside Subscribe option elements; this is tooling-generated and did not affect form behavior."
+  ],
+  "updated_files": [
+    "/app/test_reports/iteration_4.json"
+  ],
+  "success_rate": {
+    "backend": "Not tested (frontend-only request)",
+    "frontend": "100% of requested re-test checks passed"
+  },
+  "seed_data_creation": "None. Subscribe success and failure scenarios were tested with Playwright route interception; no backend records were created.",
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Verified on the public preview: about-stat-0..3 show ID values/labels 50+ ISP klien aktif, 10.000+ User terkelola, 200+ Router terhubung, 99,9% Uptime platform; EN also translates correctly. Legacy 8500+/8.500+, 15+, 2400/2.400 km, and 9 thn are absent from About. At 390px slide arrows compute to opacity 0.7 with 40x40 targets and both taps change slides; at exactly 768px and 1024px they compute to opacity 0 until frame hover, then opacity 1. Hero and Recommender target copy switches ID/EN without stale strings. Mocked POST success produced emerald card plus data-type=success toast; aborted/HTTP-500 POST produced amber fallback cards and data-type=warning toasts in both ID and EN. No horizontal overflow at 375/390/414/768. Hero, Slideshow, Packages, ROI, Clients, Features, Compare, Testimonials, Subscribe, and Footer remained within the 390px viewport; no broken loaded images were found.",
+  "rca_of_the_issue": "The iteration_3 causes were corrected as intended: About now renders i18n values directly, responsive opacity classes provide mobile arrow visibility while preserving md hover behavior, Hero/Recommender strings come from translation keys, and Subscribe tracks wasFallback to render truthful status styling/copy and warning toast semantics."
+}

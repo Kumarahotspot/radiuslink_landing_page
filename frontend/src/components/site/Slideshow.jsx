@@ -196,12 +196,12 @@ export default function Slideshow() {
                 ))}
               </div>
 
-              {/* Nav arrows */}
+              {/* Nav arrows — always visible on touch, hover-only on desktop */}
               <button
                 data-testid="slide-prev"
                 onClick={prev}
                 aria-label="Previous slide"
-                className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/60 backdrop-blur text-white grid place-items-center opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/60 backdrop-blur text-white grid place-items-center opacity-70 md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -209,7 +209,7 @@ export default function Slideshow() {
                 data-testid="slide-next"
                 onClick={next}
                 aria-label="Next slide"
-                className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/60 backdrop-blur text-white grid place-items-center opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/60 backdrop-blur text-white grid place-items-center opacity-70 md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
