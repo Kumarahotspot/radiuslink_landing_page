@@ -11,8 +11,8 @@ export default function About() {
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <div className="rounded-3xl overflow-hidden border border-overlay/10">
               <img
-                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=srgb&fm=jpg&w=900&q=85"
-                alt="Modern data center"
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?crop=entropy&cs=srgb&fm=jpg&w=900&q=85"
+                alt="Radiuslink engineering team building the platform"
                 className="w-full h-[420px] object-cover"
               />
             </div>
